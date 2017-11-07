@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>control.lib</LibraryName>
+<Function>
+<FunctionName>CTRL_Stop_point</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>USER_Generic_continue_or_exit</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/user.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>CTRL_Result_func</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     CRF_Result_Action : Use this var to set The las action returne code ( Mandatory )
+     CRF_Generic_Base_MSG : use this var to set base message of control ( Mandatory )
+     CRF_Generic_Base_MSG_ERR : Use this var to set additional iformation on error ( Mandatory )
+     CRF_Result_ERR_Level : Use this var to set the level of test severity on fail ( Mandatory )
+     CRF_Action_ONFAIL : Use this var to set and action to do after CTRL fail ( OPTIONAL )
+     CRF_Action_ONOK : Use this var to set and action to do after CTRL is OK ( OPTIONAL )
+     ${1} : Use this var to set [ CRF_Result_Action ]
+     ${2} : Use this var to set [ CRF_Generic_Base_MSG ]
+     ${3} : Use this var to set [ CRF_Generic_Base_MSG_ERR ]
+     ${4} : Use this var to set [ CRF_Result_ERR_Level ]
+     ${5} : Use this var to set [ CRF_Action_ONFAIL ]
+     ${6} : Use this var to set [ CRF_Action_ONOK ]
+    
+     Base usage : CTRL_Result_func "${?}" "Generic_Base_Param_MSG" "Generic_Base_Param_MSG_ERR" "Result_ERR_Level" "On fail action" "on success action"
+    
+     Description : This function is used to check result of a past action and choose action
+    
+     Send Back : Message / Exit / function
+</DocText>
+</Function>
+<Function>
+<FunctionName>CTRL_USER_EXIST</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_User_To_Check : Use this var to set the username to check
+     Returne_Code_CTRL_USER_EXIST : This var is used to send back information of result of control
+     Basic usage :
+     Base_User_To_Check="My_account"
+     CTRL_USER_EXIST
+</DocText>
+</Function>
+<Function>
+<FunctionName>CTRL_GROUP_EXIST</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Group_To_Check : Use this var to set the group name to check
+     Returne_Code_CTRL_GROUP_EXIST : This var is used to send back information of result of control
+     Basic usage :
+     Base_User_To_Check="My_group"
+     Base_Group_To_Check
+</DocText>
+</Function>
+<Function>
+<FunctionName>Empty_Var_Control</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     EVC_Var_To_Test : Use this var to set the path to test ( Mandatory )
+     EVC_Var_Name_To_Test : Use this var to set the name of the var to test for display messages ( Mandatory )
+     EVC_Type_Of_ERR : Use this var to set the severity of an empty vars ( Mandatory )
+     EVC_Level_Of_ERR : Use this var to set the severity level of an empty vars ( Mandatory )
+     EVC_MSG_add : Use this var to set complementary message ( OPTIONAL )
+     EVC_Action_ONFAIL : Use this var to set anb action to do after CTRL fail ( OPTIONAL )
+     EVC_Action_ONOK : Use this var to set anb action to do after CTRL is OK ( OPTIONAL )
+     ${1} : Used to set [ Base_Var_to_test ]
+     ${2} : Used to set [ Base_Var_Name_To_Test ]
+     ${3} : Used to set [ Type_Of_ERR ]
+     ${4} : Used to set [ Level_Of_ERR ]
+     ${5} : Used to set [ EVC_MSG_add ]
+     ${6} : Used to set [ Action_ONFAIL ]
+     ${7} : Used to set [ Action_ONOK ]
+    
+     Base usage : Empty_Var_Control "My_VAR" "My_Var_Name" "ERR_type" "Level_Of_ERR" [ "MSG_add" "Action_ONFAIL" "Action_ONOK" ]
+    
+     Description : This function is used to check if a var is empty
+    
+     Send Back : Send back result of check
+</DocText>
+</Function>
+<Function>
+<FunctionName>IS_Writable</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_element_To_TEST : use this var to set which file to controle or create if not present
+     Base_Severity : Use this var to set the severity of the erro ifthe element is not
+     writable
+     ${1} : use thi var to set Base_element_To_TEST
+     ${2} : Use this var to set Base_Severity The severity is from 0 ( Warning )
+     to 8 ( 1 to 8 exit code)
+     Basic usage :
+     IS_Writable "My element" " Severity"
+</DocText>
+</Function>
+<Function>
+<FunctionName>Control_Check_wget_status</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Control_Check_wtget_status
+    
+     Description : This function check if you have Wget activated and do exit if not
+    
+     Send Back : OK/exit
+</DocText>
+</Function>
+<Function>
+<FunctionName>Control_Check_perl_status</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Control_Check_perl_status
+    
+     Description : This function check if you have perl activated and do exit if not
+    
+     Send Back : OK/exit
+</DocText>
+</Function>
+<Function>
+<FunctionName>Control_Check_md5sum_status</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Control_Check_md5sum_status
+    
+     Description : This function check if you have md5sum activated and do exit if not
+    
+     Send Back : OK/exit
+</DocText>
+</Function>
+<Function>
+<FunctionName>Control_Check_cvs_status</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Control_Check_cvs_status
+    
+     Description : This function check if you have cvs activated and do exit if not
+    
+     Send Back : OK/exit
+</DocText>
+</Function>
+ </Library>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>postgres.lib</LibraryName>
+<Function>
+<FunctionName>Postgres_INIT</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Directory_CRT</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     BASE_Postgres_Install_PATH : Use this var to set where postgres is installed
+     BASE_Postgres_USER : Use this var to set which user to run any commande on Postgres
+     BASE_Postgres_DATA_DIR : Use this var to set Where postgres store all DDB DATAS
+     Basic Use :
+     Base_Postgres_Install_PATH="Myspath"
+     BASE_Postgres_USER="postgres_username"
+     BASE_Postgres_DATA_DIR="My_dataDir"
+     BDD_Postgres_INIT
+</DocText>
+</Function>
+<Function>
+<FunctionName>Postgres_START</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Postgres_Install_PATH : Use this var to set where postgres is installed
+     BASE_Postgres_USER : Use this var to set which user to run any commande on Postgres
+     BASE_Postgres_DATA_DIR : Use this var to set Where postgres store all DDB DATAS
+     Base use :
+</DocText>
+</Function>
+<Function>
+<FunctionName>Postgres_STOP</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Postgres_Install_PATH : Use this var to set where postgres is installed
+     BASE_Postgres_USER : Use this var to set which user to run any commande on Postgres
+     BASE_Postgres_DATA_DIR : Use this var to set Where postgres store all DDB DATAS
+</DocText>
+</Function>
+ </Library>

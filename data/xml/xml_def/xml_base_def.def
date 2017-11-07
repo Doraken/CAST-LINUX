@@ -1,0 +1,29 @@
+###############################################################################
+# xml_base_def.def                                             Version : 1.0  #
+# Author : Arnaud Crampet                                 Date : 29/05/2007   #
+#                                                                             #
+# Subject : This conf file provide all base parameters for automated xml code #
+#           generation                                                        #
+###############################################################################
+####
+# INFO
+
+function XML_BASE_DEF_DOC_FUNCTION_DEPEND
+{
+set -A XML_BASE_ARRAY 'Dep_obj' 'dep_func' 'func_name' 'func_libsrc'
+set -A XML_fill_in_array '3' '4'
+XML_BASE_Min_Array="2"
+}
+
+
+function XML_BASE_DEF_FUNCTIONLIST_BY_FILE
+{
+set -A XML_BASE_ARRAY 'File Source' 'dep_func' 'func_name' 'func_libsrc'
+set -A XML_fill_in_array '3' '4'
+XML_BASE_Min_Array="2"
+
+}
+
+
+Package_Configuration="OK"
+Sourced_OK="1"

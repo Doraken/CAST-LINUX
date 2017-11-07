@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>mail.lib</LibraryName>
+<Function>
+<FunctionName>Mail_check_Mailler</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     MS_User_reciever : Use this var to set mail to sent a mail
+     MS_User_Subject : Use this var to set to set subject of the mail
+     MS_User_Attached_File : Use this var to set to set wich file to send with mail
+     MS_User_Message : Use this var to set to set Message of the mail
+     ${1} : Use this var to set [ MS_User_reciever ]
+     ${2} : Use this var to set [ MS_User_Subject ]
+     ${3} : Use this var to set [ MS_User_Attached_File ]
+     ${4} : Use this var to set [ MS_User_Message ]
+    
+     Base usage : Mail_Send "MS_User_reciever" "MS_User_Subject" "MS_User_Attached_File" "MS_User_Message"
+    
+     Description : None
+    
+     Send Back : None
+</DocText>
+</Function>
+<Function>
+<FunctionName>Mail_check_att</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     MCA_User_Attached_File : Use this var to set mail to sent a mail
+     ${1} : Use this var to set [ MS_User_reciever ]
+    
+     Base usage : Mail_Send "MS_User_reciever" "MS_User_Subject" "MS_User_Attached_File" "MS_User_Message"
+    
+     Description : None
+    
+     Send Back : None
+</DocText>
+</Function>
+<Function>
+<FunctionName>Mail_Send</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Mail_check_Mailler</FunctionName>
+<FunctionLib>/lib/ksh/web/mail.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     MS_User_reciever : Use this var to set mail to sent a mail
+     MS_User_Subject : Use this var to set to set subject of the mail
+     MS_User_Attached_File : Use this var to set to set wich file to send with mail
+     MS_User_Message : Use this var to set to set Message of the mail
+     ${1} : Use this var to set [ MS_User_reciever ]
+     ${2} : Use this var to set [ MS_User_Subject ]
+     ${3} : Use this var to set [ MS_User_Attached_File ]
+     ${4} : Use this var to set [ MS_User_Message ]
+    
+     Base usage : Mail_Send "MS_User_reciever" "MS_User_Subject" "MS_User_Attached_File" "MS_User_Message"
+    
+     Description : None
+    
+     Send Back : None
+</DocText>
+</Function>
+ </Library>

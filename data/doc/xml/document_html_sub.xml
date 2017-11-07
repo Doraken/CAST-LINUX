@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>document_html_sub.lib</LibraryName>
+<Function>
+<FunctionName>Document_Print_function_man_page</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Document_Print_function_man_page
+    
+     Description : This function is used whithout parameter and can only be called by
+    
+    
+     Send Back : html flow
+</DocText>
+</Function>
+ </Library>

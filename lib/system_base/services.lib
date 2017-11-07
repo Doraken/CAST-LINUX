@@ -1,0 +1,159 @@
+###############################################################################
+#  services.lib                                         Version : 1.0         #
+#                                                                             #
+# Creation Date : 00/00/0000                                                  #
+# Team          : Only me                                                     #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This library provide base                                         #
+#                                                                             #
+###############################################################################
+####
+# INFO 
+
+function EnableBoot_Service
+{
+#|# Var to set  : 
+#|# AcivateServiceName  : Use this var to set service name to activate at boot time
+#|# ${1}        : Use this var to set [ AcivateServiceName ]                      
+#|#
+#|# Base usage  : EnableBoot_Service "ServiceNAme"
+#|#
+#|# Description : This function is used to activate service at boot time.
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+AcivateServiceName="${1}"
+Empty_Var_Control "${AcivateServiceName}" "AcivateServiceName" "ErrorN" "2" "Service name is a mandatory parameter "
+
+
+Check_Service ${AcivateServiceName}
+
+if [ ${ServiceStatus} = "enabled" ] 
+	then 
+		MSG_DISPLAY "Info" "Service ${AcivateServiceName} is already : [ ${ServiceStatus} ]"
+	else 
+		systemctl enable ${AcivateServiceName}	
+		CTRL_Result_func "${?}" "Activation of service : ${AcivateServiceName}" " [ can't Actiate ] " "2" "" ""
+		Check_Service ${AcivateServiceName}
+		if [ ${ServiceStatus} = "enabled" ] 
+			then 
+				MSG_DISPLAY "Info" "Service ${AcivateServiceName} is succesfully : [ ${ServiceStatus} ]"
+			else 
+				MSG_DISPLAY "ErrorN" "Service ${AcivateServiceName} can t be enabled : [ ${ServiceStatus} ]"
+		fi 
+fi 
+
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+function DisableBoot_Service
+{
+#|# Var to set  : 
+#|# AcivateServiceName  : Use this var to set service name to activate at boot time
+#|# ${1}        : Use this var to set [ AcivateServiceName ]                      
+#|#
+#|# Base usage  : disableBoot_Service "ServiceNAme"
+#|#
+#|# Description : This function is used to activate service at boot time.
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+AcivateServiceName="${1}"
+Empty_Var_Control "${AcivateServiceName}" "AcivateServiceName" "ErrorN" "2" "Service name is a mandatory parameter "
+
+
+Check_Service ${AcivateServiceName}
+
+if [ ${ServiceStatus} = "disabled" ] 
+	then 
+		MSG_DISPLAY "Info" "Service ${AcivateServiceName} is already : [ ${ServiceStatus} ]"
+	else 
+		systemctl disable ${AcivateServiceName}	
+		CTRL_Result_func "${?}" "Activation of service : ${AcivateServiceName}" " [ can't Actiate ] " "2" "" ""
+		Check_Service ${AcivateServiceName}
+		if [ ${ServiceStatus} = "disabled" ] 
+			then 
+				MSG_DISPLAY "Info" "Service ${AcivateServiceName} is succesfully : [ ${ServiceStatus} ]"
+			else 
+				MSG_DISPLAY "ErrorN" "Service ${AcivateServiceName} can t be disabled : [ ${ServiceStatus} ]"
+		fi 
+fi 
+
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+
+
+function Check_Service
+{
+#|# Var to set  : None
+#|#             : Use this var to set 
+#|#             : Use this var to set 
+#|# ${1}        : Use this var to set [  ]                
+#|# ${2}        : Use this var to set [  ]               
+#|#
+#|# Base usage  : None
+#|#
+#|# Description : None
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+CheckServiceName="${1}"
+Empty_Var_Control "${CheckServiceName}" "CheckServiceName" "ErrorN" "2" "Service name is a mandatory parameter "
+
+
+ServiceStatus=$(systemctl status ntpd.service | grep "Loaded" | awk -F\; '{ print $2}')
+MSG_DISPLAY "Info" "Service ${CheckServiceName} is : [ ${ServiceStatus} ]"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+function Dummy_function
+{
+#|# Var to set  : None
+#|#             : Use this var to set 
+#|#             : Use this var to set 
+#|# ${1}        : Use this var to set [  ]                
+#|# ${2}        : Use this var to set [  ]               
+#|#
+#|# Base usage  : None
+#|#
+#|# Description : None
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "this is a model function"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+Sourced_OK="1"  

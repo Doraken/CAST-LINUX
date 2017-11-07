@@ -1,0 +1,67 @@
+###############################################################################
+# SSH_params.cnf                                       Version : 1.1.2.5      #
+#                                                                             #
+# Creation Date : 21/02/2016                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This file containe all sshd configuration parameters              #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+###############################################################################
+####
+# Generics variables
+# Here you find all generic information variable used for scripts
+# all theses parameters are standadized
+#|#
+
+
+SSHD_Port="22"
+SSHD_AddressFamily="any"
+SSHD_Address="0.0.0.0"
+SSHD_Protocol="2"
+SSHD_HostKey="/etc/ssh/ssh_host_rsa_key"
+SSHD_HostKey="/etc/ssh/ssh_host_ecdsa_key"
+SSHD_HostKey="/etc/ssh/ssh_host_ed25519_key"
+SSHD_SyslogFacility="AUTHPRIV"
+SSHD_LogLevel="INFO"
+SSHD_LoginGraceTime="2m"
+SSHD_PermitRootLogin="no"
+SSHD_StrictModes="yes"
+SSHD_MaxAuthTries="6"
+SSHD_MaxSessions="10"
+SSHD_RSAAuthentication="No"
+SSHD_PubkeyAuthentication="yes"
+SSHD_AuthorizedKeysFile=".ssh/authorized_keys"
+SSHD_RhostsRSAAuthentication="no"
+SSHD_HostbasedAuthentication="no"
+SSHD_PasswordAuthentication="no"
+SSHD_PermitEmptyPasswords="no"
+SSHD_ChallengeResponseAuthentication="no"
+SSHD_UsePAM="yes"
+SSHD_AllowAgentForwarding="yes"
+SSHD_AllowTcpForwarding="yes"
+SSHD_X11Forwarding="yes"
+SSHD_X11DisplayOffset="0"
+SSHD_X11UseLocalhost="yes"
+SSHD_PermitTTY="yes"
+SSHD_PrintMotd="yes"
+SSHD_PrintLastLog="yes"
+SSHD_TCPKeepAlive="yes"
+SSHD_UseLogin="no"
+SSHD_UsePrivilegeSeparation="sandbox"   
+SSHD_PermitUserEnvironment="no"
+SSHD_PidFile="/var/run/sshd.pid"
+SSHD_PermitTunnel="no"
+SSHD_AcceptEnv="LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES"
+SSHD_AcceptEnv="LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT"
+SSHD_AcceptEnv="LC_IDENTIFICATION LC_ALL LANGUAGE"
+SSHD_AcceptEnv="XMODIFIERS"
+SSHD_Subsystem="sftp    /usr/libexec/openssh/sftp-server"
+
+
+CNF_SRC="1"

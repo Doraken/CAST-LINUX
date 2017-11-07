@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>document.lib</LibraryName>
+<Function>
+<FunctionName>document_get_all_function_names</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>document_get_deps</FunctionName>
+<FunctionLib>/lib/ksh/doc/document.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Read</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Remove</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>document_get_function_core</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>document_get_deps</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>document_filter_dep_tmp_cat</FunctionName>
+<FunctionLib>/lib/ksh/doc/Filters/autodoc_filters.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>FONT_set_Basic_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>system_counter</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>Document_get_called_function</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>FONT_set_Basic_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Internal_item_checked : Use this var to set the item to check if it s a function call
+     ${1} : Use this var to set Internal_item_checked
+</DocText>
+</Function>
+<Function>
+<FunctionName>document_Catalogue_refiner</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Document_Parse_Cat_Funtions</FunctionName>
+<FunctionLib>/lib/ksh/doc/document.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SYSTEM_VAR_RANDOMIZER</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     : Use this var to set
+     : Use this var to set
+     ${1}
+     ${2}
+    
+     Base usage : None
+    
+     Description : This function is used to refine and sort all catalogs
+    
+     Send Back : None
+</DocText>
+</Function>
+<Function>
+<FunctionName>Document_Parse_Cat_Funtions</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Var to set : None
+     : Use this var to set
+     : Use this var to set
+     ${1}
+     ${2}
+    
+     Base usage : None
+    
+     Description : This function is used to refine and sort all catalogs
+    
+     Send Back : None
+</DocText>
+</Function>
+<Function>
+<FunctionName>document_Catalogue_to_XML</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Read</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>document_Get_function_By_file</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Read</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>document_Generate</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>autodoc_filter_line_BASE_PATH</FunctionName>
+<FunctionLib>/lib/ksh/doc/Filters/autodoc_filters.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Document_Print_function_man_page</FunctionName>
+<FunctionLib>/lib/ksh/doc/sub/document_html_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Document_Print_global_Print_txt</FunctionName>
+<FunctionLib>/lib/ksh/doc/sub/document_txt_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Document_Print_global_Print_xml</FunctionName>
+<FunctionLib>/lib/ksh/doc/sub/document_xml_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     TOPrintFormat : Use this var to set Output format of the Documentation
+     ${1} : Use this var to set [ TOPrintFormat ]
+    
+     Base usage : document_Generate "format"
+    
+     Description : This function change type of output from txt to XML
+    
+     Send Back : XML MANHTML or TXT function
+</DocText>
+</Function>
+ </Library>

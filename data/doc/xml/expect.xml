@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>expect.lib</LibraryName>
+<Function>
+<FunctionName>Base_Expect</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Remove</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SYSTEM_VAR_RANDOMIZER</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Base_Expect <<-EOF cmds EOF
+    
+     Description : This function is used to launche command in filter expect using
+     connexion prameter ( sete in conf File )
+    
+     Send Back : text output
+</DocText>
+</Function>
+<Function>
+<FunctionName>Base_Expect_call</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Remove</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SYSTEM_VAR_RANDOMIZER</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     BEC_File_cmd : use this var to set the file name of the command
+     file to use in expect filter
+     BEC_Output_Filename : Use this var to set in wich file to redirect all
+     output
+     ${1} : use this var to set [ BEC_File_cmd ]
+     ${2} : use this var to set [ BEC_Output_Filename ]
+    
+     Base usage : Base_Expect_call "My command file" "My output File"
+    
+     Description : This function is used to launch all expect script
+     in the filter_expext script
+    
+     Send Back : execution output or file
+</DocText>
+</Function>
+<Function>
+<FunctionName>Expect_Get_System_Name</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Base_Expect_call</FunctionName>
+<FunctionLib>/lib/ksh/system_base/ssh/expect/expect.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Expect_Base_SetEnv</FunctionName>
+<FunctionLib>/lib/ksh/system_base/ssh/expect/sub/expect_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Expect_Base_SetEnv_SCP</FunctionName>
+<FunctionLib>/lib/ksh/system_base/ssh/expect/sub/expect_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     EGSN_Used_Server_Name : use this var to set Server name to get os type
+     EGSN_used_user : Use this var to set connexion user
+     EGSN_used_password : Use this var to set connexion user password
+     ${1} : use this var to set [ EGSN_Used_Server_Name ]
+     ${2} : use this var to set [ EGSN_used_user ]
+     ${3} : use this var to set [ EGSN_used_password ]
+    
+     Base usage : Expect_Get_System_Name "EGSN_Used_Server_Name" "EGSN_used_user" "EGSN_used_password"
+    
+     Description : This function is used to launch all expect script
+     to get distent system os
+    
+     Send Back : Vars
+</DocText>
+</Function>
+ </Library>

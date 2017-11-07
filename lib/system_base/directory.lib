@@ -1,0 +1,140 @@
+###############################################################################
+#  Directory.lib                                               Version : 1.0  #
+#                                                                             #
+# Creation Date : 01/10/2006                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This library provide base runtime to check directory properties   #
+#                                                                             #
+###############################################################################
+####
+# INFO 
+
+
+################################## Directory function 
+
+function Dir_null_or_slash
+{
+#|# Path_To_test : Use this var to set the path to test 
+#|# ${1}         : use this var to set Path_To_test
+#|# base usage   :
+#|#                Dir_null_or_slash "My_directory_path"
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+Path_To_test=${1}
+
+if [ -z "${Path_To_test}" ] 
+   then 
+   	   MSG_DISPLAY "ErrorN" " Error ON PATH  : [ Value is NULL ]" "1"
+   else 
+       if [ "${Path_To_test}" = "/" ]
+          then 
+           	   MSG_DISPLAY "ErrorN" " Error ON PATH  : [ Value is / ]" "1"
+      fi
+fi
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+
+function Directory_CRT
+{
+#|# Base_param_Dir_To_Create    : use this var to set which irectory to control and create
+#|# ${1}                        : use this var to set Base_param_Dir_To_Create
+#|# Basic usage : 
+#|#               Directory_CRT "My_Directory"
+
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+Base_param_Dir_To_Create="${1}"
+
+Dir_null_or_slash ${Base_param_Dir_To_Create}
+MSG_DISPLAY "StMessage" "Checking  directory : [ ${Base_param_Dir_To_Create} ] "
+if [ -d "${Base_param_Dir_To_Create}" ]
+   then 
+	   MSG_DISPLAY "EdSMessage" "Present"
+    else 
+        mkdir -p ${Base_param_Dir_To_Create}
+        Return_code=$?
+        if [ "${Return_code}" = "0" ]
+           then
+        	   MSG_DISPLAY "EdSMessage" "CREATED"
+	       else
+	    	   MSG_DISPLAY "EdEMessage" "Can't be created"
+               MSG_DISPLAY "ErrorN" " can't create directory : [ ${Base_param_Dir_To_Create} ]" "1"
+         fi
+fi
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Directory_LST
+{
+#|# Base_param_Dir      : use this var to set wher to list subdirectory
+#|# Sendback_Dir_Listed : this var is used to keep result of listing  
+
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+Base_Param_Dir_To_TEST="${Base_param_Dir}"
+Sendback_Dir_Listed=""
+Directory_Exist "${Base_Param_Dir_To_TEST}"
+for Dirs_Listed in $(ls -1 ${Base_param_Dir}/)
+   do if [ -d "${Base_param_Dir}/${Dirs_Listed}" ]
+         then 	   
+             MSG_DISPLAY "Debug" " Directory found : [ ${Dirs_Listed} ] "
+             Sendback_Dir_Listed="${Sendback_Dir_Listed} ${Dirs_Listed}"
+	     else 
+             MSG_DISPLAY "Debug" "found : [ ${Dirs_Listed} ] but it s not a directory "
+      fi 
+done 
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+function Directory_Exist
+{
+#|# Base_Param_Dir_To_TEST : Use this var to set which directory to test 
+#|# ${1}                   : User this var to set Base_Param_Dir_To_TEST
+#|# Basic use :
+#|#             
+#|#              Directory_Exist "My_directory_full_path"
+
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+Base_Param_Dir_To_TEST="${1}"
+MSG_DISPLAY "StMessage" "Checking  directory : [ ${Base_param_Dir_To_Create} ] "
+if [ -d "${Base_Param_Dir_To_TEST}" ]
+   then 
+	   MSG_DISPLAY "EdSMessage" "FOUND" 
+   else 
+	   MSG_DISPLAY "EdSMessage" "Not FOUND" 
+       MSG_DISPLAY "ErrorN" " Directory : [ Not PRESENT ]" "1"
+fi 
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+Sourced_OK="1"

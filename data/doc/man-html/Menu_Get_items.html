@@ -1,0 +1,22 @@
+<HTML>
+    <BODY>
+       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>
+         <PRE><H2>SYNOPSIS</H2></PRE>
+ <B>                                 
+     Var to set :
+     Base_Menu_get_Tag : use this var to set the tag to find to builde the menu
+     Base_Level_Menu_Info : Use this var to set which geted item part to keep
+     Base_file_to_parse_Menu : use this var to set which file to parse to build menu
+     Base_Menu_Name : Use this var to set the name of the menu
+     ${1} : use this var to set [ Base_Menu_get_Tag ]
+     ${2} : use this var to set [ Base_Level_Menu_Info ]
+     ${3} : use this var to set [ Base_file_to_parse_Menu ]
+     ${4} : use this var to set [ Base_Menu_Name ]
+    
+     Base usage : Menu_Get_items "My menu tag" "My keep item level " "My source file menu" "Menu Name"
+     Description : This function scan a file to creat a array to send to Menu_Build
+    
+     Send Back : a typer array var to Menu_Build
+</B>
+     </BODY> 
+</HTML>

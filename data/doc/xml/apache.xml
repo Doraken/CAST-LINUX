@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>apache.lib</LibraryName>
+<Function>
+<FunctionName>Apache_search_Instances</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Pase_HTTPD_Binaries : Use this var to set where to searche for APACHECTL
+</DocText>
+</Function>
+<Function>
+<FunctionName>httpd_base_consts</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Base const_instance : this var retur all base information about httpd daemon
+</DocText>
+</Function>
+<Function>
+<FunctionName>Apache_Get_Instance</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Apache_Instance_Name : Use this var to set wich aache instance to start or stop
+     Apache_Base_server_dir : Use this var to set the path to base apache server root
+     Apache_Base_server_bin_dir : Use this var to set the path to base apache server bin
+     Apache_Base_pid_file : Use this var to set the path to pid file
+     Basic Use : Apache_Get_Instance
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>apache_START</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Postgres_Install_PATH : Use this var to set where postgres is installed
+     BASE_Postgres_USER : Use this var to set which user to run any commande on Postgres
+     BASE_Postgres_DATA_DIR : Use this var to set Where postgres store all DDB DATAS
+     Base use :
+</DocText>
+</Function>
+<Function>
+<FunctionName>apache_STOP</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Postgres_Install_PATH : Use this var to set where postgres is installed
+     BASE_Postgres_USER : Use this var to set which user to run any commande on Postgres
+     BASE_Postgres_DATA_DIR : Use this var to set Where postgres store all DDB DATAS
+</DocText>
+</Function>
+<Function>
+<FunctionName>apache_STATUS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Mysql_Install_PATH : Use this var to set where Mysql is installed
+     BASE_Mysql_USER : Use this var to set which user to run any commande on Mysql
+     BASE_Mysql_DATA_DIR : Use this var to set Where Mysql store all DDB DATAS
+</DocText>
+</Function>
+ </Library>

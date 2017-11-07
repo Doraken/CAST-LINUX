@@ -1,0 +1,1526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>compile.lib</LibraryName>
+<Function>
+<FunctionName>COMPILE_Magic_linker</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Directory_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_Param_PKG_to_link : Use this var to set the package to link to std path
+     Base_Dir_prefix_install : Use this var to set where to install all pkgs
+     Base_INTRA_DIRS="${Base_Dir_prefix_install}/${Base_Param_PKG_to_link}"
+    
+     Base usage : COMPILE_Magic_linker
+    
+     Description : This function is used to link all binary and libs into the O.S.
+    
+     Send Back : Links
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>COMPILE_Make_Clean_SUB</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Make_install_SUB</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Make_Package_SUB</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Post_Compile_Action_SUB</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>CTRL_Result_func</FunctionName>
+<FunctionLib>/lib/ksh/system_base/control.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Directory_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Execution_Output_redirector</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Interleave_MSG</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Spacer_MSG</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_Param_type_PKG : Use this var to set type of package ( Mandatory )
+     Base_Param_Pkg_Path : Use this var to set the file path of the package ( Mandatory )
+     Base_Param_PKG_To_Compile : Use this var to set the package to compile ( Mandatory )
+     Base_Param_Compile_Options : Use this var to define Compilation options ( Mandatory )
+     Base_Param_Make_Options : Use this var to set Make Options ( Mandatory )
+     Base_Param_Post_Compile_Action : Use This var to defin Post install actions ( Mandatory )
+     Base_already_Compiled : Use this var to defin lock copilation file ( Mandatory )
+     Base_Param_PKG_To_Compile_Option_Path : use this var to set extra path information ( Mandatory )
+     Custom_Pkg_Configurator : use this var to set extra configure case who cannot be standardized ( Mandatory )
+     Base_Compile_OutPut_Redirector : Use This var to set if comilation output had to be send to a file ( Mandatory )
+    
+     Base usage : Set all Mandatory vars and launch " COMPILE_Generics_Base_func"
+    
+     Description : This function is used to compile generic source tarball for linux env
+    
+     Send Back : Compiled packages
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_POSTFIX</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CVS</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_POSTFIX
+    
+     Description : This function is used to launche POSTFIX compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_CVSD</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CVS</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_CVSD
+    
+     Description : This function is used to launche CVSD compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_RSYNC</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_LIBICONV</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_OpenSsl</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_RSYNC
+    
+     Description : This function is used to launche RSYNC compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_TOMCAT</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_TOMCAT
+    
+     Description : This function is used to launche TOMCAT compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_AMAVISD</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Berkeley_Db</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_LIBICONV</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_OpenSsl</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_zlib</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_AMAVISD
+    
+     Description : This function is used to launche AMAVISD compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_BIND</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_LIBICONV</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_OpenSsl</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_BIND
+    
+     Description : This function is used to launche BIND compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_LIBICONV</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_LIBICONV
+    
+     Description : This function is used to launche LIBICONV compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_NETSNMP</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_NETSNMP
+    
+     Description : This function is used to launche NETSNMP compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_CVS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CVS</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_CVS
+    
+     Description : This function is used to launche CVS compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_FREETYPE2</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_FREETYPE2
+    
+     Description : This function is used to launche FREETYPE2 compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_RRDTOOLS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_FREETYPE2</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Libart</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_TCL</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_RRDTOOLS
+    
+     Description : This function is used to launche RRDTOOLS compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Berkeley_Db</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Berkeley_Db
+    
+     Description : This function is used to launche BERKELEY DB compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_OpenLdap</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Berkeley_Db</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_OpenLdap
+    
+     Description : This function is used to launche OPENLDAP compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_TCL</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_TCL
+    
+     Description : This function is used to launche TCL compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_TK</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_TCL</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_TK
+    
+     Description : This function is used to launche TK compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_EXPECT</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_EXPECT
+    
+     Description : This function is used to launche EXPECT compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_EXPAT</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_EXPAT
+    
+     Description : This function is used to launche EXPAT compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_xml</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_xml
+    
+     Description : This function is used to launche XML compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_PNG</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_PNG
+    
+     Description : This function is used to launche PNG compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_xsl</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_xml</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_xsl
+    
+     Description : This function is used to launche XSL compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_zlib</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_zlib
+    
+     Description : This function is used to launche ZLIB compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Readline</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Readline
+    
+     Description : This function is used to launche ReadLine compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Flex</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Flex
+    
+     Description : This function is used to launche FLEX compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Mhash</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Mhash
+    
+     Description : This function is used to launche Mhash compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Libmcrypt</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Mhash</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Libmcrypt
+    
+     Description : This function is used to launche LibMcrypt compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Mcrypt</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Libmcrypt</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Mcrypt
+    
+     Description : This function is used to launche Mcrypt compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_OpenSsl</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Mcrypt</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_OpenSsl
+    
+     Description : This function is used to launche OpenSSL compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_GD</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_PNG</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_GD
+    
+     Description : This function is used to launche GD compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_LIBIDN</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_LIBIDN
+    
+     Description : This function is used to launche LIBIDN compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Curl</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_LIBIDN</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Curl
+    
+     Description : This function is used to launche CURL compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Re2c</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Re2c
+    
+     Description : This function is used to launche RE2C compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_NCURSES</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_NCURSES
+    
+     Description : This function is used to launche NCURSES compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_MYSQL</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_NCURSES</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_MYSQL
+    
+     Description : This function is used to launche MYSQL compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Httpd</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Httpd
+    
+     Description : This function is used to launche HTTPD compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Php</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Berkeley_Db</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Curl</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Flex</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_GD</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Httpd</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Mcrypt</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_MYSQL</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_OpenSsl</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_PNG</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_Re2c</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_xml</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_xsl</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_zlib</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Php
+    
+     Description : This function is used to launche PHP compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_Libart</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Libart
+    
+     Description : This function is used to launche LIBART compile
+    
+     Send Back : Package compilation
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_custom</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>archive_file_extract_tgz</FunctionName>
+<FunctionLib>/lib/ksh/system_base/archive/archives.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>COMPILE_Generics_Base_func</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/compile.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Internet_Http_Get</FunctionName>
+<FunctionLib>/lib/ksh/web/internet.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+ </Library>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>sql_sub.lib</LibraryName>
+<Function>
+<FunctionName>SQL_Sub_connect_Server</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SYSTEM_VAR_RANDOMIZER</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+ </Library>

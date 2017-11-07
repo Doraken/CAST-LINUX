@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>account.lib</LibraryName>
+<Function>
+<FunctionName>Account_Exist</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Account_Get_By_Name</FunctionName>
+<FunctionLib>/lib/ksh/system_base/account/account.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Account_used_id</FunctionName>
+<FunctionLib>/lib/ksh/system_base/account/account.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     AE_ACCOUNT_NAME_To_Check : Use this var so set which account to controle
+     AE_ACCOUNT_ID_To_Check : Use this var so set which account to controle
+     AE_ACCOUNT_Err_Type : Use this var so set Type Of errore used if account not present
+     AE_ACCOUNT_Creation : Use this var to set if you give account name or id
+     ${1} : use this vas to set [ AE_ACCOUNT_To_Check ]
+     ${2} : use this vas to set [ AE_ACCOUNT_Err_Type ]
+     ${3} : use this vas to set [ AE_ACCOUNT_TYPE_INF ]
+     ${4} : use this vas to set [ AE_ACCOUNT_Creation ]
+</DocText>
+</Function>
+<Function>
+<FunctionName>Account_used_id</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     AGBI_ACCOUNT_ID_To_Check : Use this var so set which account to controle
+     AGBI_ACCOUNT_Err_Type : Use this var so set Type Of errore used if account not present
+     ${1} : use this vas to set [ AE_ACCOUNT_To_Check ]
+     ${2} : use this vas to set [ AE_ACCOUNT_Err_Type ]
+     Base usage : Account_Get_By_id "AGBI_ACCOUNT_ID_To_Check" "AGBI_ACCOUNT_Err_Type"
+    
+     Description : This function is used to check if an id is used on an account
+    
+     Send Back : Vars [ GLOBAL_id_present ]
+</DocText>
+</Function>
+<Function>
+<FunctionName>Account_Get_By_Name</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>CTRL_Result_func</FunctionName>
+<FunctionLib>/lib/ksh/system_base/control.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     AGBN_ACCOUNT_NAME_To_Check : Use this var so set which account to controle
+     AGBN_ACCOUNT_Err_Type : Use this var so set Type Of errore used if account not present
+     ${1} : use this vas to set [ AE_ACCOUNT_To_Check ]
+     ${2} : use this vas to set [ AE_ACCOUNT_Err_Type ]
+     Base usage : Account_Get_By_Name "AGBN_ACCOUNT_NAME_To_Check" "AGBN_ACCOUNT_Err_Type"
+    
+     Description : This function is used to check if an name is used on an account
+    
+     Send Back : Vars [ GLOBAL_Name_present ]
+</DocText>
+</Function>
+<Function>
+<FunctionName>Account_ID_Check</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     ACC_ACCOUNT_To_Check : Use this var so set which account to controle
+     ACC_ACCOUNT_Err_Type : Use this var so set Type Of errore used if account not present
+     ${1} : use this vas to set [ AE_ACCOUNT_To_Check ]
+     ${2} : use this vas to set [ AE_ACCOUNT_Err_Type ]
+</DocText>
+</Function>
+ </Library>

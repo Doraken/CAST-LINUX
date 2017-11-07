@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>rpm.lib</LibraryName>
+<Function>
+<FunctionName>rpm_get_installed_package</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>CTRL_Result_func</FunctionName>
+<FunctionLib>/lib/ksh/system_base/control.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : rpm_get_installed_package
+    
+     Description : This function is used to change base system calling method
+     to adapt them to the current OS
+     Send Back :
+     RPM_SEND_BACK_LIST : this var is used to send back liste of all installed RPM
+</DocText>
+</Function>
+<Function>
+<FunctionName>select_RPM_from_list</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Menu_Build</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>rpm_get_installed_package</FunctionName>
+<FunctionLib>/lib/ksh/package/binary/rpm.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     RPM_SEND_BACK_LIST : this var is used to send back liste of all installed RPM
+</DocText>
+</Function>
+<Function>
+<FunctionName>rpm_select_to_delete</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Menu_Build</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     RPM_to_DELETE : this var is used to selecte which rpm to delete
+</DocText>
+</Function>
+ </Library>

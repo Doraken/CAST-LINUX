@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>fs.lib</LibraryName>
+<Function>
+<FunctionName>FS_List_local</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>system_counter</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Basic usage : FS_List_local
+</DocText>
+</Function>
+<Function>
+<FunctionName>FS_Get_all_Full_Stats</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FS_Get_all_stats</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file_system/fs.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>system_counter</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     FS_Name_list : array list of FS
+    
+     Base usage : S_Get_all_Full_Stats "Aray_List_FS"
+    
+     Description : This function is used to get stats for all File system Mega
+     octet and report for a gloab usage of disk space and get FS by
+     FS stats
+    
+     Send Back : Global disk usage and fs by fs usag
+</DocText>
+</Function>
+<Function>
+<FunctionName>FS_See_USED_Total</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FS_Get_all_Full_Stats</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file_system/fs.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : FS_See_USED_Total
+    
+     Description : This function is used to get stats for all File system Mega
+     octet and report for a gloab usage of disk space
+    
+     Send Back : Global disk usage
+</DocText>
+</Function>
+<Function>
+<FunctionName>FS_Get_all_stats</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FS_Get_Free_Mo</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file_system/fs.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>FS_Get_Size_Mo</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file_system/fs.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>FS_Get_Used_Mo</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file_system/fs.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     FSAS_Name_To_Use : Use this var to set
+     ${1} : Use this var to set [ FSAS_Name_To_Use ]
+    
+     Base usage : FS_Get_all_stats "FS_Name"
+    
+     Description : This function is used to get all File system stat in Mega octet
+    
+     Send Back : Fs Used/free/total size in Mo
+</DocText>
+</Function>
+<Function>
+<FunctionName>FS_Get_Used_Mo</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     FSUM_Name_To_Use : Use this var to set
+     ${1} : Use this var to set [ FSUM_Name_To_Use ]
+    
+     Base usage : FS_Get_Used_Mo "FS_Name"
+    
+     Description : This function is used to get used File system size in Mega octet
+    
+     Send Back : Fs Used size in Mo
+</DocText>
+</Function>
+<Function>
+<FunctionName>FS_Get_Free_Mo</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     FSFM_Name_To_Use : Use this var to set
+     ${1} : Use this var to set [ FSFM_Name_To_Use ]
+    
+     Base usage : FS_Get_Free_Mo "FS_Name"
+    
+     Description : This function is used to get free File system size in Mega octet
+    
+     Send Back : Fs free size in Mo
+</DocText>
+</Function>
+<Function>
+<FunctionName>FS_Get_Size_Mo</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     FSGS_Name_To_Use : Use this var to set
+     ${1} : Use this var to set [ FSGS_Name_To_Use ]
+    
+     Base usage : FS_Get_Size_Mo "FS_Name"
+    
+     Description : This function is used to get File system size in Mega octet
+    
+     Send Back : Fs size in Mo
+</DocText>
+</Function>
+<Function>
+<FunctionName>FS_check_if_present</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>CTRL_Result_func</FunctionName>
+<FunctionLib>/lib/ksh/system_base/control.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     FSGS_Name_To_Use : Use this var to set
+     ${1} : Use this var to set [ FSGS_Name_To_Use ]
+    
+     Base usage : FS_check_if_present "FS_Name"
+    
+     Description : This function is used to check FS is present
+    
+     Send Back : Fs status
+</DocText>
+</Function>
+ </Library>

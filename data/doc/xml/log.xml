@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>log.lib</LibraryName>
+<Function>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Emptying_MSGS_vars</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>FONT_set_Basic_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>FONT_set_Error_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>FONT_set_Warn_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>USER_Generic_continue_or_exit</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/user.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     MD_Type_Msg : Use this var to set
+     MD_Msg_To_Display : Use this var to set
+     MD_Level_Code : Use this var to set
+     ${1} : Use this var to set [ MD_Type_Msg ]
+     ${2} : Use this var to set [ MD_Msg_To_Display ]
+     ${3} : Use this var to set [ Level_Code ]
+    
+     Base usage : MSG_DISPLAY "MD_Type_Msg" "MD_Msg_To_Display" "Level_Code"
+    
+     Description : This function is used for every messaging and error service
+    
+     Send Back : Message or exit level
+</DocText>
+</Function>
+<Function>
+<FunctionName>Debug_INIT</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Interleave_MSG</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>Interleave_MSG</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>Spacer_MSG</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>Emptying_MSGS_vars</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Basic_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>Log_Logger_use</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     Global_Tool_Logger_Status : Use this var to set status of logger usage
+     Global_Tool_Logger_bin : Use this var to set where is logger bin
+     LLU_level : Use this var to set leval of log
+    
+     Base usage : Log_Logger_use
+    
+     Description : This function is used to creat entry in common system log files
+     if logger is not present, default log file is use instead of sys log file
+    
+     Send Back : Logs
+</DocText>
+</Function>
+<Function>
+<FunctionName>Execution_Output_redirector</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     BASE_VAR_OutPut_Redirector : this to set in wich file we redirect std ouptut flow
+     $1 : Use this var to set wOutPut_Redirector
+     Execution_Output_redirector "My_redirect_File"
+</DocText>
+</Function>
+<Function>
+<FunctionName>Log_Debug_change</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Debug_INIT</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Menu_Change_Conf_item</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+ </Library>

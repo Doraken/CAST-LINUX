@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>fifo.lib</LibraryName>
+<Function>
+<FunctionName>FIFO_CREATE</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FIFO_INIT</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/fifo.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     /bin /boot /CRAMPET /dev /ENV_010_T1 /etc /home /initrd.img /initrd.img.old /lib /lost+found /mnt /opt /proc /root /sbin /srv /tmp /usr /var /vmlinuz /vmlinuz.old
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh FIFO_CREATE
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @author Arnaud Crampet      
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @see fifo_lib::FIFO_DELETE()
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @see fifo_lib::FIFO_INIT()
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @param name objectname 'fifo'
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @param attribut first attribut
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @param ... optional attribut
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh List of attributs:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - filename=... the filename of fifo
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - eof="..." end of line (used to close the fifo)
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Usage:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - Create a FIFO
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Examples:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - FIFO_CREATE my_fifo filename=/tmp/my_fifo
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - FIFO_CREATE my_fifo filename=/tmp/my_fifo eof="END_OF_FILE"
+     **/
+</DocText>
+</Function>
+<Function>
+<FunctionName>FIFO_DELETE</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     /bin /boot /CRAMPET /dev /ENV_010_T1 /etc /home /initrd.img /initrd.img.old /lib /lost+found /mnt /opt /proc /root /sbin /srv /tmp /usr /var /vmlinuz /vmlinuz.old
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh FIFO_DELETE
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @author Arnaud Crampet      
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @see fifo_lib::FIFO_CREATE()
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @param name objectname 'fifo'
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Usage:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - Delete a FIFO
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Examples:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - FIFO_DELETE my_fifo
+     **/
+</DocText>
+</Function>
+<Function>
+<FunctionName>FIFO_INIT</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     /bin /boot /CRAMPET /dev /ENV_010_T1 /etc /home /initrd.img /initrd.img.old /lib /lost+found /mnt /opt /proc /root /sbin /srv /tmp /usr /var /vmlinuz /vmlinuz.old
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh FIFO_INIT
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @author Arnaud Crampet      
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @see fifo_lib::FIFO_CREATE()
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @param name objectname 'fifo'
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @param attribut first attribut
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @param ... optional attribut
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh List of attributs:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - filename=... the filename of fifo
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - eof="..." end of line (used to close the fifo)
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Usage:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - Initialise a FIFO (Doesn't create the fifo file)
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Examples:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - FIFO_INIT my_fifo filename=/tmp/my_fifo
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - FIFO_INIT my_fifo filename=/tmp/my_fifo eof="END_OF_FILE"
+     **/
+</DocText>
+</Function>
+<Function>
+<FunctionName>FIFO_READ</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     /bin /boot /CRAMPET /dev /ENV_010_T1 /etc /home /initrd.img /initrd.img.old /lib /lost+found /mnt /opt /proc /root /sbin /srv /tmp /usr /var /vmlinuz /vmlinuz.old
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh FIFO_READ
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @author Arnaud Crampet      
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @see fifo_lib::FIFO_WRITE()
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @param name objectname 'fifo'
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Usage:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - Read a set of lines in the FIFO
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Examples:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - FIFO_READ my_fifo | wc -l
+     **/
+</DocText>
+</Function>
+<Function>
+<FunctionName>FIFO_WRITE</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     /bin /boot /CRAMPET /dev /ENV_010_T1 /etc /home /initrd.img /initrd.img.old /lib /lost+found /mnt /opt /proc /root /sbin /srv /tmp /usr /var /vmlinuz /vmlinuz.old
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh FIFO_WRITE
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @author Arnaud Crampet      
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @see fifo_lib::FIFO_READ()
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh @param name objectname 'fifo'
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Usage:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - Write a set of lines in the FIFO
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh Examples:
+     autodoc.ksh chroot_installer.ksh env_installer.ksh firewall.ksh fs_creator.ksh globalbuild.ksh ksh main_menu.ksh main_template.ksh sanity_check.ksh - cat - | FIFO_READ my_fifo
+     **/
+</DocText>
+</Function>
+ </Library>

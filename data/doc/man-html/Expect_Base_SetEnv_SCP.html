@@ -1,0 +1,27 @@
+<HTML>
+    <BODY>
+       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>
+         <PRE><H2>SYNOPSIS</H2></PRE>
+ <B>                                 
+     Var to set :
+     servername : use this var to set on wich server to connect
+     user : use this var to set wich user to use on connect
+     password : use this var to set wich password to use on connect
+     file_source : use this var to set wich user to use on connect
+     file_destination : use this var to set wich password to use on connect
+     ${1} : use this var to set [ servername ]
+     ${2} : use this var to set [ user ]
+     ${3} : use this var to set [ password ]
+     ${4} : use this var to set [ file_source ]
+     ${5} : use this var to set [ file_destination ]
+     ${6} : use this var to set [ Send or Get ]
+    
+     Base usage : Expect_Base_SetEnv_SCP "servername" "user" "password" "file source" "file destination" "Send or Get"
+    
+     Description : This function is used to set/reset all Connexion parameter
+     for filterexpect
+    
+     Send Back : Environment vars
+</B>
+     </BODY> 
+</HTML>

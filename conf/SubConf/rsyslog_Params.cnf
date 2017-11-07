@@ -1,0 +1,40 @@
+###############################################################################
+# Generics.cnf                                         Version : 1.1.2.5      #
+#                                                                             #
+# Creation Date : 03/09/2006                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This file containe all genrics vars used in CAST                  #
+#                                                                             #
+###############################################################################
+####
+# INFO
+BaseLogRootDir="/var/log"
+
+# The imjournal module bellow is now used as a message source instead of imuxsock.
+RSYSLOG_ModLoad="imuxsock"
+RSYSLOG_ModLoad="imjournal"
+RSYSLOG_ModLoad="imklog"
+RSYSLOG_ModLoad="immark"
+RSYSLOG_ModLoad="imudp"
+RSYSLOG_UDPServerRun="514"
+RSYSLOG_ModLoad="imtcp"
+RSYSLOG_InputTCPServerRun="514"
+RSYSLOG_WorkDirectory="/var/lib/rsyslog"
+RSYSLOG_ActionFileDefaultTemplate="RSYSLOG_TraditionalFileFormat"
+RSYSLOG_IncludeConfig="/etc/rsyslog.d/*.conf"
+RSYSLOG_OmitLocalLogging="on"
+RSYSLOG_IMJournalStateFile="imjournal.state"
+RSYSLOG_Messages="*.info;mail.none;authpriv.none;cron.none                /var/log/messages"
+RSYSLOG_Secure="authpriv.*                                              /var/log/secure"
+RSYSLOG_MAil="mail.*                                                  -/var/log/maillog"
+RSYSLOG_Cron="cron.*                                                  /var/log/cron"
+RSYSLOG_Emerge="*.emerg                                                 :omusrmsg:*"
+RSYSLOG_Spooler="uucp,news.crit                                          /var/log/spooler"
+RSYSLOG_Boot="local7.*                                                /var/log/boot.log"
+
+
+CNF_SRC="1"
+

@@ -1,0 +1,128 @@
+###############################################################################
+# Document_menu.lib                                  Version : 1.0            #
+#                                                                             #
+# Creation Date : 27/04/2008                                                  #
+# Team          : **************************************                      #
+# Support mail  : arnaud@crampet.net                                           #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This library provide base runtimes for generate auto document     #
+#           interface menu                                                    #
+###############################################################################
+####
+# INFO
+
+function document_Base_menu                                  # DOC_Base_MENU_L0
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : document_Base_menu
+#|#
+#|# Description : This function generate menu to manage autodoc functions
+#|#
+#|# Send Back   : Menu
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+Menu_Get_items "# DOC_Base_MENU_L1" "2" "${Base_Dir_Scripts_Lib}/doc/menu/document_menu.lib" "Autodoc menu :"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+function Document_generate_XML                               # DOC_Base_MENU_L1
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_generate_XML
+#|#
+#|# Description : This function generate autodoc in XML format by calling
+#|#               document_Generate
+#|# Send Back   : function call with parameter
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+document_Generate "xml"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Document_generate_Text                              # DOC_Base_MENU_L1
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_generate_Text
+#|#
+#|# Description : This function generate autodoc in txt format by calling
+#|#               document_Generate
+#|# Send Back   : function call with parameter
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+document_Generate "txt"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Document_generate_HTML                              # DOC_Base_MENU_L1
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_generate_HTML
+#|#
+#|# Description : This function generate autodoc in HTML format by calling
+#|#               document_Generate
+#|# Send Back   : function call with parameter
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+document_Generate "MANHTML"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Document_Generate_Catalogues                        # DOC_Base_MENU_L1
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_Generate_Catalogues
+#|#
+#|# Description : This function generate autodoc cata by callilogues by calling
+#|#               document_get_all_function_names
+#|# Send Back   : function call with parameter
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+document_get_all_function_names
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+Sourced_OK="1"
+
+

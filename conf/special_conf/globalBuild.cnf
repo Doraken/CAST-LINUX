@@ -1,0 +1,60 @@
+###############################################################################
+# globalBuild.cnf                                      Version : 1.1.2.2      #
+#                                                                             #
+# Creation Date : 18/05/2007                                                  #
+# Team          : Only me after all                                                                     #
+# Support mail  : arnaud@crampet.net                                             #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This conf file provide all base parameters for �ckaging           #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+
+function Usage 
+{
+	MSG_DISPLAY "Info"  "${Product_Name}"
+	MSG_DISPLAY "Info"  "usage: ${Product_Name} [-V ARG] [-P ARG] [-R ARG] [-N ARG] [-h] -f properties_file"
+	MSG_DISPLAY "Info"  "       -V: Version number of product to build.     Must not be empty."
+	MSG_DISPLAY "Info"  "       -P: Product name.                           Must not be empty."
+	MSG_DISPLAY "Info"  "       -B: CVS branch TAG.                         Can be empty."
+	MSG_DISPLAY "Info"  "       -N: Package final name.                     Must not be empty."
+	MSG_DISPLAY "Info"  "       -C: CVS Package name.                       Must not be empty."
+	MSG_DISPLAY "Info"  "       -F: Final package Version.                  Must not be empty."
+	MSG_DISPLAY "Info"  "       -h: help.                                   Print this usage."
+exit 1
+}
+
+# Other Base Values
+#Build_Base_DIR="/exec/products/Dev_Env/Test_build"
+Build_Base_DIR="/exec/applis/build"
+PackageCompressionMode="zcvf"
+PackageExtension="tgz"
+
+function Spec_CVS
+{
+# CVS values
+Base_Cvs_Host="DUMMY"
+Base_Cvs_Port="DUMMY"
+Base_Cvs_Username="DUMMY"
+Base_Cvs_Repository="${Build_Base_DIR}/CVS_BUILD"
+Base_Cvs_Project="packages/${CheckoutCVSName}"
+Base_Cvs_Branch="HEAD"
+Base_Cvs_TempDir="${Build_Base_DIR}/CVS_BUILD_TEMP"
+}
+
+# Connection values to mspap901_a
+servername="mspap901_a"
+user="deployorange"
+password="tempo"
+DirectoryCopy="/tmp"
+
+# Build Script infos
+Build_Script_Name="build_dmc-as.sh"
+Build_Script_Log_Name="test.log"
+
+
+
+Sourced_OK="1"

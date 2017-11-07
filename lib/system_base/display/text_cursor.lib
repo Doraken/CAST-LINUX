@@ -1,0 +1,137 @@
+###############################################################################
+# text_cursor.lib                                              Version : 1.1  #
+# Creation Date : 29/12/2006                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author : Arnaud Crampet                                                     #
+#                                                                             #
+# Subject : This library provides text and cursor control capabilities        #
+#                                                                             #
+###############################################################################
+####
+# INFO 
+
+function TEXT_CURSOR_Move_Cursor
+{
+#|# Moves the text cursor
+#|# $1 is the direction for cursor move
+#|#    it can be one of (up, down, left, right)
+#|# $2 is the number of rows or columns to move
+#|#    it is optional
+#|#    its default value is 1
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+CURSOR_ACTION=""
+MOVE_NUMBER=1
+case ${1} in
+    up) CURSOR_ACTION="A" ;;
+    down) CURSOR_ACTION="B" ;;
+    right) CURSOR_ACTION="C" ;;
+    left) CURSOR_ACTION="D" ;;
+    *) ;;
+esac
+if [ ${#} -gt 1 ] 
+   then
+    MOVE_NUMBER=${2}
+fi
+MSG_DISPLAY "Debug5" "CURSOR_ACTION=${CURSOR_ACTION}"
+MSG_DISPLAY "Debug5" "MOVE_NUMBER=${MOVE_NUMBER}"
+
+printf "\033[%d%s" "${MOVE_NUMBER}" "${CURSOR_ACTION}"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+function TEXT_CURSOR_save_Cursor_Pos
+{
+#|# Saves the current cursor position
+printf "\033[s"
+}
+
+function TEXT_CURSOR_restore_Cursor_Pos
+{
+#|# Restores the last saved cursor position
+printf "\033[u"
+}
+
+function TEXT_CURSOR_save_Cursor_PosAndAttributes
+{
+#|# Saves the current cursor position and attributes
+printf "\033[7"
+}
+
+function TEXT_CURSOR_restore_Cursor_PosAndAttributes
+{
+#|# Restores the last saved cursor position and attributes
+printf "\033[8"
+}
+
+function TEXT_CURSOR_set_Cursor_Pos
+{
+#|# Moves the text cursor to given row and column
+#|# $1 is the row
+#|# $2 is the column
+#|# If zero or one argument is given, cursor goes home (1,1)
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+if [ ${#} -gt 1 ] ; then
+    CURSOR_ROW="${1}"
+    CURSOR_COLUMN="${2}"
+    printf "\033[${CURSOR_ROW};${CURSOR_COLUMN}H"
+else
+    printf "\033[H"
+fi
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+function TEXT_CURSOR_clear_Line_End
+{
+#|# Erases remaining of line
+printf "\033[K"
+}
+
+function TEXT_CURSOR_clear_Line_Start
+{
+#|# Erases beginning of line
+printf "\033[1K"
+}
+
+function TEXT_CURSOR_clear_Line
+{
+#|# Erases line
+printf "\033[2K"
+}
+
+function TEXT_CURSOR_clear_Screen_End
+{
+#|# Erases remaining of screen
+printf "\033[J"
+}
+
+function TEXT_CURSOR_clear_Screen_Start
+{
+#|# Erases beginning of screen
+printf "\033[1J"
+}
+
+function TEXT_CURSOR_clear_Screen
+{
+#|# Erases screen
+printf "\033[2J"
+}
+
+
+
+Sourced_OK="1"

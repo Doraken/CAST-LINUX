@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>font.lib</LibraryName>
+<Function>
+<FunctionName>FONT_get_Color</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Echoes the basic color attribute number given by color name
+     $1 is the color name
+     it can be one of (black, red, green, yellow, blue, magenta, cyan, white)
+</DocText>
+</Function>
+<Function>
+<FunctionName>FONT_set_Font</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Changes the font properties by attributes given
+     $1 is the attribute to set to the font
+     it can be one of (default, bright, dim, underscore, blink, reverse, hidden, foreground, background)
+     default : to reset all font attributes to default values
+     bright : to enlight font
+     dim : to darken font
+     underscore : no comment
+     blink : depends on terminal
+     reverse : no comment
+     hidden : depends on terminal
+     foreground : to change foreground color
+     needs the second argument
+     background : to change background color
+     needs the second argument
+     $2 is the attribute name for color setting
+     it is mandatory and used only if foreground or background is chosen in first argument
+     see function FONT_get_Color for details
+</DocText>
+</Function>
+<Function>
+<FunctionName>FONT_display_Basic_Colors</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>FONT_set_Basic_Font</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>FONT_set_Error_Font</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>FONT_set_Warn_Font</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>FONT_set_Message_Font</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>FONT_set_Ok_Font</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>FONT_set_Info_Font</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>FONT_set_Menu_Font</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+ </Library>

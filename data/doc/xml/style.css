@@ -1,0 +1,88 @@
+/****************************************
+	RESET BASE STYLES
+****************************************/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, object, embed { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-family: inherit; outline:none }
+:focus { outline: 0 }
+ol, ul { list-style: none}
+em, i { font-style:italic }
+table td{
+	text-align:left;
+}
+table { border-collapse: separate; border-spacing: 0 } /* tables still need cellspacing="0" (for ie6) */
+caption, th, td { text-align: left; font-weight: normal; vertical-align: top }/*A commenter a cause des wysiwyg*/
+blockquote:before, blockquote:after, q:before, q:after { content: "" }
+blockquote, q { quotes: "" "" }
+
+/****************************************
+	BASE CLASS
+****************************************/
+.floatleft{ float:left }
+.floatright{ float:right }
+.clearfix{ clear:both; font-size:1px; line-height:1px }
+*html .clearfix{ clear:both; height:0; font-size: 1px; line-height: 0px; padding:0; margin:0 }
+.center{ text-align:center }
+.left{ text-align:left }
+.right{ text-align:right }
+.one_third{ width:33% }
+.two_third{ width:67% }
+.half{ width:50% }
+.block{ display:block }
+.padright{ margin:0 10px 0 0; }
+.videocredits{ font-size:9px; }
+.bullegris {background:url(../images/bullegris.png) no-repeat; padding:15px 0 15px 15px;}
+.displaynone{ display:none }
+
+body{
+	font-family:Trebuchet MS;
+	background:#ccc;
+	padding:50px;
+	font-size:14px
+}
+
+h1, h2, h3, p{
+	margin-bottom:0.5em
+}
+
+h1{
+	background:#bbb;
+	padding:5px;
+	color:#fff;
+	text-shadow:1px 1px #222;
+	text-align:center;
+}
+
+h3{
+	font-size:1.3em;
+	border-bottom:1px dotted #ccc
+}
+
+ul{
+}
+
+li{
+	padding:10px;
+	background:#ddd
+}
+
+li.even{
+	background:#eee
+}
+
+.resume{
+	width:700px;
+	background:#fff;
+	padding:20px;
+	border:1px solid #666
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}

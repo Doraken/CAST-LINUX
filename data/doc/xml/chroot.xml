@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>chroot.lib</LibraryName>
+<Function>
+<FunctionName>CHROOT_Make_Base_Nodes</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Directory_CRT</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_PATH_TO_CHROOT : use this var to set where the chroot is base ( define the "/ " of the chroot )
+     Base usage :
+     Base_PATH_TO_CHROOT="PATH_to_my_chroot_/_"
+     CHROOT_Make_Base_Nodes
+</DocText>
+</Function>
+<Function>
+<FunctionName>CHROOT_Base_Generating</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Directory_CRT</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Get_Type</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_PATH_TO_CHROOT : use this var to set where the chroot is base ( define the "/ " of the chroot )
+     Base usage :
+     Base_PATH_TO_CHROOT="PATH_to_my_chroot_/_"
+     CHROOT_Base_Generating
+</DocText>
+</Function>
+<Function>
+<FunctionName>CHROOT_Get_File_Deps</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Empty function fo create
+</DocText>
+</Function>
+ </Library>

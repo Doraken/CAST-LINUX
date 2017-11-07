@@ -1,0 +1,83 @@
+###############################################################################
+# chroot_generator.cnf                                 Version : 1.1.2.2      #
+#                                                                             #
+# Creation Date : 18/05/2007                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This file containe all genrics vars used in chroot_installer      #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+###############################################################################
+
+Base_PATH_TO_CHROOT="/srv/product/Chroots"
+CHROOT_BASE_DIR="${Base_PATH_TO_CHROOT}/${Base_ENV_Name}"
+
+function CHROOT_base
+{
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+#######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+dev_root="500"
+dev_dev="1"
+dev_tmp="100"
+dev_opt="100"
+dev_data="1000"
+dev_products="300"
+
+################ Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#####################################################
+}
+
+function CHROOT_Medium
+{
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+#######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+dev_root="500"
+dev_dev="1"
+dev_tmp="100"
+dev_opt="100"
+dev_data="2000"
+dev_products="300"
+
+################ Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#####################################################
+}
+
+function CHROOT_big
+{
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+#######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+dev_root="500"
+dev_dev="1"
+dev_tmp="100"
+dev_opt="100"
+dev_data="3000"
+dev_products="300"
+
+################ Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#####################################################
+}
+
+
+
+CNF_SRC="1"
+Sourced_OK="1"

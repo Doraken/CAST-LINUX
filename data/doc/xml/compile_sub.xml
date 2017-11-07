@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>compile_sub.lib</LibraryName>
+<Function>
+<FunctionName>COMPILE_Make_Package_SUB</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>CTRL_Result_func</FunctionName>
+<FunctionLib>/lib/ksh/system_base/control.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_Param_Make_Options : Use this var to set option given to make
+    
+     Base usage : COMPILE_Make_Package_SUB
+    
+     Description : This is a Sub function of COMPILE_Generics_Base_func
+     don't call it directly
+    
+     Send Back : compiled data
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>COMPILE_Make_install_SUB</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>CTRL_Result_func</FunctionName>
+<FunctionLib>/lib/ksh/system_base/control.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_Param_Make_Install_Options : Use this var to set optin given to make install
+    
+     Base usage : COMPILE_Make_install_SUB
+    
+     Description : This is a Sub function of COMPILE_Generics_Base_func
+     Do not use out of this main function
+    
+     Send Back : installed application
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>COMPILE_Make_Clean_SUB</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>CTRL_Result_func</FunctionName>
+<FunctionLib>/lib/ksh/system_base/control.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_Param_Make_clean : Use this var to set options given to make clean
+    
+     Base usage : COMPILE_Make_Clean_SUB
+    
+     Description : This is a Sub function of COMPILE_Generics_Base_func
+     Do not use out of this main function
+    
+     Send Back : cleaned sources
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>COMPILE_Post_Compile_Action_SUB</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_Param_Post_Compile_Action : Use this var to set function call after compile
+    
+     Base usage : COMPILE_Post_Compile_Action_SUB
+    
+     Description : This is a Sub function of COMPILE_Generics_Base_func
+     Do not use out of this main function
+    
+     Send Back : post compilation actions
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Sourcing</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : packages_version_config
+    
+     Description : This function is used to Source package config File
+    
+     Send Back : Sourced parameter file
+    
+</DocText>
+</Function>
+ </Library>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>user_sub.lib</LibraryName>
+<Function>
+<FunctionName>USER_Continue_ON_ERR</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Menu_Build</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     MSG_TO_Display : use this var to set the displayed message when an user action is needed
+     MSG_TO_Display : use this var to set the displayed message when an user action is needed
+</DocText>
+</Function>
+<Function>
+<FunctionName>Continue</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Menu_Build</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     MSG_TO_Display : use this var to set the displayed message when an user action is needed
+</DocText>
+</Function>
+ </Library>

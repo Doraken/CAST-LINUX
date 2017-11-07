@@ -1,0 +1,59 @@
+###############################################################################
+# Generics.cnf                                         Version : 1.1.2.5      #
+#                                                                             #
+# Creation Date : 03/09/2006                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This file containe all genrics vars used in CAST                  #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+AccountApache="apache:10001:App"                                      # Account_To_Create
+AccountMysql="mysql:10002:App"                                        # Account_To_Create
+AccountCoreAdm="coreadm:10001:Adm"                                    # Account_To_Create
+
+AccountAdm="adm0001:20001:Arnaud Crampet"                             # Account_To_Create
+AccountAdm="adm0002:20001:Kelly         "                             # Account_To_Create
+AccountAdm="adm0003:20001:Xavier        "                             # Account_To_Create
+
+
+DeleteAccount="lp"                                                    # Account_To_Delete
+DeleteAccount="games"                                                 # Account_To_Delete
+DeleteAccount="ftp"                                                   # Account_To_Delete
+DeleteAccount="adm"                                                   # Account_To_Delete
+DeleteAccount="shutdown"                                              # Account_To_Delete
+DeleteAccount="operator"                                              # Account_To_Delete
+
+DeleteGroup="lp"                                                      # Group_To_Delete
+DeleteGroup="cdrom"                                                   # Group_To_Delete
+DeleteGroup="floppy"                                                  # Group_To_Delete
+DeleteGroup="games"                                                   # Group_To_Delete
+DeleteGroup="dialout"                                                 # Group_To_Delete
+DeleteGroup="ftp"                                                     # Group_To_Delete
+DeleteGroup="audio"                                                   # Group_To_Delete
+ 
+CreateGroup="AdmApp:20001"                                            # Group_To_Delete
+CreateGroup="AdmSgbd:20002"                                           # Group_To_Delete
+CreateGroup="AdmWeb:20003"                                            # Group_To_Delete
+CreateGroup="AdmSsh:20004"                                            # Group_To_Delete
+CreateGroup="AdmGW:20005"                                             # Group_To_Delete
+CreateGroup="AdmBase:20005"   
+
+Right_Home="750"
+Right_KeyDir="700"
+Right_KeyFile="600"
+
+GroupADDLst="    "
+KillGrp="      "
+
+CNF_SRC="1"
+
+
+
+
+
+cut -f 1 -d : /etc/passwd |        while read i; do find / -user "$i" | grep -q . || echo "$i"; done

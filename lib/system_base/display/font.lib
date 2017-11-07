@@ -1,0 +1,159 @@
+###############################################################################
+# font.lib                                                     Version : 1.1  #
+# Creation Date : 28/12/2006                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author : Arnaud crampet                                                     #
+#                                                                             #
+# Subject : This library provides base font capabilities                      #
+#                                                                             #
+###############################################################################
+####
+# INFO 
+
+function FONT_get_Color
+{
+#|# Echoes the basic color attribute number given by color name
+#|# $1 is the color name
+#|#    it can be one of (black, red, green, yellow, blue, magenta, cyan, white)
+COLOR_ATTR=""
+case $1 in
+    [Bb]lack) COLOR_ATTR=0 ;;
+    [Rr]ed) COLOR_ATTR=1 ;;
+    [Gg]reen) COLOR_ATTR=2 ;;
+    [Yy]ellow) COLOR_ATTR=3 ;;
+    [Bb]lue) COLOR_ATTR=4 ;;
+    [Mm]agenta) COLOR_ATTR=5 ;;
+    [Cc]yan) COLOR_ATTR=6 ;;
+    [Ww]hite) COLOR_ATTR=7 ;;
+    *) ;;
+esac
+
+
+echo "${COLOR_ATTR}"
+}
+
+function FONT_set_Font
+{
+#|# Changes the font properties by attributes given
+#|# $1 is the attribute to set to the font
+#|#    it can be one of (default, bright, dim, underscore, blink, reverse, hidden, foreground, background)
+#|#       default : to reset all font attributes to default values
+#|#       bright : to enlight font
+#|#       dim : to darken font
+#|#       underscore : no comment
+#|#       blink : depends on terminal
+#|#       reverse : no comment
+#|#       hidden : depends on terminal
+#|#       foreground : to change foreground color
+#|#                    needs the second argument
+#|#       background : to change background color
+#|#                    needs the second argument
+#|# $2 is the attribute name for color setting
+#|#    it is mandatory and used only if foreground or background is chosen in first argument
+#|#    see function FONT_get_Color for details
+############ STACK_TRACE_BUILDER #####################
+######################################################
+
+FONT_ATTR=""
+Type_Font_Def="${1}"
+case ${Type_Font_Def} in
+           default) FONT_ATTR="0"
+                    ;;
+            bright) FONT_ATTR="1" 
+                    ;;
+               dim) FONT_ATTR="2" 
+                    ;;
+        underscore) FONT_ATTR="4" 
+                    ;;
+             blink) FONT_ATTR="5" 
+                    ;;
+           reverse) FONT_ATTR="7" 
+                    ;;
+            hidden) FONT_ATTR="8" 
+                    ;;
+        foreground) FONT_ATTR=$(( $( FONT_get_Color ${2} ) +30 ))
+                   ;;
+        background) FONT_ATTR=$(( $( FONT_get_Color ${2} ) +40 )) 
+                    ;;
+                 *) 
+                    ;;
+esac
+
+printf "\033[%sm" "${FONT_ATTR}"
+}
+
+function FONT_display_Basic_Colors
+{
+for BGC in black red green yellow blue magenta cyan white
+do
+    FONT_set_Font background ${BGC}
+    for FGC in black red green yellow blue magenta cyan white
+    do
+        FONT_set_Font foreground ${FGC}
+        printf " %s " ${FGC}
+    done
+    printf "\n"
+done
+FONT_set_Font default
+}
+
+function FONT_set_Basic_Font
+{
+FONT_set_Font default
+FONT_set_Font foreground White
+FONT_set_Font background Black
+}
+
+function FONT_set_Error_Font
+{
+FONT_set_Font default
+FONT_set_Font bright
+FONT_set_Font foreground White
+FONT_set_Font background Red
+}
+
+function FONT_set_Warn_Font
+{
+FONT_set_Font default
+FONT_set_Font foreground Black
+FONT_set_Font background Yellow
+FONT_set_Font blink
+}
+
+function FONT_set_Message_Font
+{
+FONT_set_Font default
+FONT_set_Font foreground Green
+FONT_set_Font background Black
+FONT_set_Font blink
+}
+
+
+function FONT_set_Ok_Font
+{
+FONT_set_Font default
+FONT_set_Font bright
+FONT_set_Font foreground White
+FONT_set_Font background Green
+}
+
+function FONT_set_Info_Font
+{
+FONT_set_Font default
+FONT_set_Font bright
+FONT_set_Font foreground Green
+FONT_set_Font background Black
+}
+
+function FONT_set_Menu_Font
+{
+FONT_set_Font default
+FONT_set_Font blink
+FONT_set_Font foreground Black
+FONT_set_Font background Cyan
+}
+
+
+
+Sourced_OK="1"

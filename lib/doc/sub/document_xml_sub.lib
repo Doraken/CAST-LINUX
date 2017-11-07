@@ -1,0 +1,112 @@
+###############################################################################
+# document_xml_sub.lib                                  Version : 1.0         #
+#                                                                             #
+# Creation Date : 26/04/2008                                                  #
+# Team          : **************************************                      #
+# Support mail  : arnaud@crampet.net                                           #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This sub library provide base function to create xml Document     #
+#           from C.A.S.T framwork                                             #
+###############################################################################
+####
+# INFO
+
+
+function Document_Print_global_Print_xml
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_Print_global_Print_xml
+#|#
+#|# Description : This fuction generate documentation xml output
+#|#
+#|# Send Back   : xml flow
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+for Libraries_geted in $( cat ${Base_Catalog_function} | awk -F ";" '{ print $2 }' | sort -u )
+      do
+        Document_doc_xml="${Base_Dir_Scripts_Data_doc_xml}/$( print -- ${Libraries_geted} | awk -F "/" '{ print $NF}' | awk -F "." '{ print $1".xml"}' )"
+        New_Lib_Name="$(echo ${Libraries_geted} | awk -F "/" '{ print $NF}')" > ${Document_doc_xml}
+        print -- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"                >> ${Document_doc_xml}
+        print -- "<?xml-stylesheet type=\"text/xsl\" href=\"autodoc.xsl\"?>" >> ${Document_doc_xml}
+        print -- " <Library>"                                                >> ${Document_doc_xml}
+        print -- " <LibraryName>${New_Lib_Name}</LibraryName>"               >> ${Document_doc_xml}
+        Document_Print_function_xml
+        print -- " </Library>"                                               >> ${Document_doc_xml}
+done
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Document_Print_function_xml
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_Print_function_xml
+#|#
+#|# Description : This function is used whithout parameter and can only be called by
+#|# Document_Print_global_Print_xml
+#|#
+#|# Send Back   : xml flow
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Debug6" " Value of Base_Catalog_function : [ ${Base_Catalog_function} ]"
+MSG_DISPLAY "Debug6" " Value of New_Lib_Name          : [ ${New_Lib_Name} ]"
+
+for Function_geted in $( cat ${Base_Catalog_function} | grep ${New_Lib_Name} | awk -F ";" '{ print $4 }' )
+    do
+      print -- "<Function>"                                     >> ${Document_doc_xml}
+      print -- "<FunctionName>${Function_geted}</FunctionName>" >> ${Document_doc_xml}
+      Document_Print_Dependences_xml
+      print -- "<DocText>"                                      >> ${Document_doc_xml}
+      cat ${Base_Catalog_function_docs} | grep "\;${Function_geted}\;" |  awk -F ";" '{ print "    " $6}' >> ${Document_doc_xml}
+      print -- "</DocText>"                                     >> ${Document_doc_xml}
+      print -- "</Function>"                                    >> ${Document_doc_xml}
+done
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Document_Print_Dependences_xml
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_Print_Dependences_xml
+#|#
+#|# Description : This function is used whithout parameter and can only be called by
+#|# Document_Print_function_xml
+#|#
+#|# Send Back   : xml flow
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+Internal_Geted_line="${1}"
+print -- "<DependOn>" >> ${Document_doc_xml}
+for Dependences_Geted in  $( cat ${Base_Catalog_function_depend} | grep "\;${Function_geted}\;" |  awk -F ";" '{ print $8 ";"  $6  }' | sort -u )
+    do
+      print -- "<FunctionDepend>"                                                                    >> ${Document_doc_xml}
+      print -- "${Dependences_Geted}" | awk -F ";" '{print "<FunctionName>" $1 "</FunctionName>" }'  >> ${Document_doc_xml}
+      print -- "${Dependences_Geted}" | awk -F ";" '{print "<FunctionLib>" $2 "</FunctionLib>" }'    >> ${Document_doc_xml}
+      print -- "</FunctionDepend>"                                                                   >> ${Document_doc_xml}
+done
+print -- "</DependOn>" >> ${Document_doc_xml}
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+Sourced_OK="1"

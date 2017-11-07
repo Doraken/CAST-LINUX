@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>expect_sub.lib</LibraryName>
+<Function>
+<FunctionName>Expect_reset_vers</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Expect_reset_vers
+    
+     Description : This function is used to reset all expect params
+    
+     Send Back : empty vars for "servername user password"
+</DocText>
+</Function>
+<Function>
+<FunctionName>Expect_CTRL_VAR_SCP</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Expect_CTRL_VAR_SCP
+    
+     Description : This function is used to check if file source and destination
+     are properly sets
+    
+     Send Back : text output
+</DocText>
+</Function>
+<Function>
+<FunctionName>Expect_Base_SetEnv</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Expect_Base_SetEnv</FunctionName>
+<FunctionLib>/lib/ksh/system_base/ssh/expect/sub/expect_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Expect_CTRL_VAR_SCP</FunctionName>
+<FunctionLib>/lib/ksh/system_base/ssh/expect/sub/expect_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     servername : use this var to set on wich server to connect ( Mandatory )
+     user : use this var to set wich user to use on connect ( Mandatory )
+     password : use this var to set wich password to use on connect ( Mandatory )
+     ROOT_Password : Use this var to set the root password for server ( Mandatory )
+     ${1} : use this var to set [ servername ] ( Mandatory )
+     ${2} : use this var to set [ user ] ( Mandatory )
+     ${3} : use this var to set [ password ] ( Mandatory )
+     ${4} : use this var to set [ ROOT_Password ] ( Optional )
+    
+     Base usage : Expect_Base_SetEnv "servername" "user" "password"
+    
+     Description : This function is used to set/reset all Connexion parameter for
+     filterexpect
+    
+     Send Back : Environment vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Expect_Base_SetEnv_SCP</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Expect_Base_SetEnv</FunctionName>
+<FunctionLib>/lib/ksh/system_base/ssh/expect/sub/expect_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Expect_CTRL_VAR_SCP</FunctionName>
+<FunctionLib>/lib/ksh/system_base/ssh/expect/sub/expect_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     servername : use this var to set on wich server to connect
+     user : use this var to set wich user to use on connect
+     password : use this var to set wich password to use on connect
+     file_source : use this var to set wich user to use on connect
+     file_destination : use this var to set wich password to use on connect
+     ${1} : use this var to set [ servername ]
+     ${2} : use this var to set [ user ]
+     ${3} : use this var to set [ password ]
+     ${4} : use this var to set [ file_source ]
+     ${5} : use this var to set [ file_destination ]
+     ${6} : use this var to set [ Send or Get ]
+    
+     Base usage : Expect_Base_SetEnv_SCP "servername" "user" "password" "file source" "file destination" "Send or Get"
+    
+     Description : This function is used to set/reset all Connexion parameter
+     for filterexpect
+    
+     Send Back : Environment vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Expect_Default_mode</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Expect_Default_mode
+    
+     Description : This function is used to set expect in default mode
+    
+     Send Back : Environment vars Used_Filter_expect
+</DocText>
+</Function>
+<Function>
+<FunctionName>Expect_Root_mode</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Expect_Root_mode
+    
+     Description : This function is used to set expect in root mode
+    
+     Send Back : Environment vars Used_Filter_expect
+</DocText>
+</Function>
+ </Library>

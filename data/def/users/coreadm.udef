@@ -1,0 +1,13 @@
+################################################################################
+# Info   : User parameter Coreadm                      version : 1.0           #
+# author : Arnaud Crampet                              Date    : 23/02/2016    #
+#                                                                              #
+################################################################################
+#|# 
+
+UserName="coreadm"
+UserID="10001"
+UserGroup=""
+UserHome=""
+UserComment=""
+UserShell=""

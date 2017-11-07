@@ -1,0 +1,29 @@
+<HTML>
+    <BODY>
+       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>
+         <PRE><H2>SYNOPSIS</H2></PRE>
+ <B>                                 
+     Var to set :
+     EVC_Var_To_Test : Use this var to set the path to test ( Mandatory )
+     EVC_Var_Name_To_Test : Use this var to set the name of the var to test for display messages ( Mandatory )
+     EVC_Type_Of_ERR : Use this var to set the severity of an empty vars ( Mandatory )
+     EVC_Level_Of_ERR : Use this var to set the severity level of an empty vars ( Mandatory )
+     EVC_MSG_add : Use this var to set complementary message ( OPTIONAL )
+     EVC_Action_ONFAIL : Use this var to set anb action to do after CTRL fail ( OPTIONAL )
+     EVC_Action_ONOK : Use this var to set anb action to do after CTRL is OK ( OPTIONAL )
+     ${1} : Used to set [ Base_Var_to_test ]
+     ${2} : Used to set [ Base_Var_Name_To_Test ]
+     ${3} : Used to set [ Type_Of_ERR ]
+     ${4} : Used to set [ Level_Of_ERR ]
+     ${5} : Used to set [ EVC_MSG_add ]
+     ${6} : Used to set [ Action_ONFAIL ]
+     ${7} : Used to set [ Action_ONOK ]
+    
+     Base usage : Empty_Var_Control "My_VAR" "My_Var_Name" "ERR_type" "Level_Of_ERR" [ "MSG_add" "Action_ONFAIL" "Action_ONOK" ]
+    
+     Description : This function is used to check if a var is empty
+    
+     Send Back : Send back result of check
+</B>
+     </BODY> 
+</HTML>

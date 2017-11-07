@@ -1,0 +1,25 @@
+<HTML>
+    <BODY>
+       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>
+         <PRE><H2>SYNOPSIS</H2></PRE>
+ <B>                                 
+     Var to set :
+     INTERNAL_File_To_TEST : Use this var to set the fileto test ( Mandatory )
+     INTERNAL_Ext_To_TEST : Use this var to set the ext to test ( Mandatory )
+     INTERNAL_CRITICITY_OF_FAIL : Use this var to set the level of the error ( Mandatory )
+     INTERNAL_ACTION_ON_FAIL : Use this var to set the action to do if the test FAIL ( Optional )
+     INTERNAL_ACTION_ON_SUCCESS : Use this var to set the action to do if the test FAIL ( Optional )
+     ${1} : use this var to set [ INTERNAL_File_To_TEST ]
+     ${2} : use this var to set [ INTERNAL_Ext_To_TEST ]
+     ${3} : use this var to set [ INTERNAL_CRITICITY_OF_FAIL ]
+     ${4} : use this var to set [ INTERNAL_ACTION_ON_FAIL ]
+     ${5} : use this var to set [ INTERNAL_ACTION_ON_SUCCESS ]
+    
+     Base usage : File_Ctrl_Ext "My_File" "My_ext" "INTERNAL_CRITICITY_OF_FAIL" "INTERNAL_ACTION_ON_FAIL" "INTERNAL_ACTION_ON_SUCCESS"
+    
+     Description : This function is used to chek if a file exist or not and do specifics actions in both case
+    
+     Send Back : None
+</B>
+     </BODY> 
+</HTML>

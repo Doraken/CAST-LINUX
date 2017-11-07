@@ -1,0 +1,163 @@
+###############################################################################
+# cvs_sub.lib                                           Version : 1.0         #
+#                                                                             #
+# Creation Date : 03/02/2007                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet       / Arnaud Crampet                       #
+#                                                                             #
+# Subject : This library provide sub acces function for cvs repository        #
+#                                                                             #
+###############################################################################
+####
+# Info
+# NOTE: Adjust the following as necessary in your specifics configuration file
+
+function CVS_Print_default_conf
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_Print_default_conf
+#|#
+#|# Description : This function is used to print default CVS configuration
+#|#
+#|# Send Back   : console output
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "Printing default values"
+MSG_DISPLAY "Info" "Base_Cvs_Host       environment Value [ ${Default_CVS_HOST} ] "
+MSG_DISPLAY "Info" "Base_Cvs_Port       environment Value [ ${Default_CVS_PORT} ] "
+MSG_DISPLAY "Info" "Base_Cvs_Username   environment Value [ ${Default_CVS_USERNAME} ] "
+MSG_DISPLAY "Info" "Base_Cvs_Repository environment Value [ ${Default_CVS_REPOSITORY} ] "
+MSG_DISPLAY "Info" "Base_Cvs_Project    environment Value [ ${Default_CVS_PROJECT} ] "
+MSG_DISPLAY "Info" "Base_Cvs_Branch     environment Value [ ${Default_CVS_BRANCH} ] "
+MSG_DISPLAY "Info" "Base_Cvs_TYPE       environment Value [ ${Default_CVS_TYPE} ] "
+User_Hit_a_key
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function CVS_print_active_conf
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_print_active_conf
+#|#
+#|# Description : This function is used to print active CVS configuration
+#|#
+#|# Send Back   : console output
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "CVS_HOST       value is [ ${CVS_HOST} ] "
+MSG_DISPLAY "Info" "CVS_PORT       value is [ ${CVS_PORT} ] "
+MSG_DISPLAY "Info" "CVS_USERNAME   value is [ ${CVS_USERNAME} ] "
+MSG_DISPLAY "Info" "CVS_REPOSITORY value is [ ${CVS_REPOSITORY} ] "
+MSG_DISPLAY "Info" "CVS_PROJECT    value is [ ${CVS_PROJECT} ] "
+MSG_DISPLAY "Info" "CVS_BRANCH     value is [ ${CVS_BRANCH} ] "
+MSG_DISPLAY "Info" "CVS_TYPE       value is [ ${CVS_TYPE} ] "
+User_Hit_a_key
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+################################# CVS MENU SUB FUNC ############################
+
+function CVS_Put_DATA
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_Put_DATA
+#|#
+#|# Description : This function is used to call commit data in CVS
+#|#
+#|# Send Back   : Interactive Menu Function call
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+CVS_ACT_Generic commit
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function CVS_export
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_export
+#|#
+#|# Description : This function is used to call CVS_ACT_Generic in export mode
+#|#
+#|# Send Back   : Function call
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+CVS_ACT_Generic export
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function CVS_checkout
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_checkout
+#|#
+#|# Description : This function is used to call CVS_ACT_Generic in checkout mode
+#|#
+#|# Send Back   : Function call
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+CVS_ACT_Generic checkout
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function CVS_update
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_update
+#|#
+#|# Description : This function is used to call CVS_ACT_Generic in update mode
+#|#
+#|# Send Back   : Function call
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+CVS_ACT_Generic update
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+Sourced_OK="1"

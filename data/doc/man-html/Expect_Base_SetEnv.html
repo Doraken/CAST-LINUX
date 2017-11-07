@@ -1,0 +1,24 @@
+<HTML>
+    <BODY>
+       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>
+         <PRE><H2>SYNOPSIS</H2></PRE>
+ <B>                                 
+     Var to set :
+     servername : use this var to set on wich server to connect ( Mandatory )
+     user : use this var to set wich user to use on connect ( Mandatory )
+     password : use this var to set wich password to use on connect ( Mandatory )
+     ROOT_Password : Use this var to set the root password for server ( Mandatory )
+     ${1} : use this var to set [ servername ] ( Mandatory )
+     ${2} : use this var to set [ user ] ( Mandatory )
+     ${3} : use this var to set [ password ] ( Mandatory )
+     ${4} : use this var to set [ ROOT_Password ] ( Optional )
+    
+     Base usage : Expect_Base_SetEnv "servername" "user" "password"
+    
+     Description : This function is used to set/reset all Connexion parameter for
+     filterexpect
+    
+     Send Back : Environment vars
+</B>
+     </BODY> 
+</HTML>

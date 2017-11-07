@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>user.lib</LibraryName>
+<Function>
+<FunctionName>USER_Generic_continue_or_exit</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     BASE_MSG_FOR_CHOICE : use this var to set the display message ( in warning mode only )
+     BASE_MSG_FOR_MENU : use this var to set the menu message
+     ${1} : use this var to set BASE_MSG_FOR_CHOICE
+     ${2} : use this var to set BASE_MSG_FOR_MENU
+</DocText>
+</Function>
+<Function>
+<FunctionName>USER_Continue_ON_ERR</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Menu_Build</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     MSG_TO_Display : use this var to set the displayed message when an user action is needed
+     MSG_TO_Display : use this var to set the displayed message when an user action is needed
+</DocText>
+</Function>
+<Function>
+<FunctionName>User_Hit_a_key</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FONT_set_Message_Font</FunctionName>
+<FunctionLib>/lib/ksh/system_base/display/font.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+ </Library>

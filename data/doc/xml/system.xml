@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>system.lib</LibraryName>
+<Function>
+<FunctionName>SYSTEM_TUNE</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Debug_INIT</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SYSTEM_TUNE_SUB_AIX</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SYSTEM_TUNE_SUB_LINUX</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     SYSTEM_NAME : use this var to set system name of the current operation system
+    
+     Base usage : SYSTEM_TUNE
+    
+     Returne : Function execution
+</DocText>
+</Function>
+<Function>
+<FunctionName>SYSTEM_TUNE_SUB_LINUX</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Debug_INIT</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SYSTEM_TUNE_SUB_AIX</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Debug_INIT</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SYSTEM_VAR_RANDOMIZER</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>system_counter</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     system_counter_TO_init : use this var to init counter to 0
+     ${1} : use this var to set system_counter_TO_init
+     External_Return_Counter : is used to returne counter value
+     Basic use : system_counter_TO_init "[ To init ]"
+</DocText>
+</Function>
+ </Library>

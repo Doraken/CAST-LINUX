@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>sql.lib</LibraryName>
+<Function>
+<FunctionName>SQL_Server_Connect</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FIFO_CREATE</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/fifo.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SQL_Sub_connect_Server</FunctionName>
+<FunctionLib>/lib/ksh/sgbd/sub/sql_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SYSTEM_VAR_RANDOMIZER</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_Server_Disconnect</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>FIFO_DELETE</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/fifo.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_DATABASE_connect</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     DATABASE_To_connect : Use this var to set on witch database yuou want to connect
+     ${1} : use this var to set DATABASE_To_connect
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_CONNECT_CHECK</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_GET_PKG_liste</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SQL_Server_Disconnect</FunctionName>
+<FunctionLib>/lib/ksh/sgbd/sql.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SYSTEM_VAR_RANDOMIZER</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Database_Type
+     Base_Database_Host
+     Base_Database_Port
+     Base_Database_proc_Username
+     Base_Database_TempDir
+     Base_Database_Default
+     packageTable="ARPCOM_PKG_CAT"
+     typePackageTable="ARPCOM_PKG_TYPE_CAT"
+     omImportTable="ARPCOM_OM_IMPORT"
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_USE_PKG_liste</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SQL_DATABASE_connect</FunctionName>
+<FunctionLib>/lib/ksh/sgbd/sql.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SQL_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE</FunctionName>
+<FunctionLib>/lib/ksh/sgbd/sql.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SQL_Server_Disconnect</FunctionName>
+<FunctionLib>/lib/ksh/sgbd/sql.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>TITI</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1</FunctionName>
+<FunctionLib>/lib/ksh/sgbd/sql.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2</FunctionName>
+<FunctionLib>/lib/ksh/sgbd/sql.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Database_Type
+     Base_Database_Host
+     Base_Database_Port
+     Base_Database_proc_Username
+     Base_Database_TempDir
+     Base_Database_Default
+     packageTable="ARPCOM_PKG_CAT"
+     typePackageTable="ARPCOM_PKG_TYPE_CAT"
+     omImportTable="ARPCOM_OM_IMPORT"
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_Run_ALL_PROCS_GEN_SUB</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_Run_ALL_PROCS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SQL_GET_ALL_INFO_FOR_PROCS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>Mysql_INIT</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Mysql_Install_PATH : Use this var to set where Mysql is installed
+     BASE_Mysql_USER : Use this var to set which user to run any commande on Mysql
+     BASE_Mysql_DATA_DIR : Use this var to set Where Mysql store all DDB DATAS
+</DocText>
+</Function>
+<Function>
+<FunctionName>Mysql_START</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Mysql_Install_PATH : Use this var to set where Mysql is installed
+     BASE_Mysql_USER : Use this var to set which user to run any commande on Mysql
+     BASE_Mysql_DATA_DIR : Use this var to set Where Mysql store all DDB DATAS
+</DocText>
+</Function>
+<Function>
+<FunctionName>Mysql_STOP</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Mysql_Install_PATH : Use this var to set where Mysql is installed
+     BASE_Mysql_USER : Use this var to set which user to run any commande on Mysql
+     BASE_Mysql_DATA_DIR : Use this var to set Where Mysql store all DDB DATAS
+</DocText>
+</Function>
+ </Library>

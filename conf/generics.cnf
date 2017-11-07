@@ -1,0 +1,230 @@
+###############################################################################
+# Generics.cnf                                         Version : 1.1.2.5      #
+#                                                                             #
+# Creation Date : 03/09/2006                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This file containe all genrics vars used in CAST                  #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+###############################################################################
+####
+# Generics variables
+# Here you find all generic information variable used for scripts
+# all theses parameters are standadized
+Function_PATH="/main"
+Base_Script_Language="en_GB"
+
+#|# directory used for code
+Base_Dir_Scripts="$(dirname $(pwd))"                                                    
+Base_Dir_Scripts_Bin="${Base_Dir_Scripts}/bin"                                           # DIR_To_CHECK
+Base_Dir_Scripts_Lib="${Base_Dir_Scripts}/lib"                                           # DIR_To_CHECK
+Base_Dir_Scripts_Lib_Expect_Uploads="${Base_Dir_Scripts_Lib_Expect}/uploaded_scripts"    # DIR_To_CHECK
+Base_Dir_Scripts_Lib_Expects_cmd="${Base_Dir_Scripts_Lib_Expect}/cmd"                    # DIR_To_CHECK
+Base_Dir_Scripts_CNF="${Base_Dir_Scripts}/conf"                                          # DIR_To_CHECK
+Base_Dir_Scripts_CNF_spec="${Base_Dir_Scripts_CNF}/special_conf"                         # DIR_To_CHECK
+Base_Dir_Scripts_CNF_Subs="${Base_Dir_Scripts_CNF_spec}/SubConf"                         # DIR_To_CHECK
+Base_Dir_Scripts_SQL="${Base_Dir_Scripts}/sql"                                           # DIR_To_CHECK
+
+#|# directory used for output
+Base_Dir_Scripts_LOG="${Base_Dir_Scripts}/logs"                                          # DIR_To_CHECK_TMP
+
+#|# directory used for tem data
+Base_Dir_Scripts_Tmp="${Base_Dir_Scripts}/tmp"                                           # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Tmp_Auto_Lib="${Base_Dir_Scripts_Tmp}/auto_lib"                         # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Fifo="${Base_Dir_Scripts_Tmp}/fifo"                                     # DIR_To_CHECK_TMP
+Base_Dir_Conf_Rec="${Base_Dir_Scripts_Tmp}/conf_file_rec"                                # DIR_To_CHECK_TMP
+Base_Dir_Conf_Gen="${Base_Dir_Scripts_Tmp}/conf_file_gen"                                # DIR_To_CHECK_TMP
+
+#|# directory used for all backups
+Base_Dir_Scripts_BCK="${Base_Dir_Scripts}/backup"                                        # DIR_To_CHECK_TMP
+#|# directory used to store all data 
+Base_Dir_Scripts_Data="${Base_Dir_Scripts}/data"                                         # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_Def="${Base_Dir_Scripts_Data}/def"                                 # DIR_To_CHECK
+Base_Dir_Scripts_Data_Def_pf="${Base_Dir_Scripts_Data_Def}/pf"                           # DIR_To_CHECK
+Base_Dir_Scripts_Data_Templates="${Base_Dir_Scripts_Data}/templates"                     # DIR_To_CHECK
+Base_Dir_Scripts_Data_Templates_sql="${Base_Dir_Scripts_Data_Templates}/sql"             # DIR_To_CHECK
+Base_Dir_Scripts_Data_Templates_xml="${Base_Dir_Scripts_Data_Templates}/xml"             # DIR_To_CHECK
+Base_Dir_Scripts_Data_Templates_html="${Base_Dir_Scripts_Data_Templates}/html"           # DIR_To_CHECK
+Base_Dir_Scripts_Data_Templates_mail="${Base_Dir_Scripts_Data_Templates}/mail"           # DIR_To_CHECK
+Base_Dir_Scripts_Data_Catalogs="${Base_Dir_Scripts_Data}/catalogue"                      # DIR_To_CHECK
+Base_Dir_Scripts_Data_Packages="${Base_Dir_Scripts_Data}/pakages"                        # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_Packages_inits="${Base_Dir_Scripts_Data_Packages}/inits"           # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_Xml="${Base_Dir_Scripts_Data}/xml"                                 # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_Xml_DEF="${Base_Dir_Scripts_Data_Xml}/xml_def"                     # DIR_To_CHECK
+Base_Dir_Scripts_Data_Doc="${Base_Dir_Scripts_Data}/doc"                                 # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_doc_xml="${Base_Dir_Scripts_Data_Doc}/xml"                         # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_doc_txt="${Base_Dir_Scripts_Data_Doc}/txt"                         # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_doc_man_html="${Base_Dir_Scripts_Data_Doc}/man-html"               # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_Reports="${Base_Dir_Scripts_Data}/reports"                         # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_Reports_txt="${Base_Dir_Scripts_Data_Reports}/txt"                 # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_Reports_html="${Base_Dir_Scripts_Data_Reports}/html"               # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_Get_From_PF="${Base_Dir_Scripts_Data}/pull"                        # DIR_To_CHECK_TMP
+Base_Dir_Scripts_Data_Html="${Base_Dir_Scripts_Data_Reports}/html"                       # DIR_To_CHECK_TMP
+Base_FS_catalogue=${Base_Dir_Scripts_Data_Catalogs}/FIleSystem.cat
+
+
+#|# Generics Search Path for binary
+Generics_Search_Path="${home}/bin /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin"
+
+#|# Fifo file parameter for SQL use
+Base_SQL_Fifo_FileName="${Base_Dir_Scripts_Fifo}/sql_fifo"
+Base_SQL_Log_FileName="${Base_Dir_Scripts_LOG}/sql_log"
+
+#|# Filter expect parameter
+expect_default_Filter="${Base_Dir_Scripts_Lib_Expect}/filter_expect.ksh"
+expect_root_filter="${Base_Dir_Scripts_Lib_Expect}/root_expect.ksh"
+
+#|# Define list of all ksh libs
+Lib_to_SRC="$(print -- $(find ${Base_Dir_Scripts_Lib} | grep "\.lib$" ))"
+
+#|# Define base temporary vars for user managment
+Base_NuserHome="/srv/users"                                                              # DIR_To_CHECK_TMP
+Base_NoshellUser="/bin/nologin"
+BASEUIDUSRMIN="80000"
+BASEUIDUSRMAX="80002"
+
+Prefix_Log_File="${Base_Dir_Scripts_LOG}/info"
+Directory_List="${Base_Dir_Scripts_Tmp} ${Base_Dir_prefixFifo} ${Base_DiBase_Dir_prefix_installase_Dir_Conf_Gen} ${Base_Dir_Scripts_LOG} ${Base_Dir_ScriptsBase_Dir_Scripts_Data_Catalogs_CATALOG} ${Base_Dir_Scripts_Tmp_Auto_Lib} ${Base_Dir_Scripts_Temmplate}"
+
+### Var for package Retriever automated installer
+Package_Configuration_File="package_configuration.cnf"
+
+#### Global bin pathing
+EXE_PERL="/usr/bin/perl"
+
+##### Auto seted Vars
+Base_Log_File="${Base_Dir_Scripts_LOG}/${Product_Name}_${Action_Type}.log"
+
+Redo_Last="Dummy"
+XML_Conf_init="0"
+Work_tmp_File="${Base_Dir_Scripts_Tmp}/${Action_Type}_work.file"
+EXTERNAL_SQL_IS_CONNECTED="OffLine"
+USE_DATE="$(date +%Y_%m_%d-%HH_%MM)"
+
+#|# screen delimiter for auto menu
+Base_screen_Menu_Limit="28"
+Base_sreen_Size_limit="$( tput cols )"
+
+#|# generic mais addresse
+PCD_MAIL_ADDR="arnaud@crampet.net       "
+
+#|# Generic system vars 
+NetConsoleConfig="/etc/sysconfig/netconsole"
+
+
+
+
+####
+# PKG defs version of files
+Pkg_ext_tgz="tar.gz"
+Pkg_ext_tgz2="tgz"
+Pkg_ext_bz2="tar.bz2"
+# Using internel repos
+#ATD_for_Package_Configuration_CNF="Build_URLS_Internal"
+# Using Net
+ATD_for_Package_Configuration_CNF="Build_URLS"
+###############################################################################
+####
+# Base function for soucing libs
+
+function SRC_AUTO
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : SRC_AUTO
+#|#
+#|# Description : Base function user to source all libs and conf
+#|#
+#|# Send Back   : Data / functions
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+
+. ${Base_Dir_Scripts_Lib}/system_base/log.lib
+Debug_INIT
+MSG_DISPLAY "Info" "Sourcing librairy : [ START ] "
+for Libs_to_SRC in ${Lib_to_SRC}
+    do
+     
+       MSG_DISPLAY "Check" "1" "Sourcing librairy : [ ${Libs_to_SRC} ] "
+      . ${Libs_to_SRC} 1>> ${Base_Dir_Scripts_LOG}/soucing.log 2>&1 
+       generic_control_sourcing "${Libs_to_SRC}"
+done
+
+MSG_DISPLAY "Info" "Sourcing librairy : [ End ] "
+
+if [ -z "${Conf_Specifics}" ]
+   then
+                MSG_DISPLAY "Info" "Specifics configuration file  : [ ERROR : NULL VALUE ] "
+   else
+       if [ "${Conf_Specifics}" = "dummy" ]
+          then
+              MSG_DISPLAY "Info" "Specifics configuration file : [ NONE ] "
+          else
+              MSG_DISPLAY "Info" "Specifics configuration file : [ ${Conf_Specifics} ] "
+              File_Ctrl_Exist "${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics}" "Dont_Create_File" "2"
+              . ${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics}
+              generic_control_sourcing "${Conf_Specifics}"
+       fi
+fi
+SANITY_CHECK_Check_Language
+SANITY_CHECK_Base_env_directory_check
+SANITY_CHECK_Check_TMP_Directory
+SANITY_CHECK_tools
+# Gettin local informations 
+Get_ETH0_IPV4
+Get_ETH1_IPV4
+Get_ETH0_IPV6
+Get_ETH1_IPV6
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function generic_control_sourcing
+{
+#|# Var to set  : None
+#|# GCS_BASE_SOURCED_FILE : Use this var to set file name of the control sourcing
+#|# ${1}              : Use this var to set BASE_SOURCED_FILE
+#|# Base usage  : generic_control_sourcing "GCS_BASE_SOURCED_FILE"
+#|#
+#|# Description : Base function user to source all libs and conf
+#|#
+#|# Send Back   : Controle
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+
+# this function provide base error controle on sourcing files
+# BASE_SOURCED_FILE  : use this var to set name of the last sourced file
+# ${1}               : use this var to set ${BASE_SOURCED_FILE}
+# Base usage :
+#             generic_control_sourcing "my file souced"
+GCS_BASE_SOURCED_FILE="${1}"
+if [ "${Sourced_OK}" = "1" ]
+   then
+       MSG_DISPLAY "OK" "1"
+   else
+	   MSG_DISPLAY "OK" "1"
+       MSG_DISPLAY "ErrorN" "ERROR ON Sourcing  : [ ${GCS_BASE_SOURCED_FILE} ]" "1"
+       exit 1
+fi
+Sourced_OK="0"
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+
+
+CNF_SRC="1"

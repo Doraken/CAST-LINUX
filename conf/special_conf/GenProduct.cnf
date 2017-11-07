@@ -1,0 +1,49 @@
+###############################################################################
+# Generics.cnf                                         Version : 1.0.0.0      #
+#                                                                             #
+# Creation Date : 13/04/2016                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This file containe all genrics vars used in CAST that depend on   #
+#           specifics system build rules                                      #
+###############################################################################
+####
+# INFO
+
+
+
+#|# list of all base fileSystem mount Point
+Base_FS_Root="/"                                                                         # FS_TO_CHECK
+Base_FS_TMP="/tmp"                                                                       # FS_TO_CHECK
+Base_FS_USR="/usr"                                                                       # FS_TO_CHECK
+Base_FS_VAR="/var"                                                                       # FS_TO_CHECK
+Base_FS_Home="/home"                                                                     # FS_TO_CHECK
+Base_FS_Service="/srv"                                                                   # FS_TO_CHECK
+Base_FS_Data="/srv/data"                                                                 # FS_TO_CHECK
+Base_FS_Products="/srv/products"                                                         # FS_TO_CHECK
+
+#|# List of all products version
+Zabbix_Version_SRV="1.0"
+Zabbix_Version_AGT="1.0"
+Oracle_Version_SRV="11.4.0"
+Mysql_Version_SRV="1.0"
+postgres_Version_SRV="1.0"
+Apache_Version_SRV="1.0"
+TomCat_Version_SRV="1.0"
+
+#|# Base Binary path for all products
+Base_Products_Root="/srv/produts/"                                                       # DIR_To_CHECK
+Base_Products_Zabbix_Agt="${Base_Products_Root}/Zabbix/agent"                            # DIR_To_CHECK
+Base_Products_Zabbix_Srv="${Base_Products_Root}/Zabbix/Server"                           # DIR_To_CHECK
+Base_Products_Mysql="${Base_Products_Root}/mysql"                                        # DIR_To_CHECK
+Base_Products_Apache="${Base_Products_Root}/apache"                                      # DIR_To_CHECK
+Base_Products_TomCat="${Base_Products_Root}/tomcat"                                      # DIR_To_CHECK
+Base_Products_Postgres="${Base_Products_Root}/postgres"                                  # DIR_To_CHECK
+Base_Products_Oracle="${Base_Products_Root}/product/${OraVersion}"                       # DIR_To_CHECK
+Base_Products_PHP="${Base_Products_Root}/PHP"                                            # DIR_To_CHECK
+
+
+
+

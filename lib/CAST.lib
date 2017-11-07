@@ -1,0 +1,135 @@
+###############################################################################
+# CAST.lib                                              Version : 1.0         #
+#                                                                             #
+# Creation Date : 23/02/2016                                                  #
+# Team          : Alwayse the same guy ....                                   #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This library provide base Main menu for all generic ation using   #
+#           C.A.S.T.                                                          #
+###############################################################################
+####
+# INFO 
+
+function Configure_CAST                                                # Main_Menu_ok
+{
+#|# Var to set  : None
+#|# Base usage  : Configure_CAST  
+#|#
+#|# Description : Manu straper function 
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+Menu_Get_items "# Configure_CAST" "2" "${Base_Dir_Scripts_Lib}/user_interaction/sub/CAST-Mnu-Configure.lib" "Configure_Cast:"
+ 
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+function Diagnose_Server                                                # Main_Menu_ok
+{
+#|# Var to set  : None
+#|# Base usage  : Configure_CAST  
+#|#
+#|# Description : Manu straper function 
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+Menu_Get_items "# Diagnose_Server" "2" "${Base_Dir_Scripts_Lib}/user_interaction/sub/CAST-Mnu-DiagnoseServer.lib" "Diagnose_Server:"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+function Manage_Service                                                 # Main_Menu_ok
+{
+#|# Var to set  : None
+#|# Base usage  : Manage_Service 
+#|#
+#|# Description : Manu straper function 
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+Menu_Get_items "# Manage_Service" "2" "${Base_Dir_Scripts_Lib}/user_interaction/sub/CAST-Mnu-ManageServices.lib" "Manage_Service:"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+function Deploy_Service                                                 # Main_Menu_ok
+{
+#|# Var to set  : None
+#|# Base usage  : Deploy_Service  
+#|#
+#|# Description : Manu straper function 
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+Menu_Get_items "# Deploy_Service" "2" "${Base_Dir_Scripts_Lib}/user_interaction/sub/CAST-Mnu-DeployService.lib" "Deploy_Service:"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+
+
+function Dummy_function 
+{
+#|# Var to set  : None
+#|#             : Use this var to set 
+#|#             : Use this var to set 
+#|# ${1}        : Use this var to set [  ]                
+#|# ${2}        : Use this var to set [  ]               
+#|#
+#|# Base usage  : None
+#|#
+#|# Description : None
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "this is a model function"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+
+
+
+
+
+
+
+
+Sourced_OK="1"  

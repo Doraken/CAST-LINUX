@@ -1,0 +1,78 @@
+###############################################################################
+# Apache.cnf                                           Version : 1.1.2.2      #
+#                                                                             #
+# Creation Date : 30/07/2007                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This conf file provide all base parameters apache interactions    #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+Base_Product_Dir="/srv/products"
+Base_user=apache
+Base_group=webuse
+
+
+function Apache_Set_instance 
+{
+#|# Apache_Base_server_dir             : Define base server dir             
+#|# Apache_Base_server_bin_dir         : Define base apache bin dir
+#|# Apache_Base_server_log_dir         : define apache base log dir 
+#|# Apache_Base_server_cnf_dir         : Define apache base cofiguration dir
+#|# Apache_Base_pid_file               : Define apache pid file path 
+#|# Base usage : Apache_Set_instance
+#|# Comment : No parameter needed 
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+Apache_Base_server_dir="${Base_Product_Dir}/httpd"                        
+Apache_Base_server_bin_dir="${Apache_Base_server_dir}/bin"              # DIR_To_CHECK
+Apache_Base_server_log_dir="${Apache_Base_server_dir}/logs"             # DIR_To_CHECK
+Apache_Base_server_cnf_dir="${Apache_Base_server_dir}/conf"             # DIR_To_CHECK
+
+Apache_Base_pid_file="${Apache_Base_server_log_dir}/httpd.pid"          # File_To_Check
+Apache_Base_apachectl_file="${Apache_Base_server_bin_dir}/apachectl"    # File_To_Check
+Apache_Base_httpd_conf_file="${Apache_Base_server_cnf_dir}/httpd.conf"  # File_To_Check
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+function Proxy_Set_instance 
+{
+#|# Proxy_Base_server_dir             : Define base server dir             
+#|# Proxy_Base_server_bin_dir         : Define base Proxy bin dir
+#|# Proxy_Base_server_log_dir         : define Proxy base log dir 
+#|# Proxy_Base_server_cnf_dir         : Define Proxy base cofiguration dir
+#|# Proxy_Base_pid_file               : Define Proxy pid file path 
+#|# Base usage : Proxy_instance
+#|# Comment : No parameter needed 
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+Proxy_Base_server_dir="${Base_Product_Dir}/httpd"                        
+Proxy_Base_server_bin_dir="${Proxy_Base_server_dir}/bin"            # DIR_To_CHECK
+Proxy_Base_server_log_dir="${Proxy_Base_server_dir}/logs"           # DIR_To_CHECK
+Proxy_Base_server_cnf_dir="${Proxy_Base_server_dir}/conf"           # DIR_To_CHECK
+
+Proxy_Base_pid_file="${Proxy_Base_server_log_dir}/httpd.pid"        # File_To_Check
+Proxy_Base_apachectl_file="${Proxy_Base_server_bin_dir}/apachectl"  # File_To_Check
+
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+Sourced_OK="1"

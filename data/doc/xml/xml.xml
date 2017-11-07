@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>xml.lib</LibraryName>
+<Function>
+<FunctionName>XML_Get_Model</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Sourcing</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>system_counter</FunctionName>
+<FunctionLib>/lib/ksh/system_base/system.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>XML_Get_Model_Sub_feeder_NOPOS</FunctionName>
+<FunctionLib>/lib/ksh/doc/xml.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     XML_Model_To_Use : Use this var to set which XML base model to use to generate XML CODE
+     ${1} : Use this var to set XML_Model_To_Use
+     XML_ARRAY_DATA : Use this var to set which liste of data to fiil in
+     ${2} : Use this var to set XML_ARRAY_DATA
+</DocText>
+</Function>
+<Function>
+<FunctionName>XML_Get_Model_Sub_feeder_POS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Sub function of XML_Get_Model_Sub_feeder Do not call directly
+</DocText>
+</Function>
+<Function>
+<FunctionName>XML_Get_Model_Sub_feeder_NOPOS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Sub function of XML_Get_Model_Sub_feeder Do not call directly
+</DocText>
+</Function>
+ </Library>

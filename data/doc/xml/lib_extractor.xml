@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>lib_extractor.lib</LibraryName>
+<Function>
+<FunctionName>lib_extractor_function_get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     LEGF_FILE_GEN : Use this var to set name of generated script
+     Base usage lib_extractor_function_get ${Line_to_check}
+</DocText>
+</Function>
+ </Library>

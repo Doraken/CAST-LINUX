@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>html.lib</LibraryName>
+<Function>
+<FunctionName>HTML_Table_Head_Report_FS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     HTML_File_to_export : Use this var to set name of the report file
+     Server_Name_To_report : Use this var to set name of server on which we report
+    
+     Base usage : HTML_Table_Head_Report_FS "Html file to generate" "Server"
+    
+     Description : This fuction create Table header in HTML code for FS reporting
+    
+     Send Back : HTML code
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_Table_Close_Report_FS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     HTML_File_to_export : Use this var to set name of the report file
+     Server_Name_To_report : Use this var to set name of server on which we report
+    
+     Base usage : HTML_Table_Close_Report_FS "Html file to generate" "Server"
+    
+     Description : This fuction create Table end in HTML code for FS reporting
+    
+     Send Back : HTML code
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_Error_Html_Report_FS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     HTML_File_to_export : Use this var to set name of the report file
+    
+     Base usage : HTML_Error_Html_Report_FS "Html file to generate"
+    
+     Description : This fuction create Table end in HTML code for FS reporting
+    
+     Send Back : HTML code
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_Warn_Html_Report_FS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     HTML_File_to_export : Use this var to set name of the report file
+    
+     Base usage : HTML_Warn_Html_Report_FS "Html file to generate"
+    
+     Description : This fuction create Table end in HTML code for FS reporting
+    
+     Send Back : HTML code
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_Good_Html_Report_FS</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     HTML_File_to_export : Use this var to set name of the report file
+     ${1} : Use this var to set [ HTML_File_to_export ]
+    
+     Base usage : HTML_Good_Html_Report_FS "Html file to generate"
+    
+     Description : This fuction Table HTML code for Good state FS
+    
+     Send Back : HTML code
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_Head_Report</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     HTML_File_to_export : Use this var to set name of the report file
+    
+     Base usage : HTML_Good_Html_Report_FS "Html file to generate"
+    
+     Description : This fuction header HTML code for reports
+    
+     Send Back : HTML code
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_footer_report_gen</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     HTML_File_to_export : Use this var to set name of the report file
+    
+     Base usage : HTML_footer_report_gen "Html file to generate"
+    
+     Description : This fuction footer HTML code for reports
+    
+     Send Back : HTML code
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_int_Menu_Generator_GEN</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     HIMGG_Base_Menu_Directory : use this var to set chere to create the menu file
+     HIMGG_INT_lst : use this var to set the ints list
+     ${1} : use this var to set HIMGG_Base_Menu_Directory
+     ${2} : use this var to set HIMGG_INT_lst
+    
+     Base usage : HTML_int_Menu_Generator_GEN "my_full_path" "int1 int2 intxxx"
+    
+     Description : This fuction create report menu
+    
+     Send Back : HTML code
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_Internal_HTML_int_Menu_Generator_GEN</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     HIHIMGG_Base_PATH_OF_FILES_INTS : use this var to set chere to create the menu file
+     HIMGG_INT_lst : use this var to set the ints list
+     ${1} : use this var to set HIMGG_Base_Menu_Directory
+     ${2} : use this var to set HIMGG_INT_lst
+    
+     Base usage : HTML_Internal_HTML_int_Menu_Generator_GEN "my_full_path" "int1 int2 intxxx"
+    
+     Description : This fuction create report menu
+    
+     Send Back : HTML code
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_Std_table_start</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Menu_Directory : use this var to set chere to create the menu file
+     INT_lst : use this var to set the ints list
+     Base use :
+     Base_Menu_Directory="my_full_path"
+     INT_lst="int1 int2 intxxx"
+     HTML_int_Menu_Generator_GEN
+</DocText>
+</Function>
+<Function>
+<FunctionName>HTML_create_Frame</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Description : This fucnction create all needed frame for autodoc site
+</DocText>
+</Function>
+ </Library>

@@ -1,0 +1,118 @@
+###############################################################################
+# chroot.lib                                               Version : 1.1.2.2  #
+#                                                                             #
+# Creation Date : 14/12/2006                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This library provide base function to generate a chroot jail      #
+#                                                                             #
+###############################################################################
+####
+# INFO 
+# Dep on libs : control.lib Log.lib
+
+function CHROOT_Make_Base_Nodes
+{
+#|# Base_PATH_TO_CHROOT : use this var to set where the chroot is base ( define the "/ " of the chroot )
+#|# Base usage          :
+#|#                        Base_PATH_TO_CHROOT="PATH_to_my_chroot_/_"
+#|#                       CHROOT_Make_Base_Nodes
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+MSG_DISPLAY "Debug6" "Base_PATH_TO_CHROOT is set to : [ ${Base_PATH_TO_CHROOT} ] "
+
+
+Path_CHroot_Dev="${Base_PATH_TO_CHROOT}/dev"
+Base_param_Dir_To_Create="${Path_CHroot_Dev}"
+Directory_CRT
+
+catalogue_Used="${Base_Dir_Scripts_Data_Catalogs}/chroot_devs.cat"
+
+for Inf_nodes in $( cat ${catalogue_Used} | egrep -v \# ) 
+    do 
+       Node_Name=$( echo ${Inf_nodes} | awk -F\| '{ print $1 }' ) 
+       Node_Minima=$( echo ${Inf_nodes} | awk -F\| '{ print $2 }' ) 
+       Node_Maxima=$( echo ${Inf_nodes} | awk -F\| '{ print $3 }' ) 
+       Node_Right=$( echo ${Inf_nodes} | awk -F\| '{ print $4 }' ) 
+       if [ -e "${Path_CHroot_Dev}/${Node_Name}" ] 
+          then 
+              MSG_DISPLAY "Info" "Node file present for dev  : [ ${Path_CHroot_Dev}/${Node_Name} ] "
+          else 
+          mknod -m ${Node_Right} ${Path_CHroot_Dev}/${Node_Name} -c ${Node_Minima} ${Node_Maxima}
+          Base_Param_File_To_TEST="${Path_CHroot_Dev}/${Node_Name}" 
+          File_Exis
+        fi 
+    done
+
+
+catalogue_Used=""
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+
+function CHROOT_Base_Generating 
+{
+#|# Base_PATH_TO_CHROOT : use this var to set where the chroot is base ( define the "/ " of the chroot )
+#|# Base usage          :
+#|#                        Base_PATH_TO_CHROOT="PATH_to_my_chroot_/_"
+#|#                        CHROOT_Base_Generating
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+
+catalogue_used="${Base_Dir_Scripts_Data_Catalogs}/chroot_files.cat"
+Directory_CRT "${Base_PATH_TO_CHROOT}"
+
+for CHROOT_file in $(cat ${catalogue_used}) 
+    do 
+    
+     eval  print -- " Listed Item for chroot creation [ ${CHROOT_BASE_DIR}/${CHROOT_file} ] "
+     File_Get_Type "/${CHROOT_file}" "SUB_rebuild_catalogue_File_Global_cat_menu" ""
+#     print -- "cp -p ${CHROOT_BASE_DIR} ${CHROOT_file}"   
+done
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+
+
+
+
+
+
+function CHROOT_Get_File_Deps
+{
+#|# Empty function fo create
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+echo ""
+
+
+
+
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+#################################################### 
+}
+
+
+
+
+Sourced_OK="1"

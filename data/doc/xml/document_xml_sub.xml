@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>document_xml_sub.lib</LibraryName>
+<Function>
+<FunctionName>Document_Print_global_Print_xml</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Document_Print_function_xml</FunctionName>
+<FunctionLib>/lib/ksh/doc/sub/document_xml_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Document_Print_global_Print_xml
+    
+     Description : This fuction generate documentation xml output
+    
+     Send Back : xml flow
+</DocText>
+</Function>
+<Function>
+<FunctionName>Document_Print_function_xml</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Document_Print_Dependences_xml</FunctionName>
+<FunctionLib>/lib/ksh/doc/sub/document_xml_sub.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Document_Print_function_xml
+    
+     Description : This function is used whithout parameter and can only be called by
+     Document_Print_global_Print_xml
+    
+     Send Back : xml flow
+</DocText>
+</Function>
+<Function>
+<FunctionName>Document_Print_Dependences_xml</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Document_Print_Dependences_xml
+    
+     Description : This function is used whithout parameter and can only be called by
+     Document_Print_function_xml
+    
+     Send Back : xml flow
+</DocText>
+</Function>
+ </Library>

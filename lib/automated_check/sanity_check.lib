@@ -1,0 +1,331 @@
+###############################################################################
+# sanity_check.lib                                             Version : 1.0  #
+#                                                                             #
+# Creation Date : 07/02/2007                                                  #
+# Team          : Only me after all                                                                     #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This library provide base auto sanity check to control sript env  #
+#                                                                             #
+###############################################################################
+####
+# Info
+
+function SANITY_CHECK_Base_env_directory_check
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : SANITY_CHECK_Base_env_directory_check
+#|#
+#|# Description : This function check and create all mandatory directories needed for CAST execution
+#|#
+#|# Send Back   : Directory
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "Directory Sanity check [ STARTING ] "
+if [ "${SANITY_CHECK_Base_env_directory_check_exec}" = "1" ]
+   then
+   	   MSG_DISPLAY "Debug7" "Sanity check for generic tmp already done"
+   else
+       for Dirs in $( cat ${Conf_Generics} | grep "DIR_To_CHECK" | awk '{ print $1 }' | awk -F\= '{print "\$\{"$1"\}" }' 2> /dev/null )
+          do
+          	Dirs=$( eval print ${Dirs} )
+          	Dirs=$( eval print ${Dirs} )
+   	        #MSG_DISPLAY "Info" "checking base directory  : [ ${Dirs} ] "
+    	        Directory_CRT   "${Dirs}"
+        done
+fi
+
+SANITY_CHECK_Base_env_directory_check_exec="1"
+Spacer_MSG
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+
+
+function SANITY_CHECK_Base_env_directory_check_specs
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : SANITY_CHECK_Base_env_directory_check
+#|#
+#|# Description : This function check and create all mandatory directories needed for CAST execution
+#|#
+#|# Send Back   : Directory
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+if [ -z "${Conf_Specifics}" ]
+   then
+       MSG_DISPLAY "Info" "Specifics configuration file  : [ ERROR : NULL VALUE ] "
+   else
+       if [ "${Conf_Specifics}" = "dummy" ]
+          then
+              MSG_DISPLAY "Info" "Specifics configuration file : [ NONE ] "
+          else
+              print -- "${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics} ---"
+         cat ${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics} | grep "DIR_To_CHECK" | awk '{ print $1 }' | awk -F\= '{print "\$\{"$1"\}" }' 
+              for Dirs in $( cat ${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics} | grep "DIR_To_CHECK" | awk '{ print $1 }' | awk -F\= '{print "\$\{"$1"\}" }' 2> /dev/null )
+                  do     Dirs=$( eval print ${Dirs} )
+                         MSG_DISPLAY "Info" "checking base directory  : [ ${Dirs} ] "
+                         Dirs=$( eval print ${Dirs}) 
+                         Directory_CRT   "${Dirs}"
+                         pause
+                   done
+        fi
+fi
+MSG_DISPLAY "Info" "Directory Sanity check [ END ] "
+
+SANITY_CHECK_Base_env_directory_check_exec="1"
+Spacer_MSG
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function SANITY_CHECK_Base_root_exec_check
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : SANITY_CHECK_Base_root_exec_check
+#|#
+#|# Description : This function check if you are using root to execute CAST
+#|#               If active it will prompt for user confirmation and send back execution in root mode in system log
+#|#
+#|# Send Back   : User Check
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+Spacer_MSG
+
+MSG_DISPLAY "Info" "User Sanity check [ STARTING ] "
+My_Current_User=$( id | awk -F "[\(\)]" '{ print $2 }' 2> /dev/null )
+if [ "${My_Current_User}" = "root" ]
+   then
+       MSG_DISPLAY "Info" "Your are currently running C&D toolBox with \"root\" account "
+   	   PS3="Do you want to exit ? [ it's better to exit ] "
+       select Result in "Continue" "EXIT"
+              do
+                case ${Result} in
+	                 "Continue") MSG_DISPLAY "Warning1" "User select to user root account"
+	                      My_Ident="$(who i am | awk '{ print $1 }')"
+	                      MSG_DISPLAY "LoggerN"  " $( date ) CND scripting user whith root account by [ ${My_Ident} ] " "1"
+	                      ;;
+	                  "EXIT") MSG_DISPLAY "ErrorN" "User select to exit" "1"
+	                      ;;
+	                  *) MSG_DISPLAY "ErrorN" "Bad input exit [ ${Result} ] " "1"
+	                      ;;
+                 esac
+        done
+      else
+       MSG_DISPLAY "Info" "you are currently running C&D toolBox with [ ${My_Current_User} ] "
+       MSG_DISPLAY "LoggerN"  "C&D toolBox launched with [ ${My_Current_User} ] at $( date ) "  "1"
+fi
+MSG_DISPLAY "Info" "User Sanity check [ END ] "
+
+Spacer_MSG
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+function SANITY_CHECK_Check_TMP_Directory
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : SANITY_CHECK_Check_TMP_Directory
+#|#
+#|# Description : This function check and create all mandatory writable directories needed for CAST execution
+#|#
+#|# Send Back   : writables Directory
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+Spacer_MSG
+if [ "${SANITY_CHECK_Check_TMP_Directory_exec}" = "1" ]
+   then
+   	   MSG_DISPLAY "Debug7" "Sanity check for generic tmp already done"
+   else
+       for Dirs in $( cat ${Conf_Generics} | grep "DIR_To_CHECK_TMP" | awk '{ print $1 }' | awk -F\= '{print "\$\{"$1"\}" }' 2> /dev/null )
+           do Dirs=$( eval print ${Dirs} )
+           echo  ${Dirs} | grep tmp  > /dev/null
+           if  [ "${?}" = "0" ]
+              then
+                  IS_Writable "${Dirs}" "1"
+               else
+                   MSG_DISPLAY "Debug6" "Directory ${Dirs} is : [ Not a temporary Directory ] "
+            fi
+        done
+fi
+if [ -z "${Conf_Specifics}" ]
+   then
+       MSG_DISPLAY "Info" "Specifics configuration file  : [ ERROR : NULL VALUE ] "
+   else
+       if [ "${Conf_Specifics}" = "dummy" ]
+          then
+              MSG_DISPLAY "Info" "Specifics configuration file : [ NONE ] "
+          else
+              for Dirs in $( cat ${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics} | grep "DIR_To_CHECK_TMP" | awk '{ print $1 }' | awk -F\= '{print "\$\{"$1"\}" }' 2> /dev/null )
+                  do Dirs=$( eval print ${Dirs} )
+                     print --   "${Dirs}" | grep tmp  > /dev/null
+                    if  [ "${?}" = "0" ]
+                      then
+        	              IS_Writable "${Dirs}" "1"
+                      else
+   	                      MSG_DISPLAY "Debug6" "Directory ${Dirs} is : [ Not a temporary Directory ] "
+                    fi
+                done
+       fi
+fi
+SANITY_CHECK_Check_TMP_Directory_exec="1"
+Spacer_MSG
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function SANITY_CHECK_Check_Language
+{
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+Spacer_MSG
+
+if [ "${LANG}" = "${Base_Script_Language}" ]
+   then
+   	   MSG_DISPLAY "Debug6" "System language  : [ ${LANG} ] "
+   else
+       MSG_DISPLAY "Debug6" "System language  : [ ${LANG} ] "
+       MSG_DISPLAY "Debug5" " ACTION : [ Overriding system default language  ] "
+       LANG="${Base_Script_Language}"
+       export LANG
+       if [ "${LANG}" = "${Base_Script_Language}" ]
+          then
+   	          MSG_DISPLAY "Debug5" "Overrided System language  : [ ${LANG} ] "
+          else
+              MSG_DISPLAY "Debug" "Overrid System language  : [ ERROR ] "
+              MSG_DISPLAY "Debug" "Somme problem on messaging display may appear  "
+       fi
+fi
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function SANITY_CHECK_cnf_file
+{
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function SANITY_CHECK_tools
+{
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+Tool_Global_SET
+
+Fil_Get_Items "EXEC_Global_MANDATORY_control_sanity" "1" "${Base_Dir_Scripts_Lib}/system_base/tool.lib" "="
+
+for SCT_items  in ${GLOBAL_FGI_Selected_items[@]}
+   do
+   	  SCT_items="$( print -- ${SCT_items} | awk -F "=" '{ print $1 }')"
+   	  SCT_status="$( eval print -- "\${${SCT_items}}" )"
+      SCT_Bin_Name="$( print -- "${SCT_items}" | awk -F "_" '{ print $3 }' )"
+      if [ "${SCT_status}" = "ENABLED" ]
+         then
+             MSG_DISPLAY "Debug7" "status of ${SCT_Bin_Name} bin  Mandatory  : [ ${SCT_status} ]"
+         else
+             MSG_DISPLAY "ErrorN" "status of ${SCT_Bin_Name} bin  Mandatory  : [ ${SCT_status} ] " "1"
+      fi
+done
+
+Fil_Get_Items "EXEC_Global_SET_control_sanity" "1" "${Base_Dir_Scripts_Lib}/system_base/tool.lib" "="
+
+for SCT_items  in ${GLOBAL_FGI_Selected_items[@]}
+   do
+      SCT_items="$( print -- ${SCT_items} | awk -F "=" '{ print $1 }')"
+   	  SCT_status="$( eval print -- "\${${SCT_items}}" )"
+      SCT_Bin_Name="$( print -- "${SCT_items}" | awk -F "_" '{ print $3 }' )"
+      if [ "${SCT_status}" = "ENABLED" ]
+         then
+             MSG_DISPLAY "Debug7" "status of ${SCT_Bin_Name} bin Optional  : [ ${SCT_status} ]"
+         else
+             MSG_DISPLAY "Debug7" "status of ${SCT_Bin_Name} bin  Optional  : [ ${SCT_status} ] " 
+      fi
+done
+
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function SANITY_CHECK_Base_env_Users_And_Group
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : SANITY_CHECK_Base_env_Users_And_Group
+#|#
+#|# Description : This function check and create all mandatory directories needed for CAST execution
+#|#
+#|# Send Back   : Directory
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+
+for SubConfFiles in $( ls ${Base_Dir_Scripts_CNF_Subs} -1 | grep cnf ) 
+	do 
+		for UsersCr in $( cat ${Base_Dir_Scripts_CNF_Subs}/${SubConfFiles} | grep "Account_To_Delete" | awk '{ print $1 }' | awk -F\= '{print "\$\{"$1"\}" }' 2> /dev/null )
+			do UsersCr=$( eval print ${UsersCr} )
+               
+		done
+
+done 
+
+MSG_DISPLAY "Info" "Directory Sanity check [ END ] "
+
+SANITY_CHECK_Base_env_directory_check_exec="1"
+Spacer_MSG
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+
+Sourced_OK="1"
+

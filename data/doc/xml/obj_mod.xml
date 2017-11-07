@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>obj_mod.lib</LibraryName>
+<Function>
+<FunctionName>Basic_Keywords_get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Keyword_To_Get : use this var to set which keyword to search for
+     Base_Keyword_Markup : use this var to set wich markup is used to fiund keyword
+     Base_File_for_Search : use this var to set in wich file to search
+     Base_Keyword_File_dest : use this var to set in wich file we print all keywords
+     Keywords_Rec : This var is used to recieve result of the search
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>keyword_TXT_refiner</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     this function put all OM data into BDD format for bulk OM IMPORT
+     Base_MASS_Keyword_Get_FILE : use this var to set which keyword to search for
+     Base_keymap_File : use this var to set wich markup is used to fiund keyword
+     Base_File_for_Search : use this var to set in wich file to search
+     Base_Keyword_File_dest : use this var to set in wich file we print all keywords
+     Keywords_Rec : This var is used to recieve result of the search
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>Counted_rules</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     this function Gather keywords in text files for numeroted tules
+     Base_Keywords_Name : Use this var to set basename of numeroted Keywords ( like @rules."number"@ )
+</DocText>
+</Function>
+ </Library>

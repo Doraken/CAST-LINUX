@@ -1,0 +1,118 @@
+###############################################################################
+#  archive_menu.lib                                     Version : 1.0         #
+#                                                                             #
+# Creation Date : 00/00/0000                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                       #
+#                                                                             #
+# Subject : This library provide base                                         #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+function Archive_a_file
+{
+#|# Var to set  : None
+#|#             : Use this var to set
+#|#             : Use this var to set
+#|# ${1}        : Use this var to set [  ]
+#|# ${2}        : Use this var to set [  ]
+#|#
+#|# Base usage  : None
+#|#
+#|# Description : None
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "this is a model function"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Archive_a_directory
+{
+#|# Var to set  : None
+#|#             : Use this var to set
+#|#             : Use this var to set
+#|# ${1}        : Use this var to set [  ]
+#|# ${2}        : Use this var to set [  ]
+#|#
+#|# Base usage  : None
+#|#
+#|# Description : None
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "this is a model function"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function extract_file
+{
+#|# Var to set  : None
+#|#             : Use this var to set
+#|#             : Use this var to set
+#|# ${1}        : Use this var to set [  ]
+#|# ${2}        : Use this var to set [  ]
+#|#
+#|# Base usage  : None
+#|#
+#|# Description : None
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "this is a model function"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function extract_all
+{
+#|# Var to set  : None
+#|#             : Use this var to set
+#|#             : Use this var to set
+#|# ${1}        : Use this var to set [  ]
+#|# ${2}        : Use this var to set [  ]
+#|#
+#|# Base usage  : None
+#|#
+#|# Description : None
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "this is a model function"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+Sourced_OK="1"

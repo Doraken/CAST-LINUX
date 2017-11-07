@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>compile_menu.lib</LibraryName>
+<Function>
+<FunctionName>Install_package</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Menu_Get_items</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_Menu
+    
+     Description : This function is used to create Base package installation menu
+    
+     Send Back : menu
+    
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>PKG_INSTALL_config</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Menu_Build</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>PKG_INSTALL_CTRL_Sourcing_PKG_CONF</FunctionName>
+<FunctionLib>/lib/ksh/package/compile/sub/compile_sub.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : PKG_INSTALL_config
+    
+     Description : This function is used to create change menu for http get location parameter
+    
+     Send Back : Configuration menu
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>packages_version_config</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Menu_Build</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : packages_version_config
+    
+     Description : This function is used to create change menu package version parameter
+    
+     Send Back : Configuration menu
+    
+</DocText>
+</Function>
+<Function>
+<FunctionName>Packages_URL_config</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Menu_Build</FunctionName>
+<FunctionLib>/lib/ksh/user_interaction/menu.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Packages_URL_config
+    
+     Description : This function is used to create change menu package URL parameter
+    
+     Send Back : Configuration menu
+    
+</DocText>
+</Function>
+ </Library>

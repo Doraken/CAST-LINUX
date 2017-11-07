@@ -1,0 +1,64 @@
+#!/bin/ksh
+###############################################################################
+# Internet.lib                                         Version : 1.1          #
+#                                                                             #
+# Creation Date : 13/10/2006                                                  #
+# Team          : Only me                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This lib is used to provide any function about web and download   #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+############################
+
+
+
+function Internet_Http_Get
+{
+#|# Base_Param_URL          : Use this var to set the base URL tu use for WGET
+#|# Base_Param_File_To_Get  : Use this var to set the file to download with WGET
+#|# PWD_Recept_PKG           : Use this var to set the directory for reception of file downloaded
+#|# Base use :
+#|#           Internet_Http_Get "My_pkg_URL" "My_pkg" "My_pkg_repository"
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+
+Base_Param_URL="${1}"
+Base_Param_File_To_Get="${2}"
+PWD_Recept_PKG="${3}"
+Base_Url_Parameter="${4}"
+
+Control_Check_wget_status
+
+MSG_DISPLAY "Debug5" "Recept Directory is set to  : [ ${PWD_Recept_PKG} ] "
+
+Directory_CRT "${PWD_Recept_PKG}"
+
+if [ -e "${PWD_Recept_PKG}/${Base_Param_File_To_Get}" ]
+   then
+      MSG_DISPLAY "Info" "File Allready Downloaded : [ ${Base_Param_File_To_Get} : OK ]  ] "
+   else
+        DLW_Final_URL="${Base_Param_URL}/${Base_Param_File_To_Get}${Base_Url_Parameter}"
+        MSG_DISPLAY "Debug2" "DLW_Final_URL is set to   : [ ${DLW_Final_URL} ] "
+        ${Global_Tool_wget_bin}  ${WGET_OPTIONS} --directory-prefix=${PWD_Recept_PKG} ${DLW_Final_URL}
+        if [ ! -e "${PWD_Recept_PKG}/${Base_Param_File_To_Get}" ]
+           then
+               MSG_DISPLAY "ErrorN" " File Downloaded : [ ${Base_Param_File_To_Get} : Failled ]  " "1"
+           else
+               MSG_DISPLAY "Info" "File Downloaded : [ ${Base_Param_File_To_Get} : OK ]  ] "
+         fi
+  fi
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+Sourced_OK="1"

@@ -1,0 +1,27 @@
+<HTML>
+    <BODY>
+       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>
+         <PRE><H2>SYNOPSIS</H2></PRE>
+ <B>                                 
+     Var to set :
+     CRF_Result_Action : Use this var to set The las action returne code ( Mandatory )
+     CRF_Generic_Base_MSG : use this var to set base message of control ( Mandatory )
+     CRF_Generic_Base_MSG_ERR : Use this var to set additional iformation on error ( Mandatory )
+     CRF_Result_ERR_Level : Use this var to set the level of test severity on fail ( Mandatory )
+     CRF_Action_ONFAIL : Use this var to set and action to do after CTRL fail ( OPTIONAL )
+     CRF_Action_ONOK : Use this var to set and action to do after CTRL is OK ( OPTIONAL )
+     ${1} : Use this var to set [ CRF_Result_Action ]
+     ${2} : Use this var to set [ CRF_Generic_Base_MSG ]
+     ${3} : Use this var to set [ CRF_Generic_Base_MSG_ERR ]
+     ${4} : Use this var to set [ CRF_Result_ERR_Level ]
+     ${5} : Use this var to set [ CRF_Action_ONFAIL ]
+     ${6} : Use this var to set [ CRF_Action_ONOK ]
+    
+     Base usage : CTRL_Result_func "${?}" "Generic_Base_Param_MSG" "Generic_Base_Param_MSG_ERR" "Result_ERR_Level" "On fail action" "on success action"
+    
+     Description : This function is used to check result of a past action and choose action
+    
+     Send Back : Message / Exit / function
+</B>
+     </BODY> 
+</HTML>

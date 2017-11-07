@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>tool.lib</LibraryName>
+<Function>
+<FunctionName>Tool_Logger_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_Logger_Get
+    
+     Description : This function is used to check if logger bin is present
+    
+     Send Back : vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_cvs_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_cvs_Get
+    
+     Description : This function is used to check if md5sum bin is present
+    
+     Send Back : vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_md5um_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_md5sum_Get
+    
+     Description : This function is used to check if md5sum bin is present
+    
+     Send Back : vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_perl_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_perl_Get
+    
+     Description : This function is used to check if perl bin is present
+    
+     Send Back : vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_wget_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_wget_Get
+    
+     Description : This function is used to check if wget bin is present
+    
+     Send Back : vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_awk_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_awk_Get
+    
+     Description : This function is used to check if awk bin is present
+    
+     Send Back : vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_grep_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_grep_Get
+    
+     Description : This function is used to check if grep bin is present
+    
+     Send Back : vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_uuencode_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_uuencode_Get
+    
+     Description : This function is used to check if uuencode bin is present
+    
+     Send Back : Vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_mail_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_mail_Get
+    
+     Description : This function is used to check if mail bin is present
+    
+     Send Back : Vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_mailx_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_mailx_Get
+    
+     Description : This function is used to check if mailx bin is present
+    
+     Send Back : Vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_mutt_Get</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_mutt_Get
+    
+     Description : This function is used to check if mutt bin is present
+    
+     Send Back : Vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_Global_SET</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Tool_Get_Item_to_execute</FunctionName>
+<FunctionLib>/lib/ksh/system_base/tool.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : Tool_perl_Get
+    
+     Description : This function is used to check if perl bin is present
+    
+     Send Back : vars
+</DocText>
+</Function>
+<Function>
+<FunctionName>Tool_Get_Item_to_execute</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     TGITE_get_Tag : use this var to set the tag to find to builde var aray ( Mandatory )
+     TGITE_Level_Item_Info : Use this var to set which geted item part to keep ( Mandatory )
+     TGITE_file_to_parse : use this var to set which file to parse to get items ( Mandatory )
+     ${1} : use this var to set [ TGITE_get_Tag ]
+     ${2} : use this var to set [ TGITE_Level_Item_Info ]
+     ${3} : use this var to set [ TGITE_file_to_parse ]
+    
+     Base usage : Tool_Get_Item_to_execute "TGITE_get_Tag" "TGITE_Level_Item_Info" "TGITE_file_to_parse" [ "TGITE_Field_Serpparator" ]
+     Description : This function scan a file to creat a array of function to execute
+    
+     Send Back : function execution
+</DocText>
+</Function>
+ </Library>

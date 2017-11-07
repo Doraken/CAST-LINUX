@@ -1,0 +1,22 @@
+<HTML>
+    <BODY>
+       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>
+         <PRE><H2>SYNOPSIS</H2></PRE>
+ <B>                                 
+     Var to set :
+     FGI_get_Tag : use this var to set the tag to find to builde var aray ( Mandatory )
+     FGI_Level_Item_Info : Use this var to set which geted item part to keep ( Mandatory )
+     FGI_file_to_parse : use this var to set which file to parse to get items ( Mandatory )
+     FGI_Field_Serpparator : use this var to set which field separator tu use to parse file ( Optional )
+     ${1} : use this var to set [ FGI_get_Tag ]
+     ${2} : use this var to set [ FGI_Level_Item_Info ]
+     ${3} : use this var to set [ FGI_file_to_parse ]
+     ${4} : use this var to set [ FGI_Field_Serpparator ]
+    
+     Base usage : Fil_Get_Items "FGI_get_Tag" "FGI_Level_Item_Info" "FGI_file_to_parse" [ "FGI_Field_Serpparator" ]
+     Description : This function scan a file to creat a array of item in a var
+    
+     Send Back : One array var
+</B>
+     </BODY> 
+</HTML>

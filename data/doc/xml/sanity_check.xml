@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>sanity_check.lib</LibraryName>
+<Function>
+<FunctionName>SANITY_CHECK_Base_env_directory_check</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Directory_CRT</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Spacer_MSG</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : SANITY_CHECK_Base_env_directory_check
+    
+     Description : This function check and create all mandatory directories needed for CAST execution
+    
+     Send Back : Directory
+</DocText>
+</Function>
+<Function>
+<FunctionName>SANITY_CHECK_Base_root_exec_check</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Spacer_MSG</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : SANITY_CHECK_Base_root_exec_check
+    
+     Description : This function check if you are using root to execute CAST
+     If active it will prompt for user confirmation and send back execution in root mode in system log
+    
+     Send Back : User Check
+</DocText>
+</Function>
+<Function>
+<FunctionName>SANITY_CHECK_Check_TMP_Directory</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>IS_Writable</FunctionName>
+<FunctionLib>/lib/ksh/system_base/control.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Spacer_MSG</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+    
+     Base usage : SANITY_CHECK_Check_TMP_Directory
+    
+     Description : This function check and create all mandatory writable directories needed for CAST execution
+    
+     Send Back : writables Directory
+</DocText>
+</Function>
+<Function>
+<FunctionName>SANITY_CHECK_Check_Language</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Spacer_MSG</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SANITY_CHECK_cnf_file</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+<Function>
+<FunctionName>SANITY_CHECK_tools</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Fil_Get_Items</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Tool_Global_SET</FunctionName>
+<FunctionLib>/lib/ksh/system_base/tool.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+ </Library>

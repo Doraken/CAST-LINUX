@@ -1,0 +1,91 @@
+function CRT_DRBD_CNF_HEAD ()
+{
+echo "global {"
+echo "  usage-count no;"
+echo "}"
+echo ""
+echo "common {"
+echo "  protocol C;"
+echo "  "
+echo "  syncer {"
+echo "    rate 3M;"
+echo "    verify-alg sha1;"
+echo "  }"
+echo "        net {"
+echo "                cram-hmac-alg sha1;"
+echo "                shared-secret \"${DRBD_Secret_Key}\";"
+echo "        }"
+echo ""
+echo "  handlers {"
+echo "    pri-lost-after-sb \"reboot -f\";"
+echo "    pri-lost \"echo Déconnexion des serveurs, vérifier les logs | mail -s 'SERVEUR: Alerte DRBD' ${SRV_ADM_MAIL}\";"
+echo "    out-of-sync \"echo Désynchronisation des serveurs, vérifier les logs | mail -s 'SERVEUR: Alerte DRBD' ${SRV_ADM_MAIL}\";"
+echo "    pri-on-incon-degr \"reboot -f\";"
+echo "    local-io-error \"echo o > /proc/sysrq-trigger ; halt -f\";"
+echo "  }"
+echo "}"
+}
+
+function CRT_DRBD_DEF_DEVICE ()
+{
+_Device_Bindx="${1}"
+_Device_SYSTEM="${2}"
+DRBD_GetMinor
+_MINOR_INDX="${DRBD_GlbMinor}"
+
+
+_DRBD_DEVICE_NAME="CLUST_${_Device_Bindx}"
+_RESSOURCE_PORT=$(expr ${_MINOR_INDX} + 7000 )
+echo "Addin device inforamtion to drbd configuration file "
+echo "resource ${_DRBD_DEVICE_NAME} {"                                >> ${DRDB_CONFIG}
+echo "        protocol C;"                                            >> ${DRDB_CONFIG}
+echo "        device minor ${_MINOR_INDX}; "                          >> ${DRDB_CONFIG}
+echo "        meta-disk internal;"                                    >> ${DRDB_CONFIG}
+echo "        disk ${_Device_SYSTEM};"                                >> ${DRDB_CONFIG}
+echo "        disk { "                                                >> ${DRDB_CONFIG}
+echo "               on-io-error   detach; "                          >> ${DRDB_CONFIG}
+echo "             } "	                                              >> ${DRDB_CONFIG}
+echo "        "                                                       >> ${DRDB_CONFIG}
+CRT_DRBD_DEF_DEVICE_Bhosts
+echo "} "                                                             >> ${DRDB_CONFIG}
+
+drbdadm create-md  ${_DRBD_DEVICE_NAME}
+CTRL_RESULT "Creating private information on device : [   ${_DRBD_DEVICE_NAME} ]"  
+
+drbdadm up  ${_DRBD_DEVICE_NAME} -p $(hostname)
+CTRL_RESULT "binging device : [   ${_DRBD_DEVICE_NAME} up"  
+
+drbdadm primary --force  ${_DRBD_DEVICE_NAME}
+
+
+}
+
+function CRT_DRBD_DEF_DEVICE_Bhosts () 
+{
+
+for hostdrbd in ${DRBD_HOSTS_LIST} 
+  do 
+     echo "        on ${hostdrbd} {"                                     >> ${DRDB_CONFIG}
+     HOSTIP=$(ping -n ${hostdrbd} -c1 | grep \( | awk '{ print $3 }' | sed -e s/\(//g |  sed -e s/\)//g)
+	 echo "                address ${HOSTIP}:${_RESSOURCE_PORT};"    >> ${DRDB_CONFIG}
+	 echo "        }"                                                      >> ${DRDB_CONFIG}
+done
+}
+
+
+function DRBD_GetMinor () 
+{
+if [[ -f ${DRBD_MINORFIle} ]]
+	then 
+		DRBD_GlbMinor=$(cat ${DRBD_MINORFIle})
+		_LocMinor=$( expr ${DRBD_GlbMinor} + 1 ) 
+		echo "Actual Minor idex = [ ${DRBD_GlbMinor} ] Next minor [ ${_LocMinor} ] "
+		echo ${_LocMinor} > ${DRBD_MINORFIle}
+	else 
+	    DRBD_GlbMinor=0
+		echo "1" > ${DRBD_MINORFIle}
+fi
+}
+
+
+

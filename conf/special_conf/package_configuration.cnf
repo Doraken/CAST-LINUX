@@ -1,0 +1,555 @@
+###############################################################################
+# Package_configuration.cnf                                    Version : 1.0  #
+# Author : Arnaud Crampet                                 Date : 01/01/2007   #
+#                                                                             #
+# Subject : This conf file provide all base parameters for packages install   #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+
+####################### All generics install base path ########################
+
+PWD_DLW_PKG="/tmp/Compile"
+PWD_Recept_PKG="${PWD_DLW_PKG}"
+Base_Param_Pkg_Path="${PWD_DLW_PKG}"
+
+BASE_PATH_CVSD="${Base_Dir_prefix_install}/cvsd"
+BASE_PATH_RSYNC="${Base_Dir_prefix_install}/rsync"
+BASE_PATH_TOMCAT="${Base_Dir_prefix_install}/tomcat"
+BASE_PATH_ZLIB="${Base_Dir_prefix_install}/zlib"
+BASE_PATH_XML="${Base_Dir_prefix_install}/xml"
+BASE_PATH_XSL="${Base_Dir_prefix_install}/xsl"
+BASE_PATH_READLINE="${Base_Dir_prefix_install}/readline"
+BASE_PATH_FLEX="${Base_Dir_prefix_install}/flex"
+BASE_PATH_MHASH="${Base_Dir_prefix_install}/mhash"
+BASE_PATH_LIBMCRYPT="${Base_Dir_prefix_install}/libmcrypt"
+BASE_PATH_MCRYPT="${Base_Dir_prefix_install}/mcrypt"
+BASE_PATH_RE2C="${Base_Dir_prefix_install}/re2c"
+BASE_PATH_OPENSSL="${Base_Dir_prefix_install}/openssl"
+BASE_PATH_BERKELEYDB="${Base_Dir_prefix_install}/berkeleydb"
+BASE_PATH_OPENLDAP="${Base_Dir_prefix_install}/openLDAP"
+BASE_PATH_GD="${Base_Dir_prefix_install}/gd"
+BASE_PATH_LIBART="${Base_Dir_prefix_install}/libart"
+BASE_PATH_RRDTOOL="${Base_Dir_prefix_install}/rrd"
+BASE_PATH_CURL="${Base_Dir_prefix_install}/curl"
+BASE_PATH_HTTPD="${Base_Dir_prefix_install}/httpd"
+BASE_PATH_PHP="${Base_Dir_prefix_install}/php"
+BASE_PATH_CACTID="${Base_Dir_prefix_install}/cactid"
+BASE_PATH_CACTI="${Base_Dir_prefix_install}/cacti"
+BASE_PATH_MYSQL="${Base_Dir_prefix_install}/mysql"
+BASE_PATH_LIBIDN="${Base_Dir_prefix_install}/libidn"
+BASE_PATH_NCURSES="${Base_Dir_prefix_install}/ncurses"
+BASE_PATH_TCL="${Base_Dir_prefix_install}/tcl"
+BASE_PATH_TK="${Base_Dir_prefix_install}/tk"
+BASE_PATH_EXPECT="${Base_Dir_prefix_install}/expect"
+BASE_PATH_PNG="${Base_Dir_prefix_install}/png"
+BASE_PATH_RRDTOOLS="${Base_Dir_prefix_install}/rrdtools"
+BASE_PATH_FREETYPE2="${Base_Dir_prefix_install}/freetype2"
+BASE_PATH_CVS="${Base_Dir_prefix_install}/cvs"
+BASE_PATH_NETSNMP="${Base_Dir_prefix_install}/NetSNMP"
+BASE_PATH_ZABBIX="${Base_Dir_prefix_install}/zabbix"
+BASE_PATH_BIND="${Base_Dir_prefix_install}/bind"
+BASE_PATH_LIBICONV="${Base_Dir_prefix_install}/lib_iconv"
+BASE_PATH_AMAVISD="${Base_Dir_prefix_install}/AmavisD"
+BASE_PATH_POSTFIX="${Base_Dir_prefix_install}/postfix"
+
+function Build_URLS
+{
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+Spacer_MSG
+Interleave_MSG
+Spacer_MSG
+
+#################### BASE_PATH_POSTFIX  ##############################
+
+PKG_POSTFIX="postfix-2.4.6"
+MSG_DISPLAY "Config" "Package PKG_CVSD defined to  : [ ${PKG_POSTFIX} ] "
+
+URL_POSTFIX="ftp://mir1.ovh.net/ftp.postfix.org/postfix-release/official"
+MSG_DISPLAY "Config" "Url CVSD defined to  : [ ${URL_POSTFIX} ] "
+
+
+#################### BASE_PATH_CVSD  ##############################
+
+PKG_CVSD="cvsd-1.0.14"
+MSG_DISPLAY "Config" "Package PKG_CVSD defined to  : [ ${PKG_CVSD} ] "
+
+URL_CVSD="http://ch.tudelft.nl/~arthur/cvsd"
+MSG_DISPLAY "Config" "Url CVSD defined to  : [ ${URL_CVSD} ] "
+
+#################### BASE_PATH_RSYNC  ##############################
+
+PKG_RSYNC="rsync-3.0.0pre6"
+MSG_DISPLAY "Config" "Package PKG_RSYNC defined to  : [ ${PKG_RSYNC} ] "
+
+URL_RSYNC="http://samba.anu.edu.au/ftp/rsync"
+MSG_DISPLAY "Config" "Url RSYNC defined to  : [ ${URL_RSYNC} ] "
+
+#################### BASE_PATH_TOMCAT  ##############################
+
+PKG_TOMCAT="apache-tomcat-6.0.14"
+MSG_DISPLAY "Config" "Package PKG_TOMCAT defined to  : [ ${PKG_TOMCAT} ] "
+
+URL_TOMCAT="http://apache.crihan.fr/dist/tomcat/tomcat-6/v6.0.14/bin"
+MSG_DISPLAY "Config" "Url TOMCAT defined to  : [ ${URL_TOMCAT} ] "
+
+#################### BASE_PATH_AMAVISD  ##############################
+
+PKG_AMAVISD="amavisd-new-2.5.2"
+MSG_DISPLAY "Config" "Package PKG_AMAVISD defined to  : [ ${PKG_AMAVISD} ] "
+
+URL_AMAVISD="http://www.ijs.si/software/amavisd"
+MSG_DISPLAY "Config" "Url AMAVISD defined to  : [ ${URL_AMAVISD} ] "
+
+
+#################### BASE_PATH_LIBICONV  ##############################
+PKG_LIBICONV="libiconv-1.11"
+MSG_DISPLAY "Config" "Package PKG_LIBICONV defined to  : [ ${PKG_LIBICONV} ] "
+
+URL_LIBICONV="http://ftp.gnu.org/pub/gnu/libiconv"
+MSG_DISPLAY "Config" "Url LIBICONV defined to  : [ ${URL_LIBICONV} ] "
+
+
+#################### BASE_PATH_BIND  ##############################
+PKG_BIND="bind-9.4.1-P1"
+MSG_DISPLAY "Config" "Package PKG_BIND defined to  : [ ${PKG_BIND} ] "
+
+URL_BIND="http://ftp.isc.org/isc/bind9/9.4.1-P1"
+MSG_DISPLAY "Config" "Url BIND defined to  : [ ${URL_BIND} ] "
+
+#################### BASE_PATH_NETSNMP  ##############################
+PKG_NETSNMP="net-snmp-5.4"
+MSG_DISPLAY "Config" "Package PKG_NETSNMP defined to  : [ ${PKG_NETSNMP} ] "
+
+URL_NETSNMP="http://kent.dl.sourceforge.net/sourceforge/net-snmp"
+MSG_DISPLAY "Config" "Url NETSNMP defined to  : [ ${URL_NETSNMP} ] "
+
+#################### CVS  ##############################
+PKG_CVS="cvs-1.11.22"
+MSG_DISPLAY "Config" "Package PKG_CVS defined to  : [ ${PKG_CVS} ] "
+
+URL_CVS="http://ftp.gnu.org/non-gnu/cvs/source/stable/1.11.22"
+MSG_DISPLAY "Config" "Url CVS defined to  : [ ${URL_CVS} ] "
+
+#################### FREETYPE2  ##############################
+PKG_FREETYPE2="freetype-2.3.2"
+MSG_DISPLAY "Config" "Package PKG_FREETYPE2 defined to  : [ ${PKG_FREETYPE2} ] "
+
+URL_FREETYPE2="http://download.savannah.gnu.org/releases/freetype"
+MSG_DISPLAY "Config" "Url FREETYPE2 defined to  : [ ${URL_FREETYPE2} ] "
+
+#################### RRDTOOLS  ##############################
+PKG_RRDTOOLS="rrdtool-1.2.23"
+MSG_DISPLAY "Config" "Package PKG_RRDTOOLS defined to  : [ ${PKG_RRDTOOLS} ] "
+
+URL_RRDTOOLS="http://oss.oetiker.ch/rrdtool/pub/"
+MSG_DISPLAY "Config" "Url RRDTOOLS defined to  : [ ${URL_RRDTOOLS} ] "
+
+#################### png  ##############################
+PKG_PNG="libpng-1.2.16"
+MSG_DISPLAY "Config" "Package PKG_PNG defined to  : [ ${PKG_PNG} ] "
+
+URL_PNG="http://prdownloads.sourceforge.net/libpng"
+MSG_DISPLAY "Config" "Url PNG defined to  : [ ${URL_PNG} ] "
+
+################## expect ##############################
+PKG_EXPECT="expect-5.44.1"
+MSG_DISPLAY "Config" "Package PKG_EXPECT defined to  : [ ${PKG_EXPECT} ] "
+
+URL_EXPECT="http://expect.nist.gov/old"
+MSG_DISPLAY "Config" "Url expect defined to  : [ ${URL_EXPECT} ] "
+
+#################  libidn-0.6.11   #####################
+PKG_LIBIDN="libidn-0.6.11"
+MSG_DISPLAY "Config" "Package PKG_LIBIDN defined to  : [ ${PKG_LIBIDN} ] "
+
+URL_LIBIDN="ftp://alpha.gnu.org/pub/gnu/libidn/"
+MSG_DISPLAY "Config" "Url Lib IDN defined to  : [ ${URL_LIBIDN} ] "
+
+################# TK 8.4 #############################
+PKG_TK="tk8.5a5-src"
+MSG_DISPLAY "Config" "Package PKG_TK defined to  : [ ${PKG_TK} ] "
+
+URL_TK="http://dfn.dl.sourceforge.net/sourceforge/tcl"
+MSG_DISPLAY "Config" "Url TK defined to  : [ ${URL_TK} ] "
+
+################# TCL  ##################################
+PKG_TCL="tcl8.5a5-src"
+MSG_DISPLAY "Config" "Package PKG_TCL defined to  : [ ${PKG_TCL} ] "
+
+URL_TCL="http://dfn.dl.sourceforge.net/sourceforge/tcl"
+MSG_DISPLAY "Config" "Url TCL defined to  : [ ${URL_TCL} ] "
+
+################# expat  ##################################
+PKG_EXPAT="expat-2.0.1"
+MSG_DISPLAY "Config" "Package PKG_EXPAT defined to  : [ ${PKG_EXPAT} ] "
+
+URL_EXPAT="http://ovh.dl.sourceforge.net/sourceforge/expat"
+MSG_DISPLAY "Config" "Url EXPAT defined to  : [ ${URL_EXPAT} ] "
+
+#################  xml -2.6.27   #####################
+PKG_XML="libxml2-2.6.27"
+MSG_DISPLAY "Config" "Package PKG_XML defined to  : [ ${PKG_XML} ] "
+
+URL_XML="ftp://xmlsoft.org/libxml2"
+MSG_DISPLAY "Config" "Url XML defined to  : [ ${URL_XML} ] "
+
+#################  xslt 1.1.20  #####################
+PKG_XSL="libxslt-1.1.20"
+MSG_DISPLAY "Config" "Package PKG_XML defined to  : [ ${PKG_XSL} ] "
+
+URL_XSL="ftp://xmlsoft.org/libxml2"
+MSG_DISPLAY "Config" "Url XML defined to  : [ ${URL_XSL} ] "
+
+##################  ZLIB 1.2.3   #####################
+PKG_ZLIB="zlib-1.2.3"
+MSG_DISPLAY "Config" "Package PKG_ZLIB defined to  : [ ${PKG_ZLIB} ] "
+
+URL_ZLIB="http://www.zlib.net"
+MSG_DISPLAY "Config" "Url ZLIB defined to  : [ ${URL_ZLIB} ] "
+
+##################  MYSQL 5.0.51   #####################
+PKG_MYSQL="mysql-5.0.51"
+MSG_DISPLAY "Config" "Package PKG_MYSQL defined to  : [ ${PKG_MYSQL} ] "
+
+URL_MYSQL="ftp://ftp.inria.fr/pub/MySQL/Downloads/MySQL-5.0"
+MSG_DISPLAY "Config" "Url MYSQL defined to  : [ ${URL_MYSQL} ] "
+
+##################  READLINE 5.2   #####################
+PKG_READLINE="readline-5.2"
+MSG_DISPLAY "Config" "Package PKG_ZLIB defined to  : [ ${PKG_ZLIB} ] "
+
+URL_READLINE="ftp://ftp.gnu.org/gnu/readline"
+MSG_DISPLAY "Config" "URL_READLINE defined to  : [ ${URL_READLINE} ] "
+
+################## ncurses-5.6 #########################
+PKG_NCURSES="ncurses-5.6"
+MSG_DISPLAY "Config" "Package PKG_NCURSES defined to  : [ ${PKG_NCURSES} ] "
+
+URL_NCURSES="http://ftp.gnu.org/pub/gnu/ncurses"
+MSG_DISPLAY "Config" "PKG_NCURSES defined to  : [ ${URL_NCURSES} ] "
+
+################## FLEX 2.5.33 #########################
+PKG_FLEX="flex-2.5.33"
+MSG_DISPLAY "Config" "Package PKG_ZLIB defined to  : [ ${PKG_ZLIB} ] "
+
+URL_FLEX="http://mesh.dl.sourceforge.net/sourceforge/flex"
+MSG_DISPLAY "Config" "PKG_FLEX defined to  : [ ${URL_FLEX} ] "
+
+################# MHASH 0.3.7.1 ##########################
+PKG_MHASH="mhash-0.9.7.1"
+MSG_DISPLAY "Config" "Package PKG_ZLIB defined to  : [ ${PKG_ZLIB} ] "
+
+URL_MHASH="http://switch.dl.sourceforge.net/sourceforge/mhash"
+MSG_DISPLAY "Config" "URL_MHASH defined to  : [ ${URL_MHASH} ] "
+
+################# LibMCrypt 2.5.7 ##########################
+PKG_LIB_MCRYPT="libmcrypt-2.5.7"
+MSG_DISPLAY "Config" "Package PKG_ZLIB defined to  : [ ${PKG_ZLIB} ] "
+
+################# Mcrypt 2.6.4  ############################
+PKG_MCRYPT="mcrypt-2.6.4"
+MSG_DISPLAY "Config" "Package PKG_ZLIB defined to  : [ ${PKG_ZLIB} ] "
+
+URL_MCRYPT="http://switch.dl.sourceforge.net/sourceforge/mcrypt"
+MSG_DISPLAY "Config" "URL_MCRYPT defined to  : [ ${URL_MCRYPT} ] "
+
+################# Re2C 0.10.6 ##############################
+PKG_RE2C="re2c-0.10.6"
+MSG_DISPLAY "Config" "Package PKG_ZLIB defined to  : [ ${PKG_ZLIB} ] "
+
+URL_RE2C="http://switch.dl.sourceforge.net/sourceforge/re2c"
+MSG_DISPLAY "Config" "URL_RE2C defined to  : [ ${URL_RE2C} ] "
+
+################# OpenSSL 0.9.7 ############################
+PKG_OPENSSL="openssl-0.9.7e"
+MSG_DISPLAY "Config" "Package PKG_ZLIB defined to  : [ ${PKG_ZLIB} ] "
+
+URL_OPENSSL="http://www.openssl.org/source"
+MSG_DISPLAY "Config" "URL_OPENSSL defined to  : [ ${URL_OPENSSL} ] "
+
+################ Berkeley DB ( prerequesite of OPENLDAP ) ####
+
+PKG_BerkeleyDb="db-4.5.20"
+MSG_DISPLAY "Config" "Package PKG_BerkeleyDb defined to  : [ ${PKG_OPEN_LDAP} ] "
+
+URL_BerkeleyDb="http://download.oracle.com/berkeley-db"
+MSG_DISPLAY "Config" "URL_BerkeleyDb defined to  : [ ${URL_OPEN_LDAP} ] "
+
+################  OPEN LDAP 2.3.27 ###########################
+PKG_OPEN_LDAP="openldap-2.3.27"
+MSG_DISPLAY "Config" "Package PKG_OPEN_LDAP defined to  : [ ${URL_BerkeleyDb} ] "
+
+URL_OPEN_LDAP="ftp://ftp.openldap.org/pub/OpenLDAP/openldap-stable"
+MSG_DISPLAY "Config" "URL_OPEN_LDAP defined to  : [ ${URL_OPEN_LDAP} ] "
+
+################  GD 2.0.33         ###########################
+PKG_GD="gd-2.0.33"
+MSG_DISPLAY "Config" "Package PKG_GD defined to  : [ ${PKG_GD} ] "
+
+URL_GD="http://www.boutell.com/gd/http"
+MSG_DISPLAY "Config" "URL_GD defined to  : [ ${URL_GD} ] "
+
+################ libart ####################################
+PKG_LIBART="libart_lgpl-2.3.17"
+MSG_DISPLAY "Config" "Package PKG_LIBART defined to  : [ ${PKG_LIBART} ] "
+
+URL_LIBART="ftp://ftp.gnome.org/pub/GNOME/sources/libart_lgpl/2.3"
+MSG_DISPLAY "Config" "URL_LIBART defined to  : [ ${URL_LIBART} ] "
+
+################  RRDTOOL         ###########################
+PKG_RRD="rrdtool"
+MSG_DISPLAY "Config" "Package PKG_RRD defined to  : [ ${PKG_RRD} ] "
+
+URL_RRD="ftp://ftp.fastorama.com/mirrors/rrdtool"
+MSG_DISPLAY "Config" "URL_RRD defined to  : [ ${URL_RRD} ] "
+
+################  CURL         ###########################
+PKG_CURL="curl-7.16.4"
+MSG_DISPLAY "Config" "Package PKG_RRD defined to  : [ ${PKG_RRD} ] "
+
+URL_CURL="http://curl.haxx.se/download"
+MSG_DISPLAY "Config" "URL_RRD defined to  : [ ${URL_RRD} ] "
+
+################  HTTPD         ###########################
+PKG_HTTPD="httpd-2.2.6"
+MSG_DISPLAY "Config" "Package PKG_HTTPD defined to  : [ ${PKG_HTTPD} ] "
+
+URL_HTTPD="http://apache.fastorama.com/dist/httpd"
+MSG_DISPLAY "Config" "URL_HTTPD defined to  : [ ${URL_HTTPD} ] "
+
+################  PHP      ###########################
+PKG_PHP="php-5.2.1"
+MSG_DISPLAY "Config" "Package PKG_PHP defined to  : [ ${PKG_PHP} ] "
+
+URL_PHP="http://fr3.php.net/get"
+MSG_DISPLAY "Config" "URL_PHP defined to  : [ ${URL_PHP} ] "
+
+URL_ADD_PHP="/from/this/mirror"
+MSG_DISPLAY "Config" "URL_ADD_PHP defined to  : [ ${URL_ADD_PHP} ] "
+############### cactid         ###########################
+PKG_CACTID="cacti-cactid-0.8.6i"
+MSG_DISPLAY "Config" "Package PKG_CACTID defined to  : [ ${PKG_CACTID} ] "
+
+URL_CACTID="http://www.cacti.net/downloads/cactid"
+MSG_DISPLAY "Config" "URL_CACTID defined to  : [ ${URL_CACTID} ] "
+
+################# cacti php #############################
+PKG_CACTI_PHP="cacti-0.8.6i"
+MSG_DISPLAY "Config" "Package PKG_CACTI_PHP defined to  : [ ${PKG_CACTI_PHP} ] "
+
+URL_CACTI_PHP="http://www.cacti.net/downloads"
+MSG_DISPLAY "Config" "URL_CACTI_PHP defined to  : [ ${URL_CACTI_PHP} ] "
+
+################# Zabbix php #############################
+PKG_ZABBIX="zabbix-1.4.1"
+MSG_DISPLAY "Config" "Package ZABBIX defined to  : [ ${PKG_ZABBIX} ] "
+
+URL_ZABBIX="http://surfnet.dl.sourceforge.net/sourceforge/zabbix"
+MSG_DISPLAY "Config" "URL_ZABBIX defined to  : [ ${URL_ZABBIX} ] "
+
+
+Spacer_MSG
+Interleave_MSG
+Spacer_MSG
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+########################### For internaml Use #################################
+
+function Build_URLS_Internal
+{
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+Build_URLS
+
+Spacer_MSG
+Interleave_MSG
+Spacer_MSG
+Base_internal_URL_repo="http://10.162.13.139:5080/packages_repository"
+
+
+#################### POSTFIX  ##############################
+URL_POSTFIX="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url CVSD defined to  : [ ${URL_POSTFIX} ] "
+
+#################### CVSD  ##############################
+URL_CVSD="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url CVSD defined to  : [ ${URL_CVSD} ] "
+
+#################### RSYNC  ##############################
+URL_RSYNC="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url RSYNC defined to  : [ ${URL_RSYNC} ] "
+
+#################### TOMCAT  ##############################
+URL_TOMCAT="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url TOMCAT defined to  : [ ${URL_TOMCAT} ] "
+
+#################### AMAVISD  ##############################
+URL_AMAVISD="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url AMAVISD defined to  : [ ${URL_AMAVISD} ] "
+
+#################### LIBICONV  ##############################
+URL_LIBICONV="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url LIBICONV defined to  : [ ${URL_LIBICONV} ] "
+
+#################### BIND  ##############################
+URL_BIND="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url BIND defined to  : [ ${URL_BIND} ] "
+
+#################### NETSNMP  ##############################
+URL_NETSNMP="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url NETSNMP defined to  : [ ${URL_NETSNMP} ] "
+
+#################### CVS  ##############################
+URL_CVS="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url CVS defined to  : [ ${URL_CVS} ] "
+
+#################### FREETYPE2  ##############################
+URL_FREETYPE2="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url FREETYPE2 defined to  : [ ${URL_FREETYPE2} ] "
+
+#################### RRDTOOLS  ##############################
+URL_RRDTOOLS="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url RRDTOOLS defined to  : [ ${URL_RRDTOOLS} ] "
+
+#################### png  ##############################
+URL_PNG="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url PNG defined to  : [ ${URL_PNG} ] "
+
+################## expect ##############################
+URL_EXPECT="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url expect defined to  : [ ${URL_EXPECT} ] "
+
+#################  libidn-0.6.11   #####################
+URL_LIBIDN="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url Lib IDN defined to  : [ ${URL_LIBIDN} ] "
+
+################# TK 8.4 #############################
+URL_TK="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url TK defined to  : [ ${URL_TK} ] "
+
+################# TCL  ##################################
+URL_TCL="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url TCL defined to  : [ ${URL_TCL} ] "
+
+################# expat  ##################################
+URL_EXPAT="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url EXPAT defined to  : [ ${URL_EXPAT} ] "
+
+#################  xml -2.6.27   #####################
+URL_XML="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url XML defined to  : [ ${URL_XML} ] "
+
+#################  xslt 1.1.20  #####################
+URL_XSL="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url XML defined to  : [ ${URL_XSL} ] "
+
+##################  ZLIB 1.2.3   #####################
+URL_ZLIB="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url ZLIB defined to  : [ ${URL_ZLIB} ] "
+
+##################  MYSQL 5.0.37   #####################
+URL_MYSQL="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "Url MYSQL defined to  : [ ${URL_MYSQL} ] "
+
+##################  READLINE 5.2   #####################
+URL_READLINE="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_READLINE defined to  : [ ${URL_READLINE} ] "
+
+################## ncurses-5.6 #########################
+URL_NCURSES="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "PKG_NCURSES defined to  : [ ${URL_NCURSES} ] "
+
+################## FLEX 2.5.33 #########################
+URL_FLEX="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "PKG_FLEX defined to  : [ ${URL_FLEX} ] "
+
+################# MHASH 0.3.7.1 ##########################
+URL_MHASH="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_MHASH defined to  : [ ${URL_MHASH} ] "
+
+################# Mcrypt 2.6.4  ############################
+URL_MCRYPT="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_MCRYPT defined to  : [ ${URL_MCRYPT} ] "
+
+################# Re2C 0.10.6 ##############################
+URL_RE2C="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_RE2C defined to  : [ ${URL_RE2C} ] "
+
+################# OpenSSL 0.9.7 ############################
+URL_OPENSSL="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_OPENSSL defined to  : [ ${URL_OPENSSL} ] "
+
+################ Berkeley DB ( prerequesite of OPENLDAP ) ####
+URL_BerkeleyDb="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_BerkeleyDb defined to  : [ ${URL_OPEN_LDAP} ] "
+
+################  OPEN LDAP 2.3.27 ###########################
+URL_OPEN_LDAP="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_OPEN_LDAP defined to  : [ ${URL_OPEN_LDAP} ] "
+
+################  GD 2.0.33         ###########################
+URL_GD="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_GD defined to  : [ ${URL_GD} ] "
+
+################ libart ####################################
+URL_LIBART="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_LIBART defined to  : [ ${URL_LIBART} ] "
+
+################  RRDTOOL         ###########################
+URL_RRD="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_RRD defined to  : [ ${URL_RRD} ] "
+
+################  CURL         ###########################
+URL_CURL="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_RRD defined to  : [ ${URL_RRD} ] "
+
+################  HTTPD         ###########################
+URL_HTTPD="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_HTTPD defined to  : [ ${URL_HTTPD} ] "
+
+################  PHP      ###########################
+URL_PHP="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_PHP defined to  : [ ${URL_PHP} ] "
+
+URL_ADD_PHP=""
+MSG_DISPLAY "Config" "URL_ADD_PHP defined to  : [ ${URL_ADD_PHP} ] "
+
+############### cactid         ###########################
+URL_CACTID="http://www.cacti.net/downloads/cactid"
+MSG_DISPLAY "Config" "URL_CACTID defined to  : [ ${URL_CACTID} ] "
+
+################# cacti php #############################
+URL_CACTI_PHP="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_CACTI_PHP defined to  : [ ${URL_CACTI_PHP} ] "
+
+################# Zabbix php #############################
+URL_ZABBIX="${Base_internal_URL_repo}"
+MSG_DISPLAY "Config" "URL_ZABBIX defined to  : [ ${URL_ZABBIX} ] "
+
+Spacer_MSG
+Interleave_MSG
+Spacer_MSG
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+Package_Configuration="OK"
+Sourced_OK="1"

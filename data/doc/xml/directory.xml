@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>directory.lib</LibraryName>
+<Function>
+<FunctionName>Dir_null_or_slash</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Path_To_test : Use this var to set the path to test
+     ${1} : use this var to set Path_To_test
+     base usage :
+     Dir_null_or_slash "My_directory_path"
+</DocText>
+</Function>
+<Function>
+<FunctionName>Directory_CRT</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Dir_null_or_slash</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_param_Dir_To_Create : use this var to set which irectory to control and create
+     ${1} : use this var to set Base_param_Dir_To_Create
+     Basic usage :
+     Directory_CRT "My_Directory"
+</DocText>
+</Function>
+<Function>
+<FunctionName>Directory_LST</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Directory_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_param_Dir : use this var to set wher to list subdirectory
+     Sendback_Dir_Listed : this var is used to keep result of listing
+</DocText>
+</Function>
+<Function>
+<FunctionName>Directory_Exist</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_Param_Dir_To_TEST : Use this var to set which directory to test
+     ${1} : User this var to set Base_Param_Dir_To_TEST
+     Basic use :
+    
+     Directory_Exist "My_directory_full_path"
+</DocText>
+</Function>
+ </Library>

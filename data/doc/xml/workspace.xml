@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>workspace.lib</LibraryName>
+<Function>
+<FunctionName>Ctrl_Depth</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Ctrl_Depth</FunctionName>
+<FunctionLib>/lib/ksh/other/workspace.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Ctrl_Depth : use this var to
+</DocText>
+</Function>
+ </Library>

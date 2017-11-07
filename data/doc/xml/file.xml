@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>file.lib</LibraryName>
+<Function>
+<FunctionName>File_Ctrl_Ext</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     INTERNAL_File_To_TEST : Use this var to set the fileto test ( Mandatory )
+     INTERNAL_Ext_To_TEST : Use this var to set the ext to test ( Mandatory )
+     INTERNAL_CRITICITY_OF_FAIL : Use this var to set the level of the error ( Mandatory )
+     INTERNAL_ACTION_ON_FAIL : Use this var to set the action to do if the test FAIL ( Optional )
+     INTERNAL_ACTION_ON_SUCCESS : Use this var to set the action to do if the test FAIL ( Optional )
+     ${1} : use this var to set [ INTERNAL_File_To_TEST ]
+     ${2} : use this var to set [ INTERNAL_Ext_To_TEST ]
+     ${3} : use this var to set [ INTERNAL_CRITICITY_OF_FAIL ]
+     ${4} : use this var to set [ INTERNAL_ACTION_ON_FAIL ]
+     ${5} : use this var to set [ INTERNAL_ACTION_ON_SUCCESS ]
+    
+     Base usage : File_Ctrl_Ext "My_File" "My_ext" "INTERNAL_CRITICITY_OF_FAIL" "INTERNAL_ACTION_ON_FAIL" "INTERNAL_ACTION_ON_SUCCESS"
+    
+     Description : This function is used to chek if a file exist or not and do specifics actions in both case
+    
+     Send Back : None
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_Ctrl_Type</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     INTERNAL_FILE_TO_TEST : Use this var to set the file name of the file to test ( Mandatory )
+     INTERNAL_FILE_TYPE : Use this var to set the type of file to obtain ( Mandatory )
+     INTERNAL_ERR_TYPE : Use this var to set the type of error on fail ( Mandatory )
+     INTERNAL_ERR_LEVEL : Use this var to set the level of the error ( Mandatory )
+     ACTION_ON_FAIL : Use this var to set the action to take on failled test ( Optional )
+     ACTION_ON_SUCCESS : Use this var to set the action to take on successful test ( Optional )
+     ${1} : Use this var to set [ INTERNAL_FILE_TO_TEST ]
+     ${2} : Use this var to set [ INTERNAL_FILE_TYPE ]
+     ${3} : Use this var to set [ INTERNAL_ERR_TYPE ]
+     ${4} : Use this var to set [ ACTION_ON_FAIL ]
+     ${5} : Use this var to set [ ACTION_ON_FAIL ]
+     ${6} : Use this var to set [ ACTION_ON_SUCCESS ]
+     Base usage
+     File_Ctrl_Type "INTERNAL_FILE_TO_TEST" "INTERNAL_FILE_TYPE" "INTERNAL_ERR_TYPE" "INTERNAL_ERR_LEVEL" [ "ACTION_ON_FAIL" "ACTION_ON_SUCCESS" ]
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_Get_Type</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_Param_File_To_get_type : use this var to set which file to controle ( Mandatory )
+     File_Get_Type_on_fail : use this vas to set which action to do on failled check
+     File_Get_Type_on_success : use this var to set which action to do on success check
+     File_type_to_Return : This vas is used to send back file type to the calling function
+     ${1} : Use this var to set [ Base_Param_File_To_TEST ]
+     ${2} : Use this var to set [ File_Get_Type_on_fail ]
+     ${3} : use this var to set [ File_Get_Type_on_success ]
+     Basic Usage : File_Get_Type "My file to get type"
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_Ctrl_Exist</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_Param_File_To_TEST : use this var to set which file to controle
+     lib_File_Ctrl_Existe_create : Use this var to set if you want to create the file if he wn't exist
+     lib_File_Ctrl_Existe_critic_level : Use this var to set the serverity exit level
+     lib_File_Ctrl_Existe_onfail_action : Use this var to set the action to do on failed condition
+     lib_File_Ctrl_Existe_onsuccess_action : Use this var to set the action to do on passed condition
+     ${1} : Use this var to set [ Base_Param_File_To_TEST ]
+     ${2} : Use this var to set [ lib_File_Ctrl_Existe_create ]
+     ${3} : Use this var to set [ lib_File_Ctrl_Existe_critic_level ]
+     ${4} : Use this var to set [ lib_File_Ctrl_Existe_onfail_action ]
+     ${5} : Use this var to set [ lib_File_Ctrl_Existe_onsuccess_action ]
+    
+     Base usage : File_Ctrl_Exist "file to control" "Dont_Create_File" "criticity_of_fail" "Action on fail" "Action on success"
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_Remove</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>CTRL_Result_func</FunctionName>
+<FunctionLib>/lib/ksh/system_base/control.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_Param_File_To_REMOVE : Use this var to set the ful pathed filename to remove
+     FR_Action_ONFAIL : Use this var to set wich action to do on funtion fail
+     FR_Action_ONOK : Use this var to set wich action to do on funtion success
+     FR_Result_ERR_Level : Use this var to set wich action to set the level of error
+     $1 : Use this var to set [ Base_Param_File_To_REMOVE ]
+     $2 : Use this var to set [ FR_Action_ONFAIL ]
+     $3 : Use this var to set [ FR_Action_ONOK ]
+     $4 : Use this var to set [ FR_Result_ERR_Level ]
+    
+     Base usage : File_Remove "/My/file/to/remose.file" "Action ON FAIL" "Action ON OK" "err level"
+    
+     Description : This function is used to delete one file and check if all is ok
+    
+     Send Back : May send back some actions
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_Ctrl_Sourcing</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Directory_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>Dir_null_or_slash</FunctionName>
+<FunctionLib>/lib/ksh/system_base/directory.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     Base_File_To_Source : this var is used to set the filename of the file
+     Base_Path_For_File : This var is used to set the full path of the file
+     Action_To_Do_After_Sourcing : This var is used to set action to do after a successfully sourcing Operation
+     $1 : This var feed Base_File_To_Source
+     $2 : This var feed Path to file to source
+     $3 : This var feed Action to do after succefully sourcing operation
+     Sourced_OK : This var is set when sourcing file to ensure the correct sourcing of the file
+    
+     Base usage : File_Ctrl_Sourcing "my_file" "my_path_to_file"
+    
+     Description : This function is used to control if sourcing procedure is OK
+    
+     Send Back : None
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_Get_FileName</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     This function provide capacity to find filename at the end of the path
+     $1 : use this var to set Path and file to refine
+     Base usage
+     File_Get_FileName "My_PATH/my_file vars"
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_Backup</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Get_FileName</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_File_To_bck : use this var to set which file to backup
+     ${1} : use this var to set Base_File_To_bck
+     Basic use : File_Backup "file to backup"
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_move_or_copy</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>File_Ctrl_Exist</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Get_FileName</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Base_File_To_move_or_copy : use this var to set which file to copy or move
+     Base_Destination : Use this var to set the destination of the files / dirs
+     Action_type_cpmv : use this var to set if you copy or move the file / dirs
+     Is_To_Dir : Use this var if the destination is a directory
+    
+     ${1} : use this var to set Base_File_To_move_or_copy
+     ${2} : Use this var to set Base_File_Dest
+     ${3} : use this var to set Action_type_cpmv ( copy = cp | move = mv )
+     ${4} : Use this var to set Is_To_Dir
+     Basic use : File_move_or_copy "file to MVCP" "destination full path " "action type" "destination is a dir 0/1"
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_Read</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Data_miner : Use this var to set which function or cmd to make data mining in line
+     ${1} : Use this var to set Data_miner
+     use  to send file to function
+     Basic usage : File_Read ["data miner"]   file
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_MD5_Create</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set : None
+     : Use this var to set
+     : Use this var to set
+     ${1}
+     ${2}
+    
+     Base usage : None
+    
+     Description : None
+    
+     Send Back : None
+</DocText>
+</Function>
+<Function>
+<FunctionName>File_MD5_check_create</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     File_to_control_MD5 : Use this var to set
+     : Use this var to set
+     ${1}
+     ${2}
+    
+     Base usage : None
+    
+     Description : None
+    
+     Send Back : None
+</DocText>
+</Function>
+<Function>
+<FunctionName>Fil_Get_Items</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Var to set :
+     FGI_get_Tag : use this var to set the tag to find to builde var aray ( Mandatory )
+     FGI_Level_Item_Info : Use this var to set which geted item part to keep ( Mandatory )
+     FGI_file_to_parse : use this var to set which file to parse to get items ( Mandatory )
+     FGI_Field_Serpparator : use this var to set which field separator tu use to parse file ( Optional )
+     ${1} : use this var to set [ FGI_get_Tag ]
+     ${2} : use this var to set [ FGI_Level_Item_Info ]
+     ${3} : use this var to set [ FGI_file_to_parse ]
+     ${4} : use this var to set [ FGI_Field_Serpparator ]
+    
+     Base usage : Fil_Get_Items "FGI_get_Tag" "FGI_Level_Item_Info" "FGI_file_to_parse" [ "FGI_Field_Serpparator" ]
+     Description : This function scan a file to creat a array of item in a var
+    
+     Send Back : One array var
+</DocText>
+</Function>
+ </Library>

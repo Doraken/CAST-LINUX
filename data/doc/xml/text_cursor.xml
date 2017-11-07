@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>text_cursor.lib</LibraryName>
+<Function>
+<FunctionName>TEXT_CURSOR_Move_Cursor</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Moves the text cursor
+     $1 is the direction for cursor move
+     it can be one of (up, down, left, right)
+     $2 is the number of rows or columns to move
+     it is optional
+     its default value is 1
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_save_Cursor_Pos</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Saves the current cursor position
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_restore_Cursor_Pos</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Restores the last saved cursor position
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_save_Cursor_PosAndAttributes</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Saves the current cursor position and attributes
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_restore_Cursor_PosAndAttributes</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Restores the last saved cursor position and attributes
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_set_Cursor_Pos</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     Moves the text cursor to given row and column
+     $1 is the row
+     $2 is the column
+     If zero or one argument is given, cursor goes home (1,1)
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_clear_Line_End</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Erases remaining of line
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_clear_Line_Start</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Erases beginning of line
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_clear_Line</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Erases line
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_clear_Screen_End</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Erases remaining of screen
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_clear_Screen_Start</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Erases beginning of screen
+</DocText>
+</Function>
+<Function>
+<FunctionName>TEXT_CURSOR_clear_Screen</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Erases screen
+</DocText>
+</Function>
+ </Library>

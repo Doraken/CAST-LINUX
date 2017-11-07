@@ -1,0 +1,150 @@
+###############################################################################
+# CVS.lib                                               Version : 1.0         #
+#                                                                             #
+# Creation Date : 24/04/2008                                                  #
+# Team          : **************************************                      #
+# Support mail  : arnaud@crampet.net                                           #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This library provide base menu access to a  CVS repository        #
+#                                                                             #
+###############################################################################
+
+
+function CVS_menu                                             # CVS_Launch_Menu
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_menu
+#|# 
+#|# Description : This function is used to generate BAse CVS menu
+#|#
+#|# Send Back   : Interactive CVS menu
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+set -A int_cvs_menu_Base 'cvs base menu:' \
+'CVS_print_active_conf' \
+'CVS_Print_default_conf' \
+'CVS_menu_config' \
+'CVS_menu_action'
+Menu_Build int_cvs_menu_Base 
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function CVS_menu_config
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_menu
+#|#
+#|# Description : This function is used to generate BAse CVS menu
+#|#
+#|# Send Back   : Interactive CVS menu
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+set -A int_cvs_menu_configurations 'Menu CVS Configuration:' \
+'CHANGE CVS_HOST=[${CVS_HOST}]'             \
+'CHANGE CVS_PORT=[${CVS_PORT}]'             \
+'CHANGE CVS_USERNAME=[${CVS_USERNAME}]'     \
+'CHANGE CVS_REPOSITORY=[${CVS_REPOSITORY}]' \
+'CHANGE CVS_PROJECT=[${CVS_PROJECT}]'       \
+'CHANGE CVS_BRANCH=[${CVS_BRANCH}]'         \
+'CHANGE CVS_TYPE=[${CVS_TYPE}]'
+
+Menu_Build int_cvs_menu_configurations
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function CVS_connection_menu
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_connection_menu
+#|#
+#|# Description : This function is used to call create menu for CVS longin action
+#|#
+#|# Send Back   : Interactive Menu Function call
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+set -A int_CVS_connection_Menu 'CVS connection menu:' \
+'cvs_login' \
+'cvs_logout'
+
+Menu_Build int_CVS_connection_Menu
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function CVS_Get_DATA
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_Get_DATA
+#|#
+#|# Description : This function is used to call create menu for CVS actions
+#|#
+#|# Send Back   : Interactive Menu Function call
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+
+set -A int_CVS_connection_Menu 'CVS action menu:' \
+'CVS_export' \
+'CVS_checkout' \
+'CVS_update'
+
+Menu_Build int_CVS_connection_Menu
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function CVS_menu_action
+{
+
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+CVS_Config_check
+
+CVS_conn_constructor
+
+MSG_DISPLAY "Info" "CVS_ROOT information [ ${CVSROOT} ]"
+
+set -A CMA_cvs_menu_Action 'cvs base Action:' \
+'CVS_connection_menu' \
+'CVS_Get_DATA' \
+'CVS_Put_DATA' \
+Menu_Build CMA_cvs_menu_Action
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+Sourced_OK="1"

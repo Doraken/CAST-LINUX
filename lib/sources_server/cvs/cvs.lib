@@ -1,0 +1,357 @@
+###############################################################################
+# CVS.lib                                               Version : 1.1.2.2     #
+#                                                                             #
+# Creation Date : 03/02/2007                                                  #
+# Team          : Only me after all                                           #
+# Support mail  : arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet       / Arnaud Crampet                       #
+#                                                                             #
+# Subject : This library provide base access to a pserver-based CVS repository#
+#                                                                             #
+###############################################################################
+####
+# Info
+# NOTE: Adjust the following as necessary in your specifics configuration file
+
+################################## INIT ########################################
+
+function CVS_vars_init
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_vars_init
+#|#
+#|# Description : This function is used to cvs var init
+#|#
+#|# Send Back   : console output / vars
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+if [ "${CVS_INIT_OK}" = "1" ]
+   then
+   	   MSG_DISPLAY "Debug6" "CVS_vars_init : [ already done ] "
+   else
+       MSG_DISPLAY "Debug6" "CVS_vars_init : [ not yet done ] "
+
+       CVS_VAR_LIST="Base_Cvs_Host Base_Cvs_Port Base_Cvs_Username Base_Cvs_Repository Base_Cvs_Project Base_Cvs_Branch"
+       for CVS_VARS in ${CVS_VAR_LIST}
+           do
+              eval Empty_Var_Control \"\${$CVS_VARS}\" \"${CVS_VARS}\" \"ErrorN\" \"1\" \"Set the Base_Cvs_Host value in conf file ${Conf_Specifics}\"
+       done
+
+       Default_CVS_HOST="${Base_Cvs_Host}"
+       CVS_HOST="${Base_Cvs_Host}"
+
+       Default_CVS_PORT="${Base_Cvs_Port}"
+       CVS_PORT="${Base_Cvs_Port}"
+
+       Default_CVS_USERNAME="${Base_Cvs_Username}"
+       CVS_USERNAME="${Base_Cvs_Username}"
+
+       Default_CVS_REPOSITORY="${Base_Cvs_Repository}"
+       CVS_REPOSITORY="${Base_Cvs_Repository}"
+
+       Default_CVS_PROJECT="${Base_Cvs_Project}"
+       CVS_PROJECT="${Base_Cvs_Project}"
+
+       Default_CVS_BRANCH="${Base_Cvs_Branch}"
+       CVS_BRANCH="${Base_Cvs_Branch}"
+
+
+       ########## ACR in modif ( remove this when new function will be ok )
+       if [ -z "${Base_Cvs_TYPE}" ]
+          then
+          	  MSG_DISPLAY "ErrorN" "the Base_Cvs_TYPE value in conf file ${Conf_Specifics} : [ Null ] "  "0"
+          	  MSG_DISPLAY "ErrorN" "Assuming the CVS is : [ LOCAL ] "  "0"
+          	  CVS_TYPE="Local"
+          else
+              CVS_Detect_Connexion_Type
+
+       fi
+
+
+
+       CVS_INIT_OK="1"
+       MSG_DISPLAY "Debug6" "CVS_vars_init : [ done ] "
+fi
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+function CVS_Config_check
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : CVS_Config_check
+#|#
+#|# Description : This function is used to Check cvs configuration consistancy
+#|#
+#|# Send Back   : check
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "Checking CVS working Configuraiton"
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"Check Passed: Base Cvs Host environment value : [ ${CVS_HOST} ]\" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_HOST\" \"${CVS_HOST}\""
+Empty_Var_Control "${CVS_HOST}" "CVS_HOST" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"Check Passed: Base Cvs Username environment . value [ ${CVS_USERNAME} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_USERNAME\" \"${CVS_USERNAME}\""
+Empty_Var_Control "${CVS_USERNAME}" "CVS_USERNAME" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"Check Passed: Base Cvs Repository environment .value [ ${CVS_REPOSITORY} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_REPOSITORY\" \"${CVS_REPOSITORY}\""
+Empty_Var_Control "${CVS_REPOSITORY}" "CVS_REPOSITORY" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"Check Passed: Base Cvs Project environment . value [ ${CVS_PROJECT} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_PROJECT\" \"${CVS_PROJECT}\""
+Empty_Var_Control "${CVS_PROJECT}" "CVS_PROJECT" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"Check Passed: Base Cvs Branch environment . value [ ${CVS_BRANCH} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_BRANCH\" \"${CVS_BRANCH}\""
+Empty_Var_Control "${CVS_BRANCH}" "CVS_BRANCH" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+### ACR insert cvs type
+On_ok_Simple="MSG_DISPLAY \"Info\" \"Check Passed: Base Cvs TYPE environment . value [ ${CVS_TYPE} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_TYPE\" \"${CVS_TYPE}\""
+Empty_Var_Control "${CVS_TYPE}" "CVS_TYPE" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+
+}
+
+function CVS_OVERRIDE_CONFIG
+{
+#|# Var to set  : None
+#|# CVS_HOST            : Use this var to set which HOST to use for CVS pserver ( replacing Base_Cvs_Host )
+#|# CVS_PORT            : Use this var to set Which PORT to use for CVS Pserver ( replacing Base_Cvs_Port )
+#|# CVS_USERNAME        : Use this var to set which USER to use to connect on pserver ( replacing  Base_Cvs_Username )
+#|# CVS_REPOSITORY      : Use this var to set the context root on CVS pserver   ( replacing Base_Cvs_Repository )
+#|# CVS_BRANCH          : Use this var to set the current project to use with CVS (  replacing Base_Cvs_Project )
+#|# CVS_empty_criticity : Use this var to set the current project Brranche to use with CVS (  replacing  )
+#|# ${1}        : Use this var to set [ CVS_HOST ]
+#|# ${2}        : Use this var to set [ CVS_PORT ]
+#|# ${3}        : Use this var to set [ CVS_USERNAME ]
+#|# ${4}        : Use this var to set [ CVS_REPOSITORY ]
+#|# ${5}        : Use this var to set [ CVS_BRANCH ]
+#|# ${6}        : Use this var to set [ CVS_empty_criticity ]
+#|#
+#|# Base usage  : CVS_OVERRIDE_CONFIG "CVS_HOST" "CVS_PORT" "CVS_USERNAME" "CVS_REPOSITORY" "CVS_BRANCH" "CVS_empty_criticity"
+#|#
+#|# Description : This function is used to ovveride all default parameter of CVS config file
+#|#
+#|# Send Back   : Vars
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+CVS_vars_init
+
+CVS_HOST="${1}"
+CVS_PORT="${2}"
+CVS_USERNAME="${3}"
+CVS_REPOSITORY="${4}"
+CVS_PROJECT="${5}"
+CVS_BRANCH="${6}"
+CVS_empty_criticity="${7}"
+
+MSG_DISPLAY "Info" "OVERRIDE: starting override of default CVS parameter "
+CVS_Print_default_conf
+
+
+MSG_DISPLAY "Info" "Printing new CVS working Configuraiton"
+CVS_print_active_conf
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"OVERRIDE: Base Cvs Host environment . New value [ ${CVS_HOST} ]\" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_HOST\" \"${CVS_HOST}\""
+Empty_Var_Control "${CVS_HOST}" "CVS_HOST" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"OVERRIDE: Base Cvs Username environment . New value [ ${CVS_USERNAME} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_USERNAME\" \"${CVS_USERNAME}\""
+Empty_Var_Control "${CVS_USERNAME}" "CVS_USERNAME" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"OVERRIDE: Base Cvs Repository environment . New value [ ${CVS_REPOSITORY} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_REPOSITORY\" \"${CVS_REPOSITORY}\""
+Empty_Var_Control "${CVS_REPOSITORY}" "CVS_REPOSITORY" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"OVERRIDE: Base Cvs Project environment . New value [ ${CVS_PROJECT} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_PROJECT\" \"${CVS_PROJECT}\""
+Empty_Var_Control "${CVS_PROJECT}" "CVS_PROJECT" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+On_ok_Simple="MSG_DISPLAY \"Info\" \"OVERRIDE: Base Cvs Branch environment . New value [ ${CVS_BRANCH} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_BRANCH\" \"${CVS_BRANCH}\""
+Empty_Var_Control "${CVS_BRANCH}" "CVS_BRANCH" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+#### ACR insert ( CVS TYPE )
+On_ok_Simple="MSG_DISPLAY \"Info\" \"OVERRIDE: Base Cvs TYPE environment . New value [ ${CVS_TYPE} ] \" "
+On_ko_simple="Menu_Change_Conf_item \"CVS_TYPE\" \"${CVS_TYPE}\""
+Empty_Var_Control "${CVS_TYPE}" "CVS_TYPE" "ErrorN" "0" "" "eval ${On_ko_simple} " "eval ${On_ok_Simple}"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+
+}
+
+
+
+
+
+
+function cvs_login
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : cvs_login
+#|#
+#|# Description : This function is used to login of CVS
+#|#
+#|# Send Back   : Logout of CVS
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+Control_Check_cvs_status
+if [ "${CVS_connection_login}" = "0" ]
+   then
+       ${Global_Tool_cvs_bin} login
+       if [ "${Result_Action}" = "0" ]
+          then
+              MSG_DISPLAY "Info" "CVS connexion status[ OK  ] "
+              CVS_connection_login="1"
+          else
+              MSG_DISPLAY "Warning1"  "CVS connexion status  [ ERROR  ] "
+              CVS_connection_login="0"
+       fi
+
+   else
+       MSG_DISPLAY "Debug5" "CVS connexion status  : [ logged in  ] "
+fi
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+
+
+
+
+
+#################################### CVS ACTION ################################
+
+function CVS_ACT_Generic
+{
+#|# CVS_ACTION_TO_DO     : set this var with action to do
+#|# $1                   : set this var with value for CVS_ACTION_TO_DO
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+Control_Check_cvs_status
+CVS_ACTION_TO_DO="${1}"
+
+if [ "${CVS_connection_login}" = "1" ]
+   then
+   	   MSG_DISPLAY "Debug6" "CVS login status  : [ OK ] "
+   else
+       MSG_DISPLAY "Debug6" "CVS login status  : [ not logged ] "
+       ${Global_Tool_cvs_bin} login
+       CVS_connection_login="1"
+fi
+
+CVS_conn_constructor
+
+#Generic_Base_Param_MSG="Status for ${CVS_ACTION_TO_DO} for  ${CVS_PROJECT} with revision ${CVS_BRANCH} on server ${CVS_HOST}"
+Directory_CRT ${Base_Cvs_TempDir}
+OLD_PWD="$( pwd )"
+cd ${Base_Cvs_TempDir}
+${Global_Tool_cvs_bin} ${CVS_ACTION_TO_DO} -r ${CVS_BRANCH} ${CVS_PROJECT}
+CTRL_Result_func "${?}" "Check of CVS action [ ${CVS_ACTION_TO_DO} ] " "" "1"
+cd ${OLD_PWD}
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function CVS_conn_constructor
+{
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+
+if [ "${CVS_TYPE}" = "Local" ]
+   then
+       CVS_CONSTRUCTOR="${CVS_REPOSITORY}"
+   else
+       CVS_CONSTRUCTOR=":${CVS_TYPE}:${CVS_USERNAME}@${CVS_HOST}:${CVS_REPOSITORY}"
+fi
+Empty_Var_Control "${CVS_CONSTRUCTOR}" "CVS_CONSTRUCTOR" "ErrorN" "1"
+
+if [ "${CVS_CONSTRUCTOR}" = "${CVSROOT}" ]
+   then
+   	   MSG_DISPLAY "Debug6" "CVSROOT already set to : [ ${CVSROOT} ] "
+   else
+       MSG_DISPLAY "Debug6" "CVSROOT  : [ not OK ] "
+       CVSROOT="${CVS_CONSTRUCTOR}"
+       export CVSROOT
+   	   Empty_Var_Control "${CVSROOT}" "CVSROOT" "ErrorN" "1"
+   	   MSG_DISPLAY "Debug6" "CVSROOT set to  : [ ${CVSROOT} ] "
+fi
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function cvs_logout
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : cvs_logout
+#|#
+#|# Description : This function is used to logout of CVS
+#|#
+#|# Send Back   : Logout of CVS
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+Control_Check_cvs_status
+if [ "${CVS_connection_login}" = "1" ]
+   then
+        ${Global_Tool_cvs_bin} logout
+       if [ "${Result_Action}" = "0" ]
+          then
+              MSG_DISPLAY "Info" "CVS connexion status[ DISCONNECTED ] "
+              CVS_connection_login="0"
+          else
+              MSG_DISPLAY "Warning1"  "CVS connexion status  [ ERROR  ] "
+       fi
+   else
+       MSG_DISPLAY "Debug5" "CVS connexion status  : [ Not Connected  ] "
+fi
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+Sourced_OK="1"

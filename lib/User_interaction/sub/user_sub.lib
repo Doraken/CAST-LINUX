@@ -1,0 +1,53 @@
+###############################################################################
+# user_sub.lib                                         Version : 1.0          #
+# Creation Date : 24/04/2008                                                  #
+# Team          : **************************************                      #
+# Support mail  : Arnaud@crampet.net                                          #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This lib is used to provide any function about user menu control  #
+#                                                                             #
+###############################################################################
+####
+# INFO
+
+############################
+
+function USER_Continue_ON_ERR
+{
+#|# MSG_TO_Display : use this var to set the displayed message when an user action is needed
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+
+set -A Configuration_install_pkg 'Error occured :'                       \
+     'Continue'           \
+     'exit'
+
+Menu_Build Configuration_install_pkg
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Continue
+{
+#|# MSG_TO_Display : use this var to set the displayed message when an user action is needed
+############ STACK_TRACE_BUILDER #####################
+Function_Name="${0}"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug7" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "You choose to continue"
+
+Menu_Build Configuration_install_pkg
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+Sourced_OK="1"

@@ -1,0 +1,131 @@
+###############################################################################
+# document_txt_sub.lib                                  Version : 1.0         #
+#                                                                             #
+# Creation Date : 26/04/2008                                                  #
+# Team          : **************************************                      #
+# Support mail  : arnaud@crampet.net                                           #
+# Author        : Arnaud Crampet                                              #
+#                                                                             #
+# Subject : This sub library provide base function to create text document    #
+#           from C.A.S.T framwork                                             #
+###############################################################################
+####
+# INFO
+
+function Document_Print_global_Print_txt
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_Print_global_Print_txt
+#|#
+#|# Description : This fuction generate documentation txt output
+#|#
+#|# Send Back   : TXT flow
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+for Libraries_geted in $( cat ${Base_Catalog_function} | awk -F ";" '{ print $2 }' | sort -u )
+      do
+        Document_doc_txt="${Base_Dir_Scripts_Data_doc_txt}/$( print -- ${Libraries_geted} | awk -F "/" '{ print $NF}' | awk -F "." '{ print $1".txt"}' )"
+        New_Lib_Name="$(echo ${Libraries_geted} | awk -F "/" '{ print $NF}')"
+        print -- " Used lib : [ ${New_Lib_Name}   ] "  > ${Document_doc_txt}
+        Document_Print_function_txt
+done
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Document_Print_function_txt
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_Print_function_txt
+#|#
+#|# Description : #|# This function is used whithout parameter and can only be called by
+#|# Document_Print_global_Print_txt
+#|#
+#|# Send Back   : txt flow
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+for Function_geted in $( cat ${Base_Catalog_function} | grep ${New_Lib_Name} | awk -F ";" '{ print $4 }' )
+    do
+      print -- " Information for function : [ ${Function_geted} ]"  >> ${Document_doc_txt}
+      print -- " This function depend on : "                        >> ${Document_doc_txt}
+      Document_Print_Dependences_txt
+      print -- " How to use this function  "                        >> ${Document_doc_txt}
+      print -- "  "                                                 >> ${Document_doc_txt}
+      cat ${Base_Catalog_function_docs} | grep "\;${Function_geted}\;" |  awk -F ";" '{ print "    " $6}' >> ${Document_doc_txt}
+      print -- "                                                 " >> ${Document_doc_txt}
+      print -- " ----------------------------------------------- " >> ${Document_doc_txt}
+      print -- "                                                 " >> ${Document_doc_txt}
+
+done
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+function Document_Print_Dependences_txt
+{
+#|# Var to set  : None
+#|#
+#|# Base usage  : Document_Print_Dependences_txt
+#|#
+#|# Description : This function is used whithout parameter and can only be called by
+#|# Document_Print_function_txt
+#|#
+#|# Send Back   : txt flow
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+
+Internal_Geted_line="${1}"
+for Dependences_Geted in  $( cat ${Base_Catalog_function_depend} | grep "\;${Function_geted}\;" |  awk -F ";" '{ print $8 ";"  $6  }')
+    do
+      Function_Dep_To_Print="$( print -- ${Dependences_Geted} | awk -F ";" '{print $1 " Found in lib : " $2 }')"
+      print -- "                            ${Function_Dep_To_Print}"                                            >> ${Document_doc_txt}
+done
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+
+
+function Dummy_function
+{
+#|# Var to set  : None
+#|#             : Use this var to set
+#|#             : Use this var to set
+#|# ${1}        : Use this var to set [  ]
+#|# ${2}        : Use this var to set [  ]
+#|#
+#|# Base usage  : None
+#|#
+#|# Description : None
+#|#
+#|# Send Back   : None
+############ STACK_TRACE_BUILDER #####################
+Function_Name="$0"
+Function_PATH="${Function_PATH}/${Function_Name}"
+######################################################
+MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
+
+MSG_DISPLAY "Info" "this is a model function"
+
+############### Stack_TRACE_BUILDER ################
+Function_PATH="$( dirname ${Function_PATH} )"
+####################################################
+}
+
+Sourced_OK="1"

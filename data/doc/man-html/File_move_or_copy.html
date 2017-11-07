@@ -1,0 +1,18 @@
+<HTML>
+    <BODY>
+       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>
+         <PRE><H2>SYNOPSIS</H2></PRE>
+ <B>                                 
+     Base_File_To_move_or_copy : use this var to set which file to copy or move
+     Base_Destination : Use this var to set the destination of the files / dirs
+     Action_type_cpmv : use this var to set if you copy or move the file / dirs
+     Is_To_Dir : Use this var if the destination is a directory
+    
+     ${1} : use this var to set Base_File_To_move_or_copy
+     ${2} : Use this var to set Base_File_Dest
+     ${3} : use this var to set Action_type_cpmv ( copy = cp | move = mv )
+     ${4} : Use this var to set Is_To_Dir
+     Basic use : File_move_or_copy "file to MVCP" "destination full path " "action type" "destination is a dir 0/1"
+</B>
+     </BODY> 
+</HTML>

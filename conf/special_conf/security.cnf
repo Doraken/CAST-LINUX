@@ -1,0 +1,32 @@
+###############################################################################
+# template_spec_conf.cnf                               Version : 1.1.2.1      #
+#                                                                             #
+# Creation Date : 00/00/2000                                                  #
+# Team          : Chaos Engineers Teams for fully automated systems           #
+# Support mail  : chaos.team@doraken.net                                      #
+# Author        : XXXXXXX XXXXXXXX                                            #
+#                                                                             #
+# Subject : This file containe all genrics vars used in ...                   #
+#                                                                             #
+###############################################################################
+####
+# INFO
+Base_Templae_var_for_dir="replace me "                            # DIR_To_CHECK
+Base_Templae_var2="replace me "
+Base_Templae_var3="replace me "
+
+
+function Usage 
+{
+	MSG_DISPLAY "Info"  "${Action_Type}"
+	MSG_DISPLAY "Info"  "usage: ${Product_Name} [-V ARG] [-P ARG] [-R ARG] [-N ARG] [-h] -f properties_file"
+	MSG_DISPLAY "Info"  "       -V: Version number of product to build.     Must not be empty."
+	MSG_DISPLAY "Info"  "       -P: Product name.                           Must not be empty."
+	MSG_DISPLAY "Info"  "       -B: CVS branch TAG.                         Can be empty."
+	MSG_DISPLAY "Info"  "       -N: Package final name.                     Must not be empty."
+	MSG_DISPLAY "Info"  "       -C: CVS Package name.                       Must not be empty."
+	MSG_DISPLAY "Info"  "       -F: Final package Version.                  Must not be empty."
+	MSG_DISPLAY "Info"  "       -h: help.                                   Print this usage."
+exit 1
+}
+Sourced_OK="1"

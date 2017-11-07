@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="autodoc.xsl"?>
+ <Library>
+ <LibraryName>autodoc_filters.lib</LibraryName>
+<Function>
+<FunctionName>autodoc_filter_line_Printer</FunctionName>
+<DependOn>
+</DependOn>
+<DocText>
+     Internal_Geted_line : use this var to set the line to parse
+     ${1} : Use this var to set Internal_Geted_line
+     Basic usage : document_Catalogue_to_XML_sub_line_parser "Line to parse"
+</DocText>
+</Function>
+<Function>
+<FunctionName>autodoc_filter_line_BASE_PATH</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>Filter_Base_Path_in_Cat</FunctionName>
+<FunctionLib>/lib/ksh/doc/Filters/autodoc_filters.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     No parameters are used for this function
+     This function is used to cut off all path information in doc's catalogues
+     Basic usage : autodoc_filter_line_BASE_PATH
+</DocText>
+</Function>
+<Function>
+<FunctionName>Filter_Base_Path_in_Cat</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName></FunctionName>
+<FunctionLib></FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>File_Remove</FunctionName>
+<FunctionLib>/lib/ksh/system_base/file/file.lib</FunctionLib>
+</FunctionDepend>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+     BASE_FILE_TO_FILTER : use this var to set the file to filter
+     ${1} : Use this var to set BASE_FILE_TO_FILTER
+     Basic usage : Filter_Base_Path_in_Cat "File To filter"
+</DocText>
+</Function>
+<Function>
+<FunctionName>document_filter_dep_tmp_cat</FunctionName>
+<DependOn>
+<FunctionDepend>
+<FunctionName>MSG_DISPLAY</FunctionName>
+<FunctionLib>/lib/ksh/system_base/log.lib</FunctionLib>
+</FunctionDepend>
+</DependOn>
+<DocText>
+</DocText>
+</Function>
+ </Library>
