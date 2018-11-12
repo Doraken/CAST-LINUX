@@ -1,4 +1,4 @@
-#!/usr/bin/ksh
+#!/bin/bash
 ################################################################################
 # Info   : Tempalte_installer.ksh                      version : 0.1           #
 # author : Arnaud Crampet                              Date    : 14/02/2007    #

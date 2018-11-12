@@ -1,4 +1,4 @@
-#!/usr/bin/ksh 
+#!/bin/bash 
 ################################################################################
 # Info   : Arpcom sanity checker                       version : 0.1           #
 # author : Arnaud Crampet                              Date    : 06/09/2006    #

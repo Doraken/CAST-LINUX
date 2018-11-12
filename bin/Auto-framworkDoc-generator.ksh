@@ -1,4 +1,4 @@
-#!/usr/bin/ksh
+#!/bin/bash
 ###############################################################################
 # Info   : Auto-framworkDoc-generator.ksh              Version : 1.1.2.1      #
 #                                                                             #
