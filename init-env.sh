@@ -68,13 +68,13 @@ function RaiseFlag()
 function installMinimalPackages()
 {
 case ${__USED_PKGMAN} in 
-      yum) yum install ${__Mpackage} 
-         ; 
-  apt-get) apt-get install ${__Mpackage}
-         ;
+      yum) yum install ${__Mpackage}          
+          ;; 
+  apt-get) apt-get install ${__Mpackage}          
+          ;;
         *) echo "Fatal error package manager not set properly"
-           exit 1
-         ;
+           exit 1          
+           ;;
 esac 
 }
 
