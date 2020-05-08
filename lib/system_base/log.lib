@@ -53,11 +53,11 @@ case ${MD_Type_Msg} in
         ErrorN) ManageError
         ;;
         *) FONT_set_Error_Font
-        eval echo  " FATAL ERROR ON MGS FUNCTION USE "
-        eval echo  " FUNCTION     = [ ${Function_PATH} ] "
-        eval echo  " SUB FUNCTION = [ ${SUB_Function_Name} ]"
-        eval echo  " Debug type   = [ ${MD_Type_Msg}  ]"
-        eval echo  " have a nice day .... :-p "
+          echo  " FATAL ERROR ON MGS FUNCTION USE "
+          echo  " FUNCTION     = [ ${Function_PATH} ] "
+          echo  " SUB FUNCTION = [ ${SUB_Function_Name} ]"
+          echo  " Debug type   = [ ${MD_Type_Msg}  ]"
+          echo  " have a nice day .... :-p "
         FONT_set_Basic_Font
         eval printf "\\\033\\[K"
         exit 2
@@ -75,7 +75,7 @@ functionn ManageMessage()
                 then 
                         _SMessage_VAR="Main : [ ${Function_Name} :" 
                         _EMessage_VAR="[ ${MD_Type_Msg} ]"
-                        spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
+                        #spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
                         echo ${__Noendline} "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"
         fi
 }
@@ -89,7 +89,7 @@ fucntion ManageError()
                         _SMessage_VAR="$( echo  "Warning ON ${Function_Name} :")"
                         _EMessage_VAR="$( echo  "[ ${MD_Msg_To_Display} ]")"
                         spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-                        eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"     ${Info_Redirector}
+                        eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"   
                         FONT_set_Basic_Font
                 else
                         FONT_set_Error_Font
@@ -97,7 +97,7 @@ fucntion ManageError()
                         _SMessage_VAR="$( echo  "ERROR ON ${Function_Name} :")"
                         _EMessage_VAR="$( echo  "[ CODE=${MD_Level_Code} [ ${MD_Msg_To_Display} ]")"
                         spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-                        eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"     ${Info_Redirector}
+                        eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"   
                         FONT_set_Basic_Font
                         exit ${MD_Level_Code}
         fi
@@ -105,73 +105,7 @@ fucntion ManageError()
 
 
 
-function MSG_DISPLAY_start
-{
-#|# Var to set        :
-#|# MD_Type_Msg       : Use this var to set
-#|# MD_Msg_To_Display : Use this var to set
-#|# MD_Level_Code     : Use this var to set
-#|# ${1}        : Use this var to set" "_MsgTYPE ]
-#|# ${2}        : Use this var to set" "_MsgMESSAGE ]
-#|# ${3}        : Use this var to set" "_MsgLogLevel ]
-#|#
-#|# Base usage  : MSG_DISPLAY "MD_Type_Msg" "MD_Msg_To_Display" "Level_Code"
-#|#
-#|# Description : This function is used for every messaging and error service
-#|#
-#|# Send Back   : Message and message size  
-################################################################################
-	 FONT_set_basic_Font
-     GLB_sreen_Size_limit="$( tput cols )"
-
-    _MsgTYPE="${1}"
-    _MsgMESSAGE="${2}"
-    _MsgLogLevel="${3}"
-    
-	_typelow="$( echo  ${_MsgTYPE} | awk '{ tolower($1)  }' )"
-    _PrintMsg="$( print "${_MsgTYPE} -- ${_MsgMESSAGE} : "  |  sed 's/ /_/g')"
-    _Start_Line_len="$( Get_Var_Lenght_MSG ${_PrintMsg} )"  
-
-    Set_Message_Type_Display "${_typelow}"
-    
-	echo  "${_MsgTYPE}"                ${Info_Redirector}  
-    FONT_set_basic_Font                     
-   
-	echo " -- ${_MsgMESSAGE} : "       ${Info_Redirector}
-}    
-
-function MSG_DISPLAY_End 
-{
-#|# Var to set        :
-#|# ${1}        : Use this var to set" "_Message_Result ]
-#|# ${2}        : Use this var to set" "_Message_Level ]
-#|# ${3}        : Use this var to set" "_Message_Exit_Levl ]
-#|#
-#|# Base usage  : MSG_DISPLAY "action result" "log level" "exit Code"
-#|#
-#|# Description : This function is used for every messaging and error service
-#|#
-#|# Send Back   : Message and message size  
-################################################################################
-	_Message_Result="${1}"
-	_Message_Level="${2}"
-	_Message_Exit_Levl="${3}"
-    _resultlow="$( echo  ${_Message_Result} | awk '{ tolower($1)  }' )"
-	_PrintMsg="$( print " [ ${_Message_Result} ]" |  sed 's/ /_/g')"
-
-	FONT_set_basic_Font
-	_End_Line_len="$( Get_Var_Lenght_MSG ${_PrintMsg} )"
-	Set_spliter_line_MSG
-	eval echo   " [ "                 ${Info_Redirector}                 
-	Set_Message_Result_Display "${_resultlow}"                      
-	eval echo   "${_Message_Result}"       ${Info_Redirector}                        
-	FONT_set_basic_Font
-	eval echo   " ]"                   ${Info_Redirector}                      
-    if [[ "${_resultlow}" = "error" ]] 
-       then 
-	        exit ${_Message_Exit_Levl}
-	fi 
-}
+f
 
 function Set_Message_Type_Display
 {
@@ -191,7 +125,7 @@ _Message_Type="${1}"
 case ${_Message_Type} in 
        "info") FONT_set_info_Font
             ;;
-		"config") FONT_set_info_Font
+        "config") FONT_set_info_Font
             ;;
     "message") FONT_set_message_Font
             ;;
@@ -256,25 +190,6 @@ _End_Line_len="0"
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function Sub_MSGDebug
 {
 	 _DebugLevel="$( print ${1} | awk -FDebug '{ print $2 }')"
@@ -282,209 +197,13 @@ function Sub_MSGDebug
 	 _EMessage_VAR="$( echo  "[ ${MD_Msg_To_Display} ]")"
 	 spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
 	 eval _Sub_DBG=\$\{Debug_Redirector${_DebugLevel}\}
-	 eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"      ${_Sub_DBG}
+	 echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR} ${_Sub_DBG}"
 	 FONT_set_Basic_Font
 }
 
 function Debug_INIT
 {
 . ${Base_Dir_Scripts_Lib}/system_base/display/font.lib
-case  ${Debug_state} in
-                  0) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=">>  /dev/null"
-                     Debug_Redirector2=">> /dev/null"
-                     Debug_Redirector3=">> /dev/null"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                  1) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=""
-                     Debug_Redirector2=">> /dev/null"
-                     Debug_Redirector3=">> /dev/null"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                  2) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=""
-                     Debug_Redirector2=""
-                     Debug_Redirector3=">> /dev/null"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                  3) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=""
-                     Debug_Redirector2=""
-                     Debug_Redirector3=""
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                  4) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=""
-                     Debug_Redirector2=""
-                     Debug_Redirector3=""
-                     Debug_Redirector4=""
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null" ;;
-                  5) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=""
-                     Debug_Redirector2=""
-                     Debug_Redirector3=""
-                     Debug_Redirector4=""
-                     Debug_Redirector5=""
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                  6) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=""
-                     Debug_Redirector2=""
-                     Debug_Redirector3=""
-                     Debug_Redirector4=""
-                     Debug_Redirector5=""
-                     Debug_Redirector6=""
-                     Debug_Redirector7=">> /dev/null" ;;
-                  7) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=""
-                     Debug_Redirector2=""
-                     Debug_Redirector3=""
-                     Debug_Redirector4=""
-                     Debug_Redirector5=""
-                     Debug_Redirector6=""
-                     Debug_Redirector7="" ;;
-             2-only) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=">> /dev/null"
-                     Debug_Redirector2=""
-                     Debug_Redirector3=">> /dev/null"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-             3-only) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=">> /dev/null"
-                     Debug_Redirector2=">> /dev/null"
-                     Debug_Redirector3=""
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-             4-only) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=">> /dev/null"
-                     Debug_Redirector2=">> /dev/null"
-                     Debug_Redirector3=">> /dev/null"
-                     Debug_Redirector4=""
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null" ;;
-             5-only) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=" >> /dev/null"
-                     Debug_Redirector2=">> /dev/null"
-                     Debug_Redirector3=">> /dev/null}"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=""
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-             6-only) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=">> /dev/null"
-                     Debug_Redirector2=">> /dev/null"
-                     Debug_Redirector3=">> /dev/null"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=""
-                     Debug_Redirector7=">> /dev/null" ;;
-                0-f) Question_Redirector=""
-                     Info_Redirector=">> ${Base_Log_File}"
-                     Debug_Redirector=">> /dev/null"
-                     Debug_Redirector2=">> /dev/null"
-                     Debug_Redirector3=">> /dev/null"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null" ;;
-                1-f) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=">> ${Base_Log_File}"
-                     Debug_Redirector2=">> /dev/null"
-                     Debug_Redirector3=">> /dev/null"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                2-f) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector="  >> ${Base_Log_File}"
-                     Debug_Redirector2=">> ${Base_Log_File}"
-                     Debug_Redirector3=">> /dev/null"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                3-f) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=" >> ${Base_Log_File}"
-                     Debug_Redirector2=">> ${Base_Log_File}"
-                     Debug_Redirector3=">> ${Base_Log_File}"
-                     Debug_Redirector4=">> /dev/null"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                4-f) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=" >> ${Base_Log_File}"
-                     Debug_Redirector2=">> ${Base_Log_File}"
-                     Debug_Redirector3=">> ${Base_Log_File}"
-                     Debug_Redirector4=">> ${Base_Log_File}"
-                     Debug_Redirector5=">> /dev/null"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                5-f) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=" >> ${Base_Log_File}"
-                     Debug_Redirector2=">> ${Base_Log_File}"
-                     Debug_Redirector3=">> ${Base_Log_File}"
-                     Debug_Redirector4=">> ${Base_Log_File}"
-                     Debug_Redirector5=">> ${Base_Log_File}"
-                     Debug_Redirector6=">> /dev/null"
-                     Debug_Redirector7=">> /dev/null" ;;
-                6-f) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=" >> ${Base_Log_File}"
-                     Debug_Redirector2=">> ${Base_Log_File}"
-                     Debug_Redirector3=">> ${Base_Log_File}"
-                     Debug_Redirector4=">> ${Base_Log_File}"
-                     Debug_Redirector5=">> ${Base_Log_File}"
-                     Debug_Redirector6=">> ${Base_Log_File}"
-                     Debug_Redirector7=">> /dev/null" ;;
-                7-f) Question_Redirector=""
-                     Info_Redirector=""
-                     Debug_Redirector=" >> ${Base_Log_File}"
-                     Debug_Redirector2=">> ${Base_Log_File}"
-                     Debug_Redirector3=">> ${Base_Log_File}"
-                     Debug_Redirector4=">> ${Base_Log_File}"
-                     Debug_Redirector5=">> ${Base_Log_File}"
-                     Debug_Redirector6=">> ${Base_Log_File}"
-                     Debug_Redirector7=">> ${Base_Log_File}" ;;
-          File_Only) Question_Redirector=""
-                     Info_Redirector="  >> ${Base_Log_File}"
-                     Debug_Redirector=" >> ${Base_Log_File}"
-                     Debug_Redirector2=">> ${Base_Log_File}"
-                     Debug_Redirector3=">> ${Base_Log_File}"
-                     Debug_Redirector5=">> ${Base_Log_File}"
-                     Debug_Redirector6=">> ${Base_Log_File}"
-                     Debug_Redirector7=">> ${Base_Log_File}" ;;
-esac
 
 Interleave_DEST="${Info_Redirector}"
 
@@ -534,15 +253,15 @@ _VAR_Src="0"
 
 function Interleave_MSG
 {
-eval echo  ""                                                                                 ${Info_Redirector}
-eval echo  "###############################################################################"  ${Info_Redirector}
-eval echo  ""                                                                                 ${Info_Redirector}
+ echo  ""                                                                                  
+ echo  "###############################################################################"
+ echo  ""                                                                               
 }
 
 function Spacer_MSG
 {
-eval echo  ""         ${Info_Redirector}
-eval echo  ""         ${Info_Redirector}
+ echo  ""       
+ echo  ""       
 }
 
 function Emptying_MSGS_vars
