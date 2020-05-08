@@ -73,13 +73,13 @@ Emptying_MSGS_vars
 
 function ManageMessage()
 {
-        if [ "${MD_Level_Code}" -le "${Debug_state}" ]
-                then 
+      #  if [ "${MD_Level_Code}" -le "${Debug_state}" ]
+      #          then 
                         _SMessage_VAR="Main : [ ${Function_Name} :" 
                         _EMessage_VAR="[ ${MD_Type_Msg} ]"
                         #spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
                         echo ${__Noendline} "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"
-        fi
+      #  fi
 }
 
 
