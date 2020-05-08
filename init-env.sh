@@ -1,6 +1,6 @@
 #!/bin/bash 
 _Current_ID=$(id | awk '{ print $1}' | awk -F\( '{ print $1 }' | awk -F\= '{ print $2 }')
-_RootDir="/srv/admin/CAST-LINUX"
+_RootDir="/srv/admin/"
 _LST_PacMan="apt-get yum"
  
 if [ ${_Current_ID} -eq "0" ] 
@@ -67,6 +67,7 @@ function RaiseFlag()
 
 function installMinimalPackages()
 {
+  __Mpackage=${1}
 case ${__USED_PKGMAN} in 
       yum) yum install ${__Mpackage}          
           ;; 
@@ -101,7 +102,12 @@ for __Pacman in $( echo ${_LST_PacMan} )
       fi
 done 
 RaiseFlag "no package manager found !!!! "
-
+installMinimalPackages "git"
+cd ${_RootDir}
+git clone https://github.com/Doraken/CAST-LINUX.git
+cd CAST-LINUX 
+cd bin
+./init-all.sh
 }
 
  

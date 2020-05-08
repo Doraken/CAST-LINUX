@@ -21,7 +21,7 @@ Function_PATH="/main"
 Base_Script_Language="en_GB"
 
 #|# directory used for code
-Base_Dir_Scripts="/srv/admin/scripts"                                                    
+Base_Dir_Scripts="/srv/admin/CAST-LINUX"                                                    
 Base_Dir_Scripts_Bin="${Base_Dir_Scripts}/bin"                                           # DIR_To_CHECK
 Base_Dir_Scripts_Lib="${Base_Dir_Scripts}/lib"                                           # DIR_To_CHECK
 Base_Dir_Scripts_Lib_Expect_Uploads="${Base_Dir_Scripts_Lib_Expect}/uploaded_scripts"    # DIR_To_CHECK
