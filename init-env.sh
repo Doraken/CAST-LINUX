@@ -1,7 +1,7 @@
 #!/bin/sh 
 _Current_ID=$(id | awk '{ print $1}' | awk -F\( '{ print $1 }' | awk -F\= '{ print $2 }')
 _RootDir="/srv/admin/CAST-LINUX"
-
+_LST_PacMan="apt-get yum"
 if [ ${_Current_ID} -eq "0" ] 
   then 
     echo " ----> root ID ok continue ..."
@@ -50,11 +50,41 @@ fi
 }
 
 
+function RaiseFlag()
+{
+  __Message="${1}"
+  if [ ${__Redflag} -eq "0" ]
+      then 
+           echo " " > /dev/null
+      else 
+           echo "Fatal error on installation ... " 
+           echo "${__Message}"
+           exit 1
+  fi
+}
+
+
 function Main() 
 {
 echo "Entering to Framework installation tasks"
 echo "Creating base root directory"
 Directory_CRT "${_RootDir}"
+echo "shearching for you package manager"
+__Redflag="1"
+for __Pacman in ${_LST_PacMan} 
+   do 
+      echo "searching for ${__pacman}"
+      ${__pacman}=$(which ${__pacman})^
+      if [ "${?}" = "0" ]
+          then
+              echo "Package manager : [ ${__pacman} ] found at : [ ${__pacman} ]"
+              __USED_PKGMAN="${__pacman}"
+              __Redflag="0"
+          else 
+              echo "Package manager : [ ${__pacman} ] Not found"
+      fi
+done 
+RaiseFlag "no package manager found !!!! "
 
 }
 
