@@ -22,11 +22,11 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 ######################################################
 #MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
 geted_item="${1}"
-Part_Item="$( print -- "${geted_item}" | awk '{ print $1 }' )"
+Part_Item="$( printf -- "${geted_item}" | awk '{ print $1 }' )"
 
 
 case ${Part_Item} in
-             function) LEFG_Function_name="$( print -- "${geted_item}" | awk '{ print $2 }' )"
+             function) LEFG_Function_name="$( printf -- "${geted_item}" | awk '{ print $2 }' )"
                        MSG1="Found function declaration : [ ${LEFG_Function_name} ] "
                        MSG_DISPLAY "Debug6" "${MSG1}"
                        if [ ${LEFG_function_to_get} = ${LEFG_Function_name} ] 
@@ -52,11 +52,11 @@ case ${Part_Item} in
                        ;;
                     *) if [ ${LEGF_REDIRECTOR_MODE} = "True" ] 
                           then 
-                              print -- "Line of ${Function_name} : [ ${geted_item} ] "
+                              printf -- "Line of ${Function_name} : [ ${geted_item} ] "
                        fi
                          ;;
 esac
-print -- "${geted_item}" >> ${LEGF_REDIRECTOR}
+printf -- "${geted_item}" >> ${LEGF_REDIRECTOR}
 geted_item=""
 
 ############### Stack_TRACE_BUILDER ################

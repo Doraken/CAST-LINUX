@@ -76,9 +76,9 @@ Directory_CRT "${Base_PATH_TO_CHROOT}"
 for CHROOT_file in $(cat ${catalogue_used}) 
     do 
     
-     eval  print -- " Listed Item for chroot creation [ ${CHROOT_BASE_DIR}/${CHROOT_file} ] "
+     eval  printf -- " Listed Item for chroot creation [ ${CHROOT_BASE_DIR}/${CHROOT_file} ] "
      File_Get_Type "/${CHROOT_file}" "SUB_rebuild_catalogue_File_Global_cat_menu" ""
-#     print -- "cp -p ${CHROOT_BASE_DIR} ${CHROOT_file}"   
+#     printf -- "cp -p ${CHROOT_BASE_DIR} ${CHROOT_file}"   
 done
 
 ############### Stack_TRACE_BUILDER ################

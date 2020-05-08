@@ -42,7 +42,7 @@ else
           RPM_list="${RPMS} \n ${RPM_list}"
     done 
     
-    set -A RPM_SEND_BACK_LIST $( print -- "${RPM_list}" ) 
+    set -A RPM_SEND_BACK_LIST $( printf -- "${RPM_list}" ) 
     for Item_listed in ${RPM_SEND_BACK_LIST[@]} 
        do 
        	  MSG_DISPLAY "Debug6" "Found RMP package : [ ${Item_listed} ]" 

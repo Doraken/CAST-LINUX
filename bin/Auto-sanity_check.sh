@@ -37,7 +37,7 @@ SRC_AUTO
 for Specs in $( ls ${Base_Dir_Scripts_CNF_spec}/ | grep \.cnf ) 
     do 
       Conf_Specifics="${Specs}"
-      print -- "${Conf_Specifics}"
+      printf -- "${Conf_Specifics}"
       SANITY_CHECK_Base_env_directory_check
       SANITY_CHECK_Check_TMP_Directory
 done 

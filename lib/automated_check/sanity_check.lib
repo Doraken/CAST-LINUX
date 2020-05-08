@@ -74,7 +74,7 @@ if [ -z "${Conf_Specifics}" ]
           then
               MSG_DISPLAY "Info" "Specifics configuration file : [ NONE ] "
           else
-              print -- "${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics} ---"
+              printf -- "${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics} ---"
          cat ${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics} | grep "DIR_To_CHECK" | awk '{ print $1 }' | awk -F\= '{print "\$\{"$1"\}" }' 
               for Dirs in $( cat ${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics} | grep "DIR_To_CHECK" | awk '{ print $1 }' | awk -F\= '{print "\$\{"$1"\}" }' 2> /dev/null )
                   do     Dirs=$( eval print ${Dirs} )
@@ -183,7 +183,7 @@ if [ -z "${Conf_Specifics}" ]
           else
               for Dirs in $( cat ${Base_Dir_Scripts_CNF_spec}/${Conf_Specifics} | grep "DIR_To_CHECK_TMP" | awk '{ print $1 }' | awk -F\= '{print "\$\{"$1"\}" }' 2> /dev/null )
                   do Dirs=$( eval print ${Dirs} )
-                     print --   "${Dirs}" | grep tmp  > /dev/null
+                     printf --   "${Dirs}" | grep tmp  > /dev/null
                     if  [ "${?}" = "0" ]
                       then
         	              IS_Writable "${Dirs}" "1"
@@ -259,9 +259,9 @@ Fil_Get_Items "EXEC_Global_MANDATORY_control_sanity" "1" "${Base_Dir_Scripts_Lib
 
 for SCT_items  in ${GLOBAL_FGI_Selected_items[@]}
    do
-   	  SCT_items="$( print -- ${SCT_items} | awk -F "=" '{ print $1 }')"
-   	  SCT_status="$( eval print -- "\${${SCT_items}}" )"
-      SCT_Bin_Name="$( print -- "${SCT_items}" | awk -F "_" '{ print $3 }' )"
+   	  SCT_items="$( printf -- ${SCT_items} | awk -F "=" '{ print $1 }')"
+   	  SCT_status="$( eval printf -- "\${${SCT_items}}" )"
+      SCT_Bin_Name="$( printf -- "${SCT_items}" | awk -F "_" '{ print $3 }' )"
       if [ "${SCT_status}" = "ENABLED" ]
          then
              MSG_DISPLAY "Debug7" "status of ${SCT_Bin_Name} bin  Mandatory  : [ ${SCT_status} ]"
@@ -274,9 +274,9 @@ Fil_Get_Items "EXEC_Global_SET_control_sanity" "1" "${Base_Dir_Scripts_Lib}/syst
 
 for SCT_items  in ${GLOBAL_FGI_Selected_items[@]}
    do
-      SCT_items="$( print -- ${SCT_items} | awk -F "=" '{ print $1 }')"
-   	  SCT_status="$( eval print -- "\${${SCT_items}}" )"
-      SCT_Bin_Name="$( print -- "${SCT_items}" | awk -F "_" '{ print $3 }' )"
+      SCT_items="$( printf -- ${SCT_items} | awk -F "=" '{ print $1 }')"
+   	  SCT_status="$( eval printf -- "\${${SCT_items}}" )"
+      SCT_Bin_Name="$( printf -- "${SCT_items}" | awk -F "_" '{ print $3 }' )"
       if [ "${SCT_status}" = "ENABLED" ]
          then
              MSG_DISPLAY "Debug7" "status of ${SCT_Bin_Name} bin Optional  : [ ${SCT_status} ]"

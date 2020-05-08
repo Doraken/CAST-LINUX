@@ -29,7 +29,7 @@ XML_ARRAY_DATA="${2}"
 
 
 
-eval eval set -A XML_ARRAY_DATA $(print -- "\$\{${XML_ARRAY_DATA}\[\@\]\}")
+eval eval set -A XML_ARRAY_DATA $(printf -- "\$\{${XML_ARRAY_DATA}\[\@\]\}")
 for List in ${XML_ARRAY_DATA[@]}
     do
       MSG_DISPLAY "Debug5" "XML Array def [ ${List} ]"
@@ -84,8 +84,8 @@ done
 
 for closes in ${CLOSE_XML} 
     do 
-      Base_Spacer="$( print -- "${Base_Spacer}" | cut -b 9- )"  
-      print -- "${Base_Spacer}${closes}"
+      Base_Spacer="$( printf -- "${Base_Spacer}" | cut -b 9- )"  
+      printf -- "${Base_Spacer}${closes}"
 done 
 Base_Spacer_do=""
 ############### Stack_TRACE_BUILDER ################
@@ -109,7 +109,7 @@ if [ "${Base_Spacer_do}" = "1" ]
        No_More_Space="${Base_Spacer}" 
        Base_Spacer_do="1"
 fi
-print -- "${No_More_Space}<${XML_MODEL_ARRAY}>${XML_ARRAY_DATA[Base_print_elm]}</${XML_MODEL_ARRAY}>"
+printf -- "${No_More_Space}<${XML_MODEL_ARRAY}>${XML_ARRAY_DATA[Base_print_elm]}</${XML_MODEL_ARRAY}>"
 Base_print_elm="$(expr ${Base_print_elm} + 1)"
 
 OK_feed="1"
@@ -127,7 +127,7 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
 
 CLOSE_XML="</${XML_MODEL_ARRAY}> ${CLOSE_XML}"
-print -- "${Base_Spacer}<${XML_MODEL_ARRAY}>"
+printf -- "${Base_Spacer}<${XML_MODEL_ARRAY}>"
 Base_Spacer="${Base_Spacer}     "
 OK_feed="0"
 }

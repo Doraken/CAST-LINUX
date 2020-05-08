@@ -46,28 +46,28 @@ Empty_Var_Control "${SysLogMacAddr}"    "SysLogMacAddr"    "ErrorN" "2" " syslog
 File_Backup "${NetConsoleConfig}"
 FileneconsoleConfigRedirector=" >> ${NetConsoleConfig}"
 
-print -- "" > ${NetConsoleConfig}
+printf -- "" > ${NetConsoleConfig}
 
-eval print -- "# This is the configuration file for the netconsole service.  By starting"       ${FileneconsoleConfigRedirector}
-eval print -- "# this service you allow a remote syslog daemon to record console output"        ${FileneconsoleConfigRedirector}
-eval print -- "# from this system."                                                             ${FileneconsoleConfigRedirector}
-eval print -- ""                                                                                ${FileneconsoleConfigRedirector} 
-eval print -- "# The local port number that the netconsole module will use"                     ${FileneconsoleConfigRedirector}
-eval print -- "LOCALPORT=${NetConsolePort}"                                                     ${FileneconsoleConfigRedirector}
-eval print -- ""                                                                                ${FileneconsoleConfigRedirector}
-eval print -- "# The ethernet device to send console messages out of (only set this if it"      ${FileneconsoleConfigRedirector}
-eval print -- "# can't be automatically determined)"                                            ${FileneconsoleConfigRedirector}
-eval print -- "# DEV="                                                                          ${FileneconsoleConfigRedirector}
-eval print -- ""                                                                                ${FileneconsoleConfigRedirector}
-eval print -- "# The IP address of the remote syslog server to send messages to"                ${FileneconsoleConfigRedirector}
-eval print -- "SYSLOGADDR=${SyslogServerAddr}"                                                  ${FileneconsoleConfigRedirector}
-eval print -- ""                                                                                ${FileneconsoleConfigRedirector}
-eval print -- "# The listening port of the remote syslog daemon"                                ${FileneconsoleConfigRedirector}
-eval print -- "SYSLOGPORT=${SysLogPort}"                                                        ${FileneconsoleConfigRedirector}
-eval print -- ""                                                                                ${FileneconsoleConfigRedirector}
-eval print -- "# The MAC address of the remote syslog server (only set this if it can t"        ${FileneconsoleConfigRedirector}
-eval print -- "# be automatically determined)"                                                  ${FileneconsoleConfigRedirector}
-eval print -- "SYSLOGMACADDR=${SysLogMacAddr}"                                                  ${FileneconsoleConfigRedirector}
+eval printf -- "# This is the configuration file for the netconsole service.  By starting"       ${FileneconsoleConfigRedirector}
+eval printf -- "# this service you allow a remote syslog daemon to record console output"        ${FileneconsoleConfigRedirector}
+eval printf -- "# from this system."                                                             ${FileneconsoleConfigRedirector}
+eval printf -- ""                                                                                ${FileneconsoleConfigRedirector} 
+eval printf -- "# The local port number that the netconsole module will use"                     ${FileneconsoleConfigRedirector}
+eval printf -- "LOCALPORT=${NetConsolePort}"                                                     ${FileneconsoleConfigRedirector}
+eval printf -- ""                                                                                ${FileneconsoleConfigRedirector}
+eval printf -- "# The ethernet device to send console messages out of (only set this if it"      ${FileneconsoleConfigRedirector}
+eval printf -- "# can't be automatically determined)"                                            ${FileneconsoleConfigRedirector}
+eval printf -- "# DEV="                                                                          ${FileneconsoleConfigRedirector}
+eval printf -- ""                                                                                ${FileneconsoleConfigRedirector}
+eval printf -- "# The IP address of the remote syslog server to send messages to"                ${FileneconsoleConfigRedirector}
+eval printf -- "SYSLOGADDR=${SyslogServerAddr}"                                                  ${FileneconsoleConfigRedirector}
+eval printf -- ""                                                                                ${FileneconsoleConfigRedirector}
+eval printf -- "# The listening port of the remote syslog daemon"                                ${FileneconsoleConfigRedirector}
+eval printf -- "SYSLOGPORT=${SysLogPort}"                                                        ${FileneconsoleConfigRedirector}
+eval printf -- ""                                                                                ${FileneconsoleConfigRedirector}
+eval printf -- "# The MAC address of the remote syslog server (only set this if it can t"        ${FileneconsoleConfigRedirector}
+eval printf -- "# be automatically determined)"                                                  ${FileneconsoleConfigRedirector}
+eval printf -- "SYSLOGMACADDR=${SysLogMacAddr}"                                                  ${FileneconsoleConfigRedirector}
 
 
 ############### Stack_TRACE_BUILDER ################

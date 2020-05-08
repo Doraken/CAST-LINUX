@@ -46,14 +46,14 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 ######################################################
 #MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
 geted_item="${1}"
-Part_Item="$( print -- "${geted_item}" | awk '{ print $1 }' )"
+Part_Item="$( printf -- "${geted_item}" | awk '{ print $1 }' )"
 
 
 
 case ${Part_Item} in
-             function) Function_name="$( print -- "${geted_item}" | awk '{ print $2 }' )"
-     	               print -- "Found function declaration : [ ${Function_name} ] "
-     	               print -- "librairy;${libs};function;${Function_name}" >> ${Base_Catalog_function}
+             function) Function_name="$( printf -- "${geted_item}" | awk '{ print $2 }' )"
+     	               printf -- "Found function declaration : [ ${Function_name} ] "
+     	               printf -- "librairy;${libs};function;${Function_name}" >> ${Base_Catalog_function}
      	               ;;
                    \{) MSG_DISPLAY "Debug5" "Start of function : [ ${Function_name} ]"
                        ;;
@@ -62,31 +62,31 @@ case ${Part_Item} in
                        ;;
                \#\|\#) if [ ! -z "${Function_name}" ]
                           then
-                  	       geted_item="$( print -- ${geted_item} | awk -F '#' '{ print $3 }' )"
-                           print -- "Document : [  librairy;${libs};funtion;${functions_name};Document;${geted_item} ] "
-                           print -- "librairy;${libs};function;${Function_name};Document;${geted_item}" >> ${Base_Catalog_function_docs}
+                  	       geted_item="$( printf -- ${geted_item} | awk -F '#' '{ print $3 }' )"
+                           printf -- "Document : [  librairy;${libs};funtion;${functions_name};Document;${geted_item} ] "
+                           printf -- "librairy;${libs};function;${Function_name};Document;${geted_item}" >> ${Base_Catalog_function_docs}
                         fi
                         ;;
-    Empty_Var_Control)  DGFC_EMPT_CTRL_CALL="$(print -- "${geted_item}" | awk '{ $6 }')"
+    Empty_Var_Control)  DGFC_EMPT_CTRL_CALL="$(printf -- "${geted_item}" | awk '{ $6 }')"
                         if [ ! -z "${DGFC_EMPT_CTRL_CALL}" ]
                            then
-                                print -- "Line of ${Function_name} : [ ${geted_item} ] "
-                                print -- "first Element of line ${Function_name} : [ ${Part_Item} ] "
-                                print -- "librairy;${libs};function;${Function_name};Item;${DGFC_EMPT_CTRL_CALL}" >> ${Base_Catalog_function_TMP_dep}
+                                printf -- "Line of ${Function_name} : [ ${geted_item} ] "
+                                printf -- "first Element of line ${Function_name} : [ ${Part_Item} ] "
+                                printf -- "librairy;${libs};function;${Function_name};Item;${DGFC_EMPT_CTRL_CALL}" >> ${Base_Catalog_function_TMP_dep}
                         fi
-                        DGFC_EMPT_CTRL_CALL="$(print -- "${geted_item}" | awk '{ $7 }')"
+                        DGFC_EMPT_CTRL_CALL="$(printf -- "${geted_item}" | awk '{ $7 }')"
                         if [ ! -z "${DGFC_EMPT_CTRL_CALL}" ]
                            then
-                                print -- "Line of ${Function_name} : [ ${geted_item} ] "
-                                print -- "first Element of line ${Function_name} : [ ${Part_Item} ] "
-                                print -- "librairy;${libs};function;${Function_name};Item;${DGFC_EMPT_CTRL_CALL}" >> ${Base_Catalog_function_TMP_dep}
+                                printf -- "Line of ${Function_name} : [ ${geted_item} ] "
+                                printf -- "first Element of line ${Function_name} : [ ${Part_Item} ] "
+                                printf -- "librairy;${libs};function;${Function_name};Item;${DGFC_EMPT_CTRL_CALL}" >> ${Base_Catalog_function_TMP_dep}
                         fi
                         ;;
                      *) if [ ! -z "${Function_name}" ]
                            then
-                               print -- "Line of ${Function_name} : [ ${geted_item} ] "
-                               print -- "first Element of line ${Function_name} : [ ${Part_Item} ] "
-                               print -- "librairy;${libs};function;${Function_name};Item;${Part_Item}" >> ${Base_Catalog_function_TMP_dep}
+                               printf -- "Line of ${Function_name} : [ ${geted_item} ] "
+                               printf -- "first Element of line ${Function_name} : [ ${Part_Item} ] "
+                               printf -- "librairy;${libs};function;${Function_name};Item;${Part_Item}" >> ${Base_Catalog_function_TMP_dep}
                          fi
                          ;;
 esac
@@ -124,25 +124,25 @@ for DGD_get_line in $( cat ${Base_Catalog_function} | sort -u )
      PRINT_MSG=" Function Number : [ ${External_Return_Counter} of ${Number_Of_Func}  ] "
      for DGD_Check_Item in $( cat ${Base_Catalog_function_TMP_dep} | grep "${DGD_Lib_name}" | grep "function;${DGD_function_name}" | awk -F ";" '{ print $6 }' )
          do
-         	print -- " Check item  [ ${DGD_Check_Item} ]"
+         	printf -- " Check item  [ ${DGD_Check_Item} ]"
          	if [ -z ${DGD_Check_Item} ]
          	   then
-         	   	   print -- ""  > /dev/null
+         	   	   printf -- ""  > /dev/null
                else
                    DGB_DEP="$(cat ${Base_Catalog_function} | grep "${DGD_Check_Item}$"  )"
          	            if [ -z "${DGB_DEP}" ]
          	               then
-                               print -- "" > /dev/null
+                               printf -- "" > /dev/null
                            else
-         	   	               print -- "Found dependence : [ ${DGB_DEP} ]"
+         	   	               printf -- "Found dependence : [ ${DGB_DEP} ]"
                                Depend_On_Item="$(eval cat ${Base_Catalog_function} | grep -w ${DGB_DEP} )"
                                printable_Function_name="\"${Function_name}\""
                                printable_Depend_On_Item="\"${Depend_On_Item}\""
                                MSG_DISPLAY "Debug4" "Function ${printable_Function_name} Depend on : [ ${printable_Depend_On_Item} ] "
                                FONT_set_Basic_Font
                                Depend_On_Item="dependonlib;$(print ${Depend_On_Item} | awk -F\; '{ print $2}');dependonfunction;$(print ${Depend_On_Item} | awk -F\; '{ print $4 }')"
-                               print -- "         ${Depend_On_Item}         "
-                               print -- "librairy;${DGD_Lib_name};function;${DGD_function_name};${Depend_On_Item}" >> ${Base_Catalog_function_depend}
+                               printf -- "         ${Depend_On_Item}         "
+                               printf -- "librairy;${DGD_Lib_name};function;${DGD_function_name};${Depend_On_Item}" >> ${Base_Catalog_function_depend}
                         fi
 
             fi
@@ -175,7 +175,7 @@ if [ -z "${Iterate_Document_get_called_function}" ]
         Iterate_Document_get_called_function="$( expr ${Iterate_Document_get_called_function} + 1 )"
 fi
 case ${Internal_item_checked} in
-                "\#")  print -- "current Item : [ ${Internal_item_checked} type : [ Comment ] ] "
+                "\#")  printf -- "current Item : [ ${Internal_item_checked} type : [ Comment ] ] "
                        ;;
                    *)  if [ ! -z "${Internal_item_checked}" ]
                           then
@@ -188,7 +188,7 @@ case ${Internal_item_checked} in
                                      MSG_DISPLAY "Debug4" "Function ${printable_Function_name} Depend on : [ ${printable_Depend_On_Item} ] "
                                      FONT_set_Basic_Font
                                      Depend_On_Item="$(print ${Depend_On_Item} | awk -F\; '{ print "dependonlib;" $2 ";dependonfunction;" $4 }')"
-                                     print -- "librairy;${libs};funtion;${functions_name};${Depend_On_Item}" >> ${Base_Catalog_function_depend}
+                                     printf -- "librairy;${libs};funtion;${functions_name};${Depend_On_Item}" >> ${Base_Catalog_function_depend}
                               fi
                        fi
                        ;;
@@ -222,10 +222,10 @@ SYSTEM_VAR_RANDOMIZER
 
 for items in $( cat ${Base_Dir_Scripts_CNF}/document.cnf | grep "Is_A_Catalog_FLAG" | awk -F "=" '{ print "\$\{" $1 "\}" }')
 do
-	eval print -- "${items}"
+	eval printf -- "${items}"
 done
 
-print -- ${Catalogs_lst}
+printf -- ${Catalogs_lst}
 
 
 
@@ -264,14 +264,14 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 ######################################################
 for functions_names in $(cat ${Base_Catalog_function} | grep "librairy" )
     do
-       print -- "1|${functions_names}" >> ${Base_Catalog_function_Final}
+       printf -- "1|${functions_names}" >> ${Base_Catalog_function_Final}
        for Dependances_functions in $(cat ${Base_Catalog_function_depend} | grep "^${functions_names}")
            do
-           	 print -- "2|${Dependances_functions}" >> ${Base_Catalog_function_Final}
+           	 printf -- "2|${Dependances_functions}" >> ${Base_Catalog_function_Final}
        done
        for Doc_functions in $(cat ${Base_Catalog_function_docs} | grep "^${functions_names}")
            do
-           	 print -- "3|${Doc_functions}" >> ${Base_Catalog_function_Final}
+           	 printf -- "3|${Doc_functions}" >> ${Base_Catalog_function_Final}
        done
 done
 ############### Stack_TRACE_BUILDER ################

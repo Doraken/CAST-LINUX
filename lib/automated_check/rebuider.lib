@@ -137,7 +137,7 @@ MSG_DISPLAY "Info" "Generating OPT info"
 find /opt >> ${Global_File_CATALOG}
 MSG_DISPLAY "Info" "Generating etc info"
 find /etc >> ${Global_File_CATALOG}
-print -- "FLAGEND_CATALOG"  >> ${Global_File_CATALOG}
+printf -- "FLAGEND_CATALOG"  >> ${Global_File_CATALOG}
 MSG_DISPLAY "Info" "Stating Global file catalogue regen : [ FINISHED ]"
 
 
@@ -163,10 +163,10 @@ for CHROOT_file in $(cat ${catalogue_used})
     do 
      clear
      iterate_count="$(expr ${iterate_count} + 1 )"
-     eval  print -- " Listed Item for chroot creation [ ${CHROOT_BASE_DIR}/${CHROOT_file} ] "
+     eval  printf -- " Listed Item for chroot creation [ ${CHROOT_BASE_DIR}/${CHROOT_file} ] "
      File_Get_Type "/${CHROOT_file}" "SUB_rebuild_catalogue_get_file" "SUB_rebuild_catalogue_put_file" 
 done
-print -- "FLAGEND_CATALOG" >> ${TMP_file_cat}
+printf -- "FLAGEND_CATALOG" >> ${TMP_file_cat}
 File_Backup "${catalogue_used}" 
 mv ${TMP_file_cat} ${catalogue_used}
 exit 0 ; ${Relaunch}
@@ -207,7 +207,7 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 ######################################################
 MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
 
-print -- "${CHROOT_file}"  >> ${TMP_file_cat}
+printf -- "${CHROOT_file}"  >> ${TMP_file_cat}
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"

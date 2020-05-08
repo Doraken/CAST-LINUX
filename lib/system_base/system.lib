@@ -28,16 +28,16 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
   case ${SYSTEM_NAME} in 
-       Linux|linux|LINUX) print -- "Tunning scripts vars for [ ${SYSTEM_NAME} ] "
+       Linux|linux|LINUX) printf -- "Tunning scripts vars for [ ${SYSTEM_NAME} ] "
                           SYSTEM_TUNE_SUB_LINUX
                        ;;
-             AIX|aix|Aix) print -- "Tunning scripts vars for [ ${SYSTEM_NAME} ] "
+             AIX|aix|Aix) printf -- "Tunning scripts vars for [ ${SYSTEM_NAME} ] "
                           SYSTEM_TUNE_SUB_AIX
                        ;;
-             SunOS|SUNOS|sunos) print -- "Tunning scripts vars for [ ${SYSTEM_NAME} ] "
+             SunOS|SUNOS|sunos) printf -- "Tunning scripts vars for [ ${SYSTEM_NAME} ] "
                           SYSTEM_TUNE_SUB_SOLARIS
                        ;;
-                       *)print -- "Not yet suppoted system [ ${SYSTEM_NAME} ] "
+                       *)printf -- "Not yet suppoted system [ ${SYSTEM_NAME} ] "
                          CND_SUPPORT_MSG "1"
                        ;;
   esac 

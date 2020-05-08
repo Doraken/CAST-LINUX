@@ -89,7 +89,7 @@ expect_default_Filter="${Base_Dir_Scripts_Lib_Expect}/filter_expect.ksh"
 expect_root_filter="${Base_Dir_Scripts_Lib_Expect}/root_expect.ksh"
 
 #|# Define list of all ksh libs
-Lib_to_SRC="$(print -- $(find ${Base_Dir_Scripts_Lib} | grep "\.lib$" ))"
+Lib_to_SRC="$(printf -- $(find ${Base_Dir_Scripts_Lib} | grep "\.lib$" ))"
 
 #|# Define base temporary vars for user managment
 Base_NuserHome="/srv/users"                                                              # DIR_To_CHECK_TMP

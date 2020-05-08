@@ -166,7 +166,7 @@ MSG_DISPLAY "Debug6" "Current Stack : [ ${Function_PATH} ] "
         do
   	       [ ! -p "${self.filename}" ] && break
            while read -u3 -- line; do
-           print -- ${line}
+           printf -- ${line}
            done < ${self.filename}
    	    sleep 2
   done

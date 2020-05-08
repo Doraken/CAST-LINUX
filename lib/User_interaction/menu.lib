@@ -54,7 +54,7 @@ for Base_items_menu in $( cat ${Base_file_to_parse_Menu} | grep "${Base_Menu_get
 done
 
 Selected_Menu_items="${Base_Menu_Name} \\n ${Selected_Menu_items}"
-set -A Menu_Build_test $( print -- ${Selected_Menu_items} )
+set -A Menu_Build_test $( printf -- ${Selected_Menu_items} )
 
 Menu_Build Menu_Build_test
 
@@ -84,7 +84,7 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
 		  
   #Elimine la partie entre crochets
-  args=$(print -- "$args" | sed -e 's/[[][^]]*[]]//' -e 's/[[:blank:]]*$//' )
+  args=$(printf -- "$args" | sed -e 's/[[][^]]*[]]//' -e 's/[[:blank:]]*$//' )
   print -u2 "[$args]" | sed  -e 's/[_]/ /g'
   case $args in
   CHANGE\ *)    args="${args#CHANGE }"
@@ -121,19 +121,19 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
                     done                 
 
                     #Prepare les parametres du case
-                    case_seq=$(print -- $(seq ${limit}) | sed -e 's/ /|/g' )
+                    case_seq=$(printf -- $(seq ${limit}) | sed -e 's/ /|/g' )
                     case_return=$((${#args[@]}))
 
                     while true; do 
                     clear
 					    eval "
-                    	print -- ${args[0]} | sed -e 's/_/ /g'
+                    	printf -- ${args[0]} | sed -e 's/_/ /g'
                           select choice in ${select_args} Retour; do
                           case \${REPLY} in
                           ${case_seq})    Menu_Build \${choice} 
                                           break  ;;
                           ${case_return}) return ;;
-                          *)              print -- invalid choice: \${REPLY}.;;
+                          *)              printf -- invalid choice: \${REPLY}.;;
                           esac
                         done
                       "
@@ -171,7 +171,7 @@ for i in $(seq ${limit}); do
     select_args="${select_args}\"${args[i]}\" ";
 done
 #Prepare les parametres du case
-case_seq=$(print -- $(seq ${limit}) | sed -e 's/ /|/g' )
+case_seq=$(printf -- $(seq ${limit}) | sed -e 's/ /|/g' )
 case_return=$((${#args[@]}))
 select REPLY in ${RPM_SEND_BACK_LIST}
      do
@@ -179,7 +179,7 @@ select REPLY in ${RPM_SEND_BACK_LIST}
                           ${case_seq})    Menu_Build \${choice}
                                           break  ;;
                           ${case_return}) return ;;
-                          *)              print -- invalid choice: \${REPLY}.;;
+                          *)              printf -- invalid choice: \${REPLY}.;;
      esac
 done
 
@@ -263,7 +263,7 @@ for Arrays_gen in ${Menu_Array_list[@]}
              In_array_count="$( expr ${In_array_count} + 1 )"
       done
       MSG_DISPLAY "Debug6" "Array : [ ${Arrays_gen} ]"
-      eval set \-A ${Arrays_gen} \$\( print -- "\${Internal_Array_gen}" \)
+      eval set \-A ${Arrays_gen} \$\( printf -- "\${Internal_Array_gen}" \)
        Basic_internal_counter="1"
        for Items_print in $( eval print \${${Arrays_gen}[@]} )
               do
@@ -348,7 +348,7 @@ until [ "${Split_Counter}" = "${BASE_limite_spliter}" ]
       Menu_Array_Name="Auto_array_${Split_Counter}"
       Menu_Array_list_WRK="${Menu_Array_Name} \n ${Menu_Array_list_WRK}"
 done
-set -A  Menu_Array_list $( print -- "${Menu_Array_list_WRK}" )
+set -A  Menu_Array_list $( printf -- "${Menu_Array_list_WRK}" )
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
 ####################################################
