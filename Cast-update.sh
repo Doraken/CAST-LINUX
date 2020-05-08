@@ -1,4 +1,4 @@
-git pull --autostash
+git pull --rebase --autostash
 chmod +x /srv/admin/CAST-LINUX/*.sh
 chmod +x /srv/admin/CAST-LINUX/bin/*
-/srv/admin/CAST-LINUX/init.sh
+/srv/admin/CAST-LINUX/init-all.sh
