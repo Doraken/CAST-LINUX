@@ -1,7 +1,8 @@
-#!/bin/sh 
+#!/bin/bash 
 _Current_ID=$(id | awk '{ print $1}' | awk -F\( '{ print $1 }' | awk -F\= '{ print $2 }')
 _RootDir="/srv/admin/CAST-LINUX"
 _LST_PacMan="apt-get yum"
+ 
 if [ ${_Current_ID} -eq "0" ] 
   then 
     echo " ----> root ID ok continue ..."
@@ -71,17 +72,18 @@ echo "Creating base root directory"
 Directory_CRT "${_RootDir}"
 echo "shearching for you package manager"
 __Redflag="1"
+echo ${_LST_PacMan}
 for __Pacman in $( echo ${_LST_PacMan} ) 
    do 
-      echo "searching for ${__pacman}"
-      __tmpPacMan=$(which ${__pacman})
+      echo "searching for ${__Pacman}"
+      __tmpPacMan=$(which ${__Pacman})
       if [ "${?}" = "0" ]
           then
-              echo "Package manager : [ ${__pacman} ] found at : [ ${__tmpPacMan} ]"
+              echo "Package manager : [ ${__Pacman} ] found at : [ ${__tmpPacMan} ]"
               __USED_PKGMAN="${__tmpPacMan}"
               __Redflag="0"
           else 
-              echo "Package manager : [ ${__pacman} ] Not found"
+              echo "Package manager : [ ${__Pacman} ] Not found"
       fi
 done 
 RaiseFlag "no package manager found !!!! "
