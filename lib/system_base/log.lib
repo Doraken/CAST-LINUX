@@ -38,13 +38,10 @@ Base_sreen_Size_limit="$( tput cols )"
 
 __Noendline=""
 case ${MD_Type_Msg} in
-        starting_Global) __Noendline="-n"
+        starting_Global|Starting) __Noendline="-n"
         ManageMessage
         ;;
-        Starting)        __Noendline="-n"
-        ManageMessage
-        ;;
-        StMessage)       __Noendline="-n"
+        StMessage|Check) __Noendline="-n"
         ManageMessage
         ;;
         End_Global)      __Noendline="-n"
