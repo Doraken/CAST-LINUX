@@ -109,7 +109,7 @@ Mail_check_Mailler
 
 Empty_Var_Control "${MS_User_reciever}"      "MS_User_reciever"      "ErrorN" "1"  "can t send message to nobody" 
 Empty_Var_Control "${MS_User_Subject}"       "MS_User_Subject"       "ErrorN" "0"  "Use defaul subject [ from script ${Action_Type} ]" "MS_User_Subject=\"from script ${Action_Type}\"" 
-MS_File_On_ok_Simple="Global_Mail_Mode=$( printf -- "${Global_Mail_Mode}_ATT" )" 
+MS_File_On_ok_Simple="Global_Mail_Mode=$( echo  "${Global_Mail_Mode}_ATT" )" 
 MS_File_On_ko_simple=""
 Empty_Var_Control "${MS_User_Attached_File}" "MS_User_Attached_File" "ErrorN" "0"  "No file to send" "${MS_File_On_ko_simple}" "${MS_File_On_ok_Simple}" 
 Empty_Var_Control "${MS_User_Message}"       "MS_User_Message"       "ErrorN" "1"  "" 

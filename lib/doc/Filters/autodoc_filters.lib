@@ -23,7 +23,7 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 ######################################################
 Internal_Geted_line="${1}"
 
-printf -- "${Internal_Geted_line}"
+echo  "${Internal_Geted_line}"
 
 
 ############### Stack_TRACE_BUILDER ################
@@ -71,7 +71,7 @@ Function_Name="$0"
 Function_PATH="${Function_PATH}/${Function_Name}"
 ######################################################
 BASE_FILE_TO_FILTER="${1}"
-Protected_PATH="$( printf -- ${Base_Dir_Scripts} |   sed  -e  's/\//\\\//g')"
+Protected_PATH="$( echo  ${Base_Dir_Scripts} |   sed  -e  's/\//\\\//g')"
 
 MSG_DISPLAY "Debug5" "Protected Path var is set to : [ ${Protected_PATH} ]"
 

@@ -34,18 +34,18 @@ for New_Lib_Name in $(for Tvar in $( cat ../data/catalogue/function.cat | awk -F
     do
       for Function_geted in $( cat ${Base_Catalog_function} | grep ${New_Lib_Name} | awk -F ";" '{ print $4 }' )
           do
-             DPFMP_Base_File_name="$( printf -- ${Function_geted} | awk -F "." '{ print $1 }' )"
+             DPFMP_Base_File_name="$( echo  ${Function_geted} | awk -F "." '{ print $1 }' )"
              Document_doc_man="${Base_Dir_Scripts_Data_doc_man_html}/${DPFMP_Base_File_name}.html"
-             printf -- "<HTML>"                                                                                   >> ${Document_doc_man}
-             printf -- "    <BODY>"                                                                               >> ${Document_doc_man}
-             printf -- "       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>"           >> ${Document_doc_man}
-             printf -- "         <PRE><H2>SYNOPSIS</H2></PRE>"                                                    >> ${Document_doc_man}
-             printf -- " <B>                                 "                                                    >> ${Document_doc_man}
+             echo  "<HTML>"                                                                                   >> ${Document_doc_man}
+             echo  "    <BODY>"                                                                               >> ${Document_doc_man}
+             echo  "       <PRE><!-- Manpage converted by pcd autodoc by Arnaud Crampet  --></PRE>"           >> ${Document_doc_man}
+             echo  "         <PRE><H2>SYNOPSIS</H2></PRE>"                                                    >> ${Document_doc_man}
+             echo  " <B>                                 "                                                    >> ${Document_doc_man}
              cat ${Base_Catalog_function_docs} | grep "\;${Function_geted}\;" |  awk -F ";" '{ print "    " $6}' >> ${Document_doc_man}
-             printf -- "</B>"                                                                                     >> ${Document_doc_man}
-             printf -- "<ADDRESS>contact PCD at : ${PCD_MAIL_ADDR} <ADDRESS>"                                     >> ${Document_doc_man}                                                                                 >> ${Document_doc_xml}
-             printf -- "     </BODY> "                                                                            >> ${Document_doc_man}
-             printf -- "</HTML>"                                                                                  >> ${Document_doc_man}
+             echo  "</B>"                                                                                     >> ${Document_doc_man}
+             echo  "<ADDRESS>contact PCD at : ${PCD_MAIL_ADDR} <ADDRESS>"                                     >> ${Document_doc_man}                                                                                 >> ${Document_doc_xml}
+             echo  "     </BODY> "                                                                            >> ${Document_doc_man}
+             echo  "</HTML>"                                                                                  >> ${Document_doc_man}
        done
 done
 ############### Stack_TRACE_BUILDER ################

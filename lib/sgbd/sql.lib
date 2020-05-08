@@ -59,7 +59,7 @@ case ${EXTERNAL_SQL_IS_CONNECTED} in
      OnLine) MSG_DISPLAY "Debug6" "SQL Session id ${EXTERNAL_SQL_session_ID} status : [ Connected ] "
              MSG_DISPLAY "Debug6" "Current SQL FIFO file : [ ${EXTERNAL_SQL_current_FIFO_file} ] "
              MSG_DISPLAY "Debug6" "Current SQL Log file : [ ${EXTERNAL_SQL_current_Log_File} ] "
-             printf -- " exit " > ${EXTERNAL_SQL_current_FIFO_file}
+             echo  " exit " > ${EXTERNAL_SQL_current_FIFO_file}
              sleep 2
              FIFO_DELETE SQL_fifo
              MSG_DISPLAY "Debug6" "SQL Session id ${EXTERNAL_SQL_session_ID} status : [ Disconnected ] "
@@ -85,8 +85,8 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 DATABASE_To_connect="${1}"
 
-printf -- " CONNECT ${DATABASE_To_connect}; " >> ${EXTERNAL_SQL_current_FIFO_file}
-printf -- " show tables ; " >> ${EXTERNAL_SQL_current_FIFO_file}
+echo  " CONNECT ${DATABASE_To_connect}; " >> ${EXTERNAL_SQL_current_FIFO_file}
+echo  " show tables ; " >> ${EXTERNAL_SQL_current_FIFO_file}
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
 ####################################################
@@ -134,9 +134,9 @@ INTERNAL_ID_READ_ITEM="#-#-${EXTERNAL_randomized_var}"
 SQL_CMD="select DISTINCT '${INTERNAL_ID_READ_ITEM}' as 'BACKTRACE', \`PKG_NAME\`,\`ID_PKG\`  FROM  \`${Base_Database_Default}\`.\`${packageTable}\` ; "
 
 
-printf -- "select '${INTERNAL_ID_READ_ITEM}' as 'BACKTRACE', 'Debut' as 'status' ; " >> ${EXTERNAL_SQL_current_FIFO_file}
-printf -- "${SQL_CMD}" >> ${EXTERNAL_SQL_current_FIFO_file}
-printf -- "select '${INTERNAL_ID_READ_ITEM}' as 'BACKTRACE', 'fin' as 'status' ; " >> ${EXTERNAL_SQL_current_FIFO_file}
+echo  "select '${INTERNAL_ID_READ_ITEM}' as 'BACKTRACE', 'Debut' as 'status' ; " >> ${EXTERNAL_SQL_current_FIFO_file}
+echo  "${SQL_CMD}" >> ${EXTERNAL_SQL_current_FIFO_file}
+echo  "select '${INTERNAL_ID_READ_ITEM}' as 'BACKTRACE', 'fin' as 'status' ; " >> ${EXTERNAL_SQL_current_FIFO_file}
 SQL_Server_Disconnect
 
 ############### Stack_TRACE_BUILDER ################
@@ -191,7 +191,7 @@ do  INTERNAL_PKG_NAME="$( echo  "$line" | awk '{ print $1 }')"
     SQL_Run_ALL_PROCS_GEN_SUB1 > ${INTERNAL_IN_FILE}_RUN_PROCS.tmp
 
 done
-printf -- " exit "  > ${INTERNAL_IN_FILE}_RUN_PROCS.tmp
+echo  " exit "  > ${INTERNAL_IN_FILE}_RUN_PROCS.tmp
 rm ${INTERNAL_IN_FILE}_RUN_PROCS.tmp
 #${Base_mysql_bin_proc_use} < ${SQL_MASTER_PROC_SCRIPT}
 
@@ -218,142 +218,142 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 ######################################################
 MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
-printf -- "DELIMITER \$\$"
-printf -- "DROP PROCEDURE IF EXISTS \`${Base_Database_Default}\`.\`${PROC_NAME}\`\$\$"
-printf -- "CREATE DEFINER=\`admdb\`@\`%\` PROCEDURE \`${PROC_NAME}\`"
-printf -- "(  versionGeneral varchar(16)"
-printf -- " , versionRelease  varchar(16)"
-printf -- " , versionCorrectif varchar(16)"
-printf -- " , versionPatch varchar(16)"
-printf -- " , nomPF varchar(16)"
-printf -- " , nomMachine varchar(16)"
-printf -- " , nomInstance varchar(16)"
-printf -- " , nomInstanceSub1 varchar(50)"
-printf -- " , nomInstanceSub2 varchar(50)"
-printf -- " , numstage varchar(32)"
-printf -- ")"
-printf -- "BEGIN"
-printf -- ""
-printf -- "DROP TABLE IF EXISTS  \`${Base_Database_Default}\`.\`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\`;"
-printf -- "CREATE TABLE IF NOT EXISTS  \`${Base_Database_Default}\`.\`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\` ("
-printf -- "  \`ID_PKG\`               int(11)       NOT NULL,"
-printf -- "  \`PKG_GENERAL\`          varchar(8)    NOT NULL,"
-printf -- "  \`PKG_RELEASE\`          varchar(8)    NOT NULL,"
-printf -- "  \`PKG_CORRECTIF\`        varchar(8)    NOT NULL,"
-printf -- "  \`PKG_PATCH\`            varchar(8)    default NULL,"
-printf -- "  \`keywords_root_path\`   varchar(32)   default 'INFRA',"
-printf -- "  \`keywords_level1_PATH\` varchar(32)   default NULL,"
-printf -- "  \`keywords_level2_PATH\` varchar(32)   default NULL,"
-printf -- "  \`keywords_level3_PATH\` varchar(32)   default NULL,"
-printf -- "  \`keywords_level4_PATH\` varchar(32)   default NULL,"
-printf -- "  \`keywords_level5_PATH\` varchar(32)   default NULL,"
-printf -- "  \`keywords_level6_PATH\` varchar(32)   default NULL,"
-printf -- "  \`Keyword_Name\`         varchar(100)  NOT NULL,"
-printf -- "  \`Keyword_Value\`        varchar(2142) default NULL,"
-printf -- "  \`stage\`                varchar(32)   default NULL,"
-printf -- "  PRIMARY KEY  (\`Keyword_Name\`)"
-printf -- ") ENGINE=MyISAM DEFAULT CHARSET=latin1 ;"
-printf -- ""
+echo  "DELIMITER \$\$"
+echo  "DROP PROCEDURE IF EXISTS \`${Base_Database_Default}\`.\`${PROC_NAME}\`\$\$"
+echo  "CREATE DEFINER=\`admdb\`@\`%\` PROCEDURE \`${PROC_NAME}\`"
+echo  "(  versionGeneral varchar(16)"
+echo  " , versionRelease  varchar(16)"
+echo  " , versionCorrectif varchar(16)"
+echo  " , versionPatch varchar(16)"
+echo  " , nomPF varchar(16)"
+echo  " , nomMachine varchar(16)"
+echo  " , nomInstance varchar(16)"
+echo  " , nomInstanceSub1 varchar(50)"
+echo  " , nomInstanceSub2 varchar(50)"
+echo  " , numstage varchar(32)"
+echo  ")"
+echo  "BEGIN"
+echo  ""
+echo  "DROP TABLE IF EXISTS  \`${Base_Database_Default}\`.\`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\`;"
+echo  "CREATE TABLE IF NOT EXISTS  \`${Base_Database_Default}\`.\`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\` ("
+echo  "  \`ID_PKG\`               int(11)       NOT NULL,"
+echo  "  \`PKG_GENERAL\`          varchar(8)    NOT NULL,"
+echo  "  \`PKG_RELEASE\`          varchar(8)    NOT NULL,"
+echo  "  \`PKG_CORRECTIF\`        varchar(8)    NOT NULL,"
+echo  "  \`PKG_PATCH\`            varchar(8)    default NULL,"
+echo  "  \`keywords_root_path\`   varchar(32)   default 'INFRA',"
+echo  "  \`keywords_level1_PATH\` varchar(32)   default NULL,"
+echo  "  \`keywords_level2_PATH\` varchar(32)   default NULL,"
+echo  "  \`keywords_level3_PATH\` varchar(32)   default NULL,"
+echo  "  \`keywords_level4_PATH\` varchar(32)   default NULL,"
+echo  "  \`keywords_level5_PATH\` varchar(32)   default NULL,"
+echo  "  \`keywords_level6_PATH\` varchar(32)   default NULL,"
+echo  "  \`Keyword_Name\`         varchar(100)  NOT NULL,"
+echo  "  \`Keyword_Value\`        varchar(2142) default NULL,"
+echo  "  \`stage\`                varchar(32)   default NULL,"
+echo  "  PRIMARY KEY  (\`Keyword_Name\`)"
+echo  ") ENGINE=MyISAM DEFAULT CHARSET=latin1 ;"
+echo  ""
 
 SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
 
-printf -- "SELECT  \`${Base_Database_Default}_PKG_CAT\`.\`ID_PKG\` AS 'ID_PKG'"
-printf -- "       ,\`PKG_GENERAL\`"
-printf -- "       ,\`PKG_RELEASE\`"
-printf -- "       ,\`PKG_CORRECTIF\`"
-printf -- "       ,\`PKG_PATCH\`"
-printf -- "       ,'INFRA' AS 'keywords_root_path'"
-printf -- "       ,'' AS 'keywords_level1_PATH'"
-printf -- "       ,'' AS 'keywords_level2_PATH'"
-printf -- "       ,'' AS 'keywords_level3_PATH'"
-printf -- "       ,'' AS 'keywords_level4_PATH'"
-printf -- "       ,'' AS 'keywords_level5_PATH'"
-printf -- "       ,'' AS 'keywords_level6_PATH'"
-printf -- "       ,\`PKG_File_Keyword\` AS 'Keywod_Name'"
-printf -- "       ,'' AS 'Keyword_Value'"
-printf -- "       ,'' AS stage"
-printf -- "     FROM  ( \`${Base_Database_Default}_PKG_CAT\` LEFT JOIN \`${Base_Database_Default}_PKG_FILE_CAT\`"
-printf -- "         ON (\`${Base_Database_Default}_PKG_CAT\`.\`ID_PKG\` = \`${Base_Database_Default}_PKG_FILE_CAT\`.\`ID_PKG\`))"
-printf -- "            WHERE \`PKG_NAME\`    =  '${INTERNAL_PKG_NAME}' "
-printf -- "               AND \`PKG_GENERAL\` =  \`versionGeneral\`"
-printf -- "               AND \`PKG_RELEASE\` =  \`versionRelease\`"
-printf -- "               AND \`PKG_CORRECTIF\` =  \`versionCorrectif\`"
-printf -- "               AND \`PKG_PATCH\` = \`versionPatch\`"
-printf -- "          ORDER BY  \`${Base_Database_Default}_PKG_FILE_CAT\`.\`PKG_File_Keyword\`;"
-printf -- ""
-
-SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
-SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
-
-
-
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = '' "
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '' "
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = '' "
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = '' "
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = '' "
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ; "
-printf -- ""
-
+echo  "SELECT  \`${Base_Database_Default}_PKG_CAT\`.\`ID_PKG\` AS 'ID_PKG'"
+echo  "       ,\`PKG_GENERAL\`"
+echo  "       ,\`PKG_RELEASE\`"
+echo  "       ,\`PKG_CORRECTIF\`"
+echo  "       ,\`PKG_PATCH\`"
+echo  "       ,'INFRA' AS 'keywords_root_path'"
+echo  "       ,'' AS 'keywords_level1_PATH'"
+echo  "       ,'' AS 'keywords_level2_PATH'"
+echo  "       ,'' AS 'keywords_level3_PATH'"
+echo  "       ,'' AS 'keywords_level4_PATH'"
+echo  "       ,'' AS 'keywords_level5_PATH'"
+echo  "       ,'' AS 'keywords_level6_PATH'"
+echo  "       ,\`PKG_File_Keyword\` AS 'Keywod_Name'"
+echo  "       ,'' AS 'Keyword_Value'"
+echo  "       ,'' AS stage"
+echo  "     FROM  ( \`${Base_Database_Default}_PKG_CAT\` LEFT JOIN \`${Base_Database_Default}_PKG_FILE_CAT\`"
+echo  "         ON (\`${Base_Database_Default}_PKG_CAT\`.\`ID_PKG\` = \`${Base_Database_Default}_PKG_FILE_CAT\`.\`ID_PKG\`))"
+echo  "            WHERE \`PKG_NAME\`    =  '${INTERNAL_PKG_NAME}' "
+echo  "               AND \`PKG_GENERAL\` =  \`versionGeneral\`"
+echo  "               AND \`PKG_RELEASE\` =  \`versionRelease\`"
+echo  "               AND \`PKG_CORRECTIF\` =  \`versionCorrectif\`"
+echo  "               AND \`PKG_PATCH\` = \`versionPatch\`"
+echo  "          ORDER BY  \`${Base_Database_Default}_PKG_FILE_CAT\`.\`PKG_File_Keyword\`;"
+echo  ""
 
 SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
 SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
 
 
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
-printf -- ""
-SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
-SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
 
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = '' "
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '' "
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = '' "
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = '' "
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = '' "
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ; "
+echo  ""
 
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '${INTERNAL_PKG_NAME}'"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
-printf -- ""
-
-SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
-SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
-
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '${INTERNAL_PKG_NAME}'"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = \`nomInstance\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
-printf -- ""
 
 SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
 SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
 
 
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '${INTERNAL_PKG_NAME}'"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = \`nomInstance\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = \`nomInstanceSub1\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = ''"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
-printf -- ""
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
+echo  ""
+SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
+SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
+
+
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '${INTERNAL_PKG_NAME}'"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
+echo  ""
+
+SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
+SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
+
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '${INTERNAL_PKG_NAME}'"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = \`nomInstance\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
+echo  ""
 
 SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
 SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
 
 
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '${INTERNAL_PKG_NAME}' "
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = \`nomInstance\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = \`nomInstanceSub1\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = \`nomInstanceSub2\`"
-printf -- "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
-printf -- "END\$\$"
-printf -- "DELIMITER ;"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '${INTERNAL_PKG_NAME}'"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = \`nomInstance\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = \`nomInstanceSub1\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = ''"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
+echo  ""
+
+SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
+SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
+
+
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\` = \`nomMachine\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\` = '${INTERNAL_PKG_NAME}' "
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\` = \`nomInstance\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\` = \`nomInstanceSub1\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\` = \`nomInstanceSub2\`"
+echo  "            AND \`${Base_Database_Default}_OM_IMPORT\`.\`stage\` = \`numStage\` ;"
+echo  "END\$\$"
+echo  "DELIMITER ;"
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -362,45 +362,45 @@ Function_PATH="$( dirname ${Function_PATH} )"
 
 function SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_1
 {
-printf -- "REPLACE into \`${Base_Database_Default}\`.\`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\`"
-printf -- "   (\`ID_PKG\`"
-printf -- "   ,\`PKG_GENERAL\`"
-printf -- "   ,\`PKG_RELEASE\`"
-printf -- "   ,\`PKG_CORRECTIF\`"
-printf -- "   ,\`PKG_PATCH\`"
-printf -- "   ,\`keywords_root_path\`"
-printf -- "   ,\`keywords_level1_PATH\`"
-printf -- "   ,\`keywords_level2_PATH\`"
-printf -- "   ,\`keywords_level3_PATH\`"
-printf -- "   ,\`keywords_level4_PATH\`"
-printf -- "   ,\`keywords_level5_PATH\`"
-printf -- "   ,\`keywords_level6_PATH\`"
-printf -- "   ,\`Keyword_Name\`"
-printf -- "   ,\`Keyword_Value\`"
-printf -- "   ,\`stage\`"
-printf -- ")"
+echo  "REPLACE into \`${Base_Database_Default}\`.\`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\`"
+echo  "   (\`ID_PKG\`"
+echo  "   ,\`PKG_GENERAL\`"
+echo  "   ,\`PKG_RELEASE\`"
+echo  "   ,\`PKG_CORRECTIF\`"
+echo  "   ,\`PKG_PATCH\`"
+echo  "   ,\`keywords_root_path\`"
+echo  "   ,\`keywords_level1_PATH\`"
+echo  "   ,\`keywords_level2_PATH\`"
+echo  "   ,\`keywords_level3_PATH\`"
+echo  "   ,\`keywords_level4_PATH\`"
+echo  "   ,\`keywords_level5_PATH\`"
+echo  "   ,\`keywords_level6_PATH\`"
+echo  "   ,\`Keyword_Name\`"
+echo  "   ,\`Keyword_Value\`"
+echo  "   ,\`stage\`"
+echo  ")"
 }
 
 function SQL_Sub_GENERATE_PROCS_OM_PKG_KEY_CATALOGUE_2
 {
-printf -- "SELECT \`ID_PKG\`"
-printf -- "     ,\`PKG_GENERAL\`"
-printf -- "      ,\`PKG_RELEASE\`"
-printf -- "      ,\`PKG_CORRECTIF\`"
-printf -- "      ,\`PKG_PATCH\`"
-printf -- "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_root_path\`"
-printf -- "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\`"
-printf -- "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\`"
-printf -- "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\`"
-printf -- "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\`"
-printf -- "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\`"
-printf -- "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level6_PATH\`"
-printf -- "      ,\`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\`.\`Keyword_Name\` AS \`Keyword_Name\`"
-printf -- "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`Keyword_Value\`"
-printf -- "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`stage\`"
-printf -- " FROM ( \`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\` LEFT JOIN \`${Base_Database_Default}_OM_IMPORT\`"
-printf -- "      ON ( \`${Base_Database_Default}_OM_IMPORT\`.\`Keyword_Name\` = \`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\`.\`Keyword_Name\` ))"
-printf -- "         WHERE  \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_root_path\` = 'INFRA'"
+echo  "SELECT \`ID_PKG\`"
+echo  "     ,\`PKG_GENERAL\`"
+echo  "      ,\`PKG_RELEASE\`"
+echo  "      ,\`PKG_CORRECTIF\`"
+echo  "      ,\`PKG_PATCH\`"
+echo  "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_root_path\`"
+echo  "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level1_PATH\`"
+echo  "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level2_PATH\`"
+echo  "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level3_PATH\`"
+echo  "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level4_PATH\`"
+echo  "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level5_PATH\`"
+echo  "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`keywords_level6_PATH\`"
+echo  "      ,\`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\`.\`Keyword_Name\` AS \`Keyword_Name\`"
+echo  "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`Keyword_Value\`"
+echo  "      ,\`${Base_Database_Default}_OM_IMPORT\`.\`stage\`"
+echo  " FROM ( \`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\` LEFT JOIN \`${Base_Database_Default}_OM_IMPORT\`"
+echo  "      ON ( \`${Base_Database_Default}_OM_IMPORT\`.\`Keyword_Name\` = \`${Base_TABLE_Name}_${INTERNAL_PKG_NAME}\`.\`Keyword_Name\` ))"
+echo  "         WHERE  \`${Base_Database_Default}_OM_IMPORT\`.\`keywords_root_path\` = 'INFRA'"
 }
 
 
@@ -449,7 +449,7 @@ INTERNAL_IN_FILE_GET_ALL="${Base_Database_TempDir}/GET_ALL_tmp_in.sql"
 INTERNAL_OUT_FILE_GET_ALL="${Base_Database_TempDir}/GET_ALL_outfile.file"
 SQL_CMD="select * from \`ARPCOM_VIEW_PKG_FOR_PROC\` ;"
 
-printf -- "${SQL_CMD}" EXTERNAL_SQL_current_FIFO_file
+echo  "${SQL_CMD}" EXTERNAL_SQL_current_FIFO_file
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
 ####################################################

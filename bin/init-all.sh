@@ -34,10 +34,12 @@ if [ "${CNF_SRC}" = "1" ]
 fi 
 SRC_AUTO
 
+echo "getting specifics configuration"
+
 for Specs in $( ls ${Base_Dir_Scripts_CNF_spec}/ | grep \.cnf ) 
     do 
       Conf_Specifics="${Specs}"
-      printf -- "${Conf_Specifics}"
+      echo  "${Conf_Specifics}"
       SANITY_CHECK_Base_env_directory_check
       SANITY_CHECK_Check_TMP_Directory
 done 

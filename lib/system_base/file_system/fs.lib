@@ -28,7 +28,7 @@ for FS_see in $(df -P | grep dev | egrep -v "none" | awk '{print $1}')
     FS_Name_list_tmp="${FS_Name_list_tmp} ${FS_see}"
 done
 FS_Max=${Counted_FS}
-set -A FS_Name_list $( printf -- ${FS_Name_list_tmp} )
+set -A FS_Name_list $( echo  ${FS_Name_list_tmp} )
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"

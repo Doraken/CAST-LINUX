@@ -23,7 +23,7 @@ Action_Type="${0}"
 ### Sourcing Specifics Configurations Files
 echo "" ; echo "" ; echo "" ; echo ""
 
-echo [ Info   :  script  INIT ]
+echo "[ Info   :  script  INIT ]"
 
 CNF_SRC="0"
 . ${Conf_Generics}

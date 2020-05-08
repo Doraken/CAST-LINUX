@@ -30,14 +30,14 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
 for Libraries_geted in $( cat ${Base_Catalog_function} | awk -F ";" '{ print $2 }' | sort -u )
       do
-        Document_doc_xml="${Base_Dir_Scripts_Data_doc_xml}/$( printf -- ${Libraries_geted} | awk -F "/" '{ print $NF}' | awk -F "." '{ print $1".xml"}' )"
+        Document_doc_xml="${Base_Dir_Scripts_Data_doc_xml}/$( echo  ${Libraries_geted} | awk -F "/" '{ print $NF}' | awk -F "." '{ print $1".xml"}' )"
         New_Lib_Name="$(echo ${Libraries_geted} | awk -F "/" '{ print $NF}')" > ${Document_doc_xml}
-        printf -- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"                >> ${Document_doc_xml}
-        printf -- "<?xml-stylesheet type=\"text/xsl\" href=\"autodoc.xsl\"?>" >> ${Document_doc_xml}
-        printf -- " <Library>"                                                >> ${Document_doc_xml}
-        printf -- " <LibraryName>${New_Lib_Name}</LibraryName>"               >> ${Document_doc_xml}
+        echo  "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"                >> ${Document_doc_xml}
+        echo  "<?xml-stylesheet type=\"text/xsl\" href=\"autodoc.xsl\"?>" >> ${Document_doc_xml}
+        echo  " <Library>"                                                >> ${Document_doc_xml}
+        echo  " <LibraryName>${New_Lib_Name}</LibraryName>"               >> ${Document_doc_xml}
         Document_Print_function_xml
-        printf -- " </Library>"                                               >> ${Document_doc_xml}
+        echo  " </Library>"                                               >> ${Document_doc_xml}
 done
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -65,13 +65,13 @@ MSG_DISPLAY "Debug6" " Value of New_Lib_Name          : [ ${New_Lib_Name} ]"
 
 for Function_geted in $( cat ${Base_Catalog_function} | grep ${New_Lib_Name} | awk -F ";" '{ print $4 }' )
     do
-      printf -- "<Function>"                                     >> ${Document_doc_xml}
-      printf -- "<FunctionName>${Function_geted}</FunctionName>" >> ${Document_doc_xml}
+      echo  "<Function>"                                     >> ${Document_doc_xml}
+      echo  "<FunctionName>${Function_geted}</FunctionName>" >> ${Document_doc_xml}
       Document_Print_Dependences_xml
-      printf -- "<DocText>"                                      >> ${Document_doc_xml}
+      echo  "<DocText>"                                      >> ${Document_doc_xml}
       cat ${Base_Catalog_function_docs} | grep "\;${Function_geted}\;" |  awk -F ";" '{ print "    " $6}' >> ${Document_doc_xml}
-      printf -- "</DocText>"                                     >> ${Document_doc_xml}
-      printf -- "</Function>"                                    >> ${Document_doc_xml}
+      echo  "</DocText>"                                     >> ${Document_doc_xml}
+      echo  "</Function>"                                    >> ${Document_doc_xml}
 done
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -95,15 +95,15 @@ Function_PATH="${Function_PATH}/${Function_Name}"
 MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
 Internal_Geted_line="${1}"
-printf -- "<DependOn>" >> ${Document_doc_xml}
+echo  "<DependOn>" >> ${Document_doc_xml}
 for Dependences_Geted in  $( cat ${Base_Catalog_function_depend} | grep "\;${Function_geted}\;" |  awk -F ";" '{ print $8 ";"  $6  }' | sort -u )
     do
-      printf -- "<FunctionDepend>"                                                                    >> ${Document_doc_xml}
-      printf -- "${Dependences_Geted}" | awk -F ";" '{print "<FunctionName>" $1 "</FunctionName>" }'  >> ${Document_doc_xml}
-      printf -- "${Dependences_Geted}" | awk -F ";" '{print "<FunctionLib>" $2 "</FunctionLib>" }'    >> ${Document_doc_xml}
-      printf -- "</FunctionDepend>"                                                                   >> ${Document_doc_xml}
+      echo  "<FunctionDepend>"                                                                    >> ${Document_doc_xml}
+      echo  "${Dependences_Geted}" | awk -F ";" '{print "<FunctionName>" $1 "</FunctionName>" }'  >> ${Document_doc_xml}
+      echo  "${Dependences_Geted}" | awk -F ";" '{print "<FunctionLib>" $2 "</FunctionLib>" }'    >> ${Document_doc_xml}
+      echo  "</FunctionDepend>"                                                                   >> ${Document_doc_xml}
 done
-printf -- "</DependOn>" >> ${Document_doc_xml}
+echo  "</DependOn>" >> ${Document_doc_xml}
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
 ####################################################

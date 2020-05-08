@@ -36,15 +36,15 @@ HTML_File_to_export="${1}"
 Server_Name_To_report="${2}"
 HTML_Table_Head_Report_FS="${3}"
 
-printf -- "<table style=\"text-align: left; width: 750px; border-width:1px;\" cellpadding=\"2\" cellspacing=\"2\">"         >> ${HTML_File_to_export}
-printf -- "<tbody>"                                                                                                         >> ${HTML_File_to_export}
-printf -- "<tr>"                                                                                                            >> ${HTML_File_to_export}
-printf -- "    <td width=\'450\'>Mount Point </td>"                                                                         >> ${HTML_File_to_export}
-printf -- "    <td >Status </td>"                                                                                           >> ${HTML_File_to_export}
-printf -- "    <td >Space used in percent</td>"                                                                             >> ${HTML_File_to_export}
-printf -- "    <td >Free space </td>"                                                                                       >> ${HTML_File_to_export}
-printf -- "    </td>"                                                                                                       >> ${HTML_File_to_export}
-printf -- "</tr>"                                                                                                           >> ${HTML_File_to_export}
+echo  "<table style=\"text-align: left; width: 750px; border-width:1px;\" cellpadding=\"2\" cellspacing=\"2\">"         >> ${HTML_File_to_export}
+echo  "<tbody>"                                                                                                         >> ${HTML_File_to_export}
+echo  "<tr>"                                                                                                            >> ${HTML_File_to_export}
+echo  "    <td width=\'450\'>Mount Point </td>"                                                                         >> ${HTML_File_to_export}
+echo  "    <td >Status </td>"                                                                                           >> ${HTML_File_to_export}
+echo  "    <td >Space used in percent</td>"                                                                             >> ${HTML_File_to_export}
+echo  "    <td >Free space </td>"                                                                                       >> ${HTML_File_to_export}
+echo  "    </td>"                                                                                                       >> ${HTML_File_to_export}
+echo  "</tr>"                                                                                                           >> ${HTML_File_to_export}
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -73,9 +73,9 @@ HTML_File_to_export="${1}"
 Server_Name_To_report="${2}"
 HTML_Table_Head_Report_FS="${3}"
 
-printf -- " </tbody>" >> ${HTML_File_to_export}
-printf -- "</table>"  >> ${HTML_File_to_export}
-printf -- "<br>"      >> ${HTML_File_to_export}
+echo  " </tbody>" >> ${HTML_File_to_export}
+echo  "</table>"  >> ${HTML_File_to_export}
+echo  "<br>"      >> ${HTML_File_to_export}
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
 ####################################################
@@ -100,10 +100,10 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
 HTML_File_to_export="${1}"
 
-printf -- "<tr> <td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 0, 0);\"> ${Device_Mnts_To_State} </td>"  >> ${HTML_File_to_export}
-printf -- "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 0, 0);\"> ${State_Case} </td>"                 >> ${HTML_File_to_export}
-printf -- "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 0, 0);\"> ${Device_perc_To_State} </td>"       >> ${HTML_File_to_export}
-printf -- "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 0, 0);\"> ${Device_Free_To_State} </td></tr>"  >> ${HTML_File_to_export}
+echo  "<tr> <td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 0, 0);\"> ${Device_Mnts_To_State} </td>"  >> ${HTML_File_to_export}
+echo  "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 0, 0);\"> ${State_Case} </td>"                 >> ${HTML_File_to_export}
+echo  "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 0, 0);\"> ${Device_perc_To_State} </td>"       >> ${HTML_File_to_export}
+echo  "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 0, 0);\"> ${Device_Free_To_State} </td></tr>"  >> ${HTML_File_to_export}
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -129,10 +129,10 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
 HTML_File_to_export="${1}"
 
-printf -- "<tr> <td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 153, 0);\"> ${Device_Mnts_To_State} </td>"    >> ${HTML_File_to_export}
-printf -- "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 153, 0);\"> ${State_Case} </td>"                   >> ${HTML_File_to_export}
-printf -- "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 153, 0);\"> ${Device_perc_To_State} </td>"         >> ${HTML_File_to_export}
-printf -- "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 153, 0);\"> ${Device_Free_To_State} </td></tr>"    >> ${HTML_File_to_export}
+echo  "<tr> <td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 153, 0);\"> ${Device_Mnts_To_State} </td>"    >> ${HTML_File_to_export}
+echo  "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 153, 0);\"> ${State_Case} </td>"                   >> ${HTML_File_to_export}
+echo  "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 153, 0);\"> ${Device_perc_To_State} </td>"         >> ${HTML_File_to_export}
+echo  "<td style=\"vertical-align: top; font-weight: bold; color: rgb(255, 153, 0);\"> ${Device_Free_To_State} </td></tr>"    >> ${HTML_File_to_export}
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -158,10 +158,10 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
 HTML_File_to_export="${1}"
 
-printf -- "<tr> <td style=\"vertical-align: top; color: rgb(0, 0, 0);\"> ${Device_Mnts_To_State} </td>"    >> ${HTML_File_to_export}
-printf -- "<td style=\"vertical-align: top; color: rgb(0, 0, 0);\"> ${State_Case} </td>"                   >> ${HTML_File_to_export}
-printf -- "<td style=\"vertical-align: top; color: rgb(0, 0, 0);\"> ${Device_perc_To_State} </td>"         >> ${HTML_File_to_export}
-printf -- "<td style=\"vertical-align: top; color: rgb(0, 0, 0);\"> ${Device_Free_To_State} </td> </tr>"   >> ${HTML_File_to_export}
+echo  "<tr> <td style=\"vertical-align: top; color: rgb(0, 0, 0);\"> ${Device_Mnts_To_State} </td>"    >> ${HTML_File_to_export}
+echo  "<td style=\"vertical-align: top; color: rgb(0, 0, 0);\"> ${State_Case} </td>"                   >> ${HTML_File_to_export}
+echo  "<td style=\"vertical-align: top; color: rgb(0, 0, 0);\"> ${Device_perc_To_State} </td>"         >> ${HTML_File_to_export}
+echo  "<td style=\"vertical-align: top; color: rgb(0, 0, 0);\"> ${Device_Free_To_State} </td> </tr>"   >> ${HTML_File_to_export}
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -188,15 +188,15 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
 HTML_File_to_export="${1}"
 
-printf -- "<html>"                                                                                                              > ${HTML_File_to_export}
-printf -- "<head>"                                                                                                             >> ${HTML_File_to_export}
-printf -- "<Style type=\"text/css\"> td { border:thin dotted blue; font-weight: bold;} </style>"                               >> ${HTML_File_to_export}
-printf -- "<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">"                                       >> ${HTML_File_to_export}
-printf -- "<title></title>"                                                                                                    >> ${HTML_File_to_export}
-printf -- "</head>"                                                                                                            >> ${HTML_File_to_export}
-printf -- "<body>"                                                                                                             >> ${HTML_File_to_export}
-printf -- "Config and Deploy PF report ON ${CURENT_WORK_DIR} for server ${current_server} <br>"                                >> ${HTML_File_to_export}
-printf -- "<br>"                                                                                                               >> ${HTML_File_to_export}
+echo  "<html>"                                                                                                              > ${HTML_File_to_export}
+echo  "<head>"                                                                                                             >> ${HTML_File_to_export}
+echo  "<Style type=\"text/css\"> td { border:thin dotted blue; font-weight: bold;} </style>"                               >> ${HTML_File_to_export}
+echo  "<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">"                                       >> ${HTML_File_to_export}
+echo  "<title></title>"                                                                                                    >> ${HTML_File_to_export}
+echo  "</head>"                                                                                                            >> ${HTML_File_to_export}
+echo  "<body>"                                                                                                             >> ${HTML_File_to_export}
+echo  "Config and Deploy PF report ON ${CURENT_WORK_DIR} for server ${current_server} <br>"                                >> ${HTML_File_to_export}
+echo  "<br>"                                                                                                               >> ${HTML_File_to_export}
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
 ####################################################
@@ -222,11 +222,11 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
 HTML_File_to_export="${1}"
 
-printf -- "</tbody>"    >> ${HTML_File_to_export}
-printf -- "</table>"    >> ${HTML_File_to_export}
-printf -- "<br>"        >> ${HTML_File_to_export}
-printf -- "</body>"     >> ${HTML_File_to_export}
-printf -- "</html>"     >> ${HTML_File_to_export}
+echo  "</tbody>"    >> ${HTML_File_to_export}
+echo  "</table>"    >> ${HTML_File_to_export}
+echo  "<br>"        >> ${HTML_File_to_export}
+echo  "</body>"     >> ${HTML_File_to_export}
+echo  "</html>"     >> ${HTML_File_to_export}
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -257,18 +257,18 @@ HIMGG_INT_lst="${2}"
 
 HTML_File_to_export="${HIMGG_Base_Menu_Directory}/index.html"
 
-printf -- "<html>"                                                                         >  ${HTML_File_to_export}
-printf -- "<head>"                                                                        >>  ${HTML_File_to_export}
-printf -- "<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">"  >>  ${HTML_File_to_export}
-printf -- "<title></title>"                                                               >>  ${HTML_File_to_export}
-printf -- "</head>"                                                                       >>  ${HTML_File_to_export}
-printf -- "<body>"                                                                        >>  ${HTML_File_to_export}
+echo  "<html>"                                                                         >  ${HTML_File_to_export}
+echo  "<head>"                                                                        >>  ${HTML_File_to_export}
+echo  "<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">"  >>  ${HTML_File_to_export}
+echo  "<title></title>"                                                               >>  ${HTML_File_to_export}
+echo  "</head>"                                                                       >>  ${HTML_File_to_export}
+echo  "<body>"                                                                        >>  ${HTML_File_to_export}
 for ints in ${HIMGG_INT_lst}
    do
-     printf -- "<a href=\"${ints}/index.html\">${ints}</a><br>"                           >>  ${HTML_File_to_export}
+     echo  "<a href=\"${ints}/index.html\">${ints}</a><br>"                           >>  ${HTML_File_to_export}
 done
-printf -- "</body>"                                                                       >>  ${HTML_File_to_export}
-printf -- "</html>"                                                                       >>  ${HTML_File_to_export}
+echo  "</body>"                                                                       >>  ${HTML_File_to_export}
+echo  "</html>"                                                                       >>  ${HTML_File_to_export}
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -302,20 +302,20 @@ for HIHIMGG_ints in ${HIHIMGG_INT_lst}
       HIHIMGG_HTML_File_to_export="${HIHIMGG_Base_PATH_OF_FILES_INTS}/${HIHIMGG_ints}/index.html"
       MSG_DISPLAY "Debug2" "HTML File to export is set to : [ ${HIHIMGG_HTML_File_to_export} ] "
 
-      printf -- "<html>"                                                                         >  ${HIHIMGG_HTML_File_to_export}
-      printf -- "<head>"                                                                        >>  ${HIHIMGG_HTML_File_to_export}
-      printf -- "<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">"  >>  ${HIHIMGG_HTML_File_to_export}
-      printf -- "<title></title>"                                                               >>  ${HIHIMGG_HTML_File_to_export}
-      printf -- "</head>"                                                                       >>  ${HIHIMGG_HTML_File_to_export}
-      printf -- "<body>"                                                                        >>  ${HIHIMGG_HTML_File_to_export}
+      echo  "<html>"                                                                         >  ${HIHIMGG_HTML_File_to_export}
+      echo  "<head>"                                                                        >>  ${HIHIMGG_HTML_File_to_export}
+      echo  "<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">"  >>  ${HIHIMGG_HTML_File_to_export}
+      echo  "<title></title>"                                                               >>  ${HIHIMGG_HTML_File_to_export}
+      echo  "</head>"                                                                       >>  ${HIHIMGG_HTML_File_to_export}
+      echo  "<body>"                                                                        >>  ${HIHIMGG_HTML_File_to_export}
       for HIHIMGG_files in `ls ${HIHIMGG_Base_PATH_OF_FILES_INTS}/${HIHIMGG_ints}/ | egrep -v index `
           do
             HIHIMGG_File_Name_To_lnk=$( echo ${HIHIMGG_files} | awk -F\. '{ print $1 }' )
-            printf -- "<a href=\"./${HIHIMGG_files}\">${HIHIMGG_File_Name_To_lnk}</a><br>"      >>  ${HIHIMGG_HTML_File_to_export}
+            echo  "<a href=\"./${HIHIMGG_files}\">${HIHIMGG_File_Name_To_lnk}</a><br>"      >>  ${HIHIMGG_HTML_File_to_export}
           done
       done
-      printf -- "</body>"                                                                       >>  ${HIHIMGG_HTML_File_to_export}
-      printf -- "</html>"                                                                       >>  ${HIHIMGG_HTML_File_to_export}
+      echo  "</body>"                                                                       >>  ${HIHIMGG_HTML_File_to_export}
+      echo  "</html>"                                                                       >>  ${HIHIMGG_HTML_File_to_export}
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -339,18 +339,18 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 
 HTML_File_to_export="${Base_Menu_Directory}/index.html"
 
-printf -- "<html>"                                                                         >  ${HTML_File_to_export}
-printf -- "<head>"                                                                        >>  ${HTML_File_to_export}
-printf -- "<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">"  >>  ${HTML_File_to_export}
-printf -- "<title></title>"                                                               >>  ${HTML_File_to_export}
-printf -- "</head>"                                                                       >>  ${HTML_File_to_export}
-printf -- "<body>"                                                                        >>  ${HTML_File_to_export}
+echo  "<html>"                                                                         >  ${HTML_File_to_export}
+echo  "<head>"                                                                        >>  ${HTML_File_to_export}
+echo  "<meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\">"  >>  ${HTML_File_to_export}
+echo  "<title></title>"                                                               >>  ${HTML_File_to_export}
+echo  "</head>"                                                                       >>  ${HTML_File_to_export}
+echo  "<body>"                                                                        >>  ${HTML_File_to_export}
 for ints in ${INT_lst}
    do
-     printf -- "<a href=\"${ints}/index.html\">${ints}</a><br>"                           >>  ${HTML_File_to_export}
+     echo  "<a href=\"${ints}/index.html\">${ints}</a><br>"                           >>  ${HTML_File_to_export}
 done
-printf -- "</body>"                                                                       >>  ${HTML_File_to_export}
-printf -- "</html>"                                                                       >>  ${HTML_File_to_export}
+echo  "</body>"                                                                       >>  ${HTML_File_to_export}
+echo  "</html>"                                                                       >>  ${HTML_File_to_export}
 
 ############### Stack_TRACE_BUILDER ################
 Function_PATH="$( dirname ${Function_PATH} )"
@@ -371,7 +371,7 @@ MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
 HCF_Number_Frame="${1}"
 HCF_Name_Frame="${2}"
 
-HCF_NUM_From_Name="$(printf -- ${HCF_Name_Frame} | awk '{ print NF }')"
+HCF_NUM_From_Name="$(echo  ${HCF_Name_Frame} | awk '{ print NF }')"
 if [ "${HCF_NUM_From_Name}"	= "${HCF_Name_Frame}" ]
    then
    	    MSG_DISPLAY "Debug5" "Number of frame : [ ${HCF_Number_Frame} ]"

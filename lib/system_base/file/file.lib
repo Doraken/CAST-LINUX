@@ -547,7 +547,7 @@ while read Internal_myline
   do
     if [ -z "${Data_miner}" ]
        then
-       	    printf -- " Line DATA : [ ${Internal_myline} ] "
+       	    echo  " Line DATA : [ ${Internal_myline} ] "
        else
             ${Data_miner} "${Internal_myline}"
     fi
