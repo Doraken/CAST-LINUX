@@ -4,7 +4,7 @@
 # author : Arnaud Crampet                              Date    : 06/09/2006    #
 #                                                                              #
 ################################################################################
-Conf_Generics="/srv/admin/script/CAST-LINUX/conf/generics.cnf"
+Conf_Generics="/srv/admin/CAST-LINUX/conf/generics.cnf"
 Conf_Specifics=""
 Return_Path="$(pwd)" 
 Debug_state="9"
