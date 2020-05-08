@@ -55,3 +55,6 @@ function Main()
 Directory_CRT "${_RootDir}"
 
 }
+
+
+main
