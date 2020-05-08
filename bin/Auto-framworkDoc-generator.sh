@@ -14,7 +14,7 @@
 # INFO
 
 
-Conf_Generics="../conf/generics.cnf"
+Conf_Generics="/srv/admin/script/CAST-LINUX/conf/generics.cnf"
 Conf_Specifics="document.cnf"
 Return_Path="`pwd`"
 Debug_state="6"
