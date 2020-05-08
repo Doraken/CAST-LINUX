@@ -74,7 +74,7 @@ __Redflag="1"
 for __Pacman in ${_LST_PacMan} 
    do 
       echo "searching for ${__pacman}"
-      __tmpPacMan=$(which ${__pacman})^
+      __tmpPacMan=$(which ${__pacman})
       if [ "${?}" = "0" ]
           then
               echo "Package manager : [ ${__pacman} ] found at : [ ${__tmpPacMan} ]"
