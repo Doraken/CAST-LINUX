@@ -35,108 +35,73 @@ MD_Msg_To_Display="${2}"
 MD_Level_Code="${3}"
 Base_sreen_Size_limit="$( tput cols )"
 
-case ${MD_Type_Msg} in
-        		starting_Global) _SMessage_VAR="$( eval echo  "Main : [ ${Function_Name} :")"
-        				 	 _EMessage_VAR="$( echo  "[ ${MD_Type_Msg} ]")"
-        				 	 spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-                             eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"      ${Debug_Redirector}
-                             ;;
-                 End_Global) _SMessage_VAR="$( eval echo  "Function ${Function_Name} :")"
-        				 	 _EMessage_VAR="$( echo  "[ ${MD_Type_Msg} ]")"
-        				 	 spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-                             eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"      ${Debug_Redirector}
-                             ;;
-                   Starting) _SMessage_VAR="$( eval echo  "Function ${Function_Name} :")"
-        				 	 _EMessage_VAR="$( echo  "[ ${MD_Type_Msg} ]")"
-        				 	 spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-                             eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"      ${Debug_Redirector}
-                             ;;
-                        End) eval echo  "Function ${Function_Name} : [ ${MD_Type_Msg} ]"      ${Debug_Redirector}
-                             ;;
-                       Info) FONT_set_Info_Font
-                    		 _SMessage_VAR="$( echo  "Information :")"
-							 _EMessage_VAR="$( echo  "[ ${MD_Msg_To_Display} ]")"
-							 spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-							 eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"      ${Info_Redirector}
-                             FONT_set_Basic_Font
-                             eval printf "\\\033\\[K"   ${Info_Redirector}
-                             ;;
-                    Message) _SMessage_VAR="$( echo  "Message :")"
-							 _EMessage_VAR="$( echo  "[ ${MD_Msg_To_Display} ]")"
-							 spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-							 eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"      ${Info_Redirector}
-							 FONT_set_Basic_Font
-                             ;;
-                  StMessage) _SMessage_VAR="$( eval echo  "Action :  ${MD_Msg_To_Display}") "
-                             eval print -n "Action :  ${MD_Msg_To_Display} "                            ${Info_Redirector}
-                             FONT_set_Basic_Font
-                             eval printf "\\\033\\[K"   ${Info_Redirector}
-                             ;;
-                 EdSMessage) FONT_set_Basic_Font
-                             _EMessage_VAR="$( echo  "[ OK ${MD_Msg_To_Display}]" )"
-                             spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-                             eval print -n ${MSG_SPLITER}                                          ${Info_Redirector}
-                             FONT_set_Ok_Font
-                			 eval print -n "${_EMessage_VAR}"                                      ${Info_Redirector}
-                			 eval echo  ""                                                      ${Info_Redirector}
-                             FONT_set_Basic_Font
-                             eval printf "\\\033\\[K"   ${Info_Redirector}
-                             ;;
-                 EdEMessage) FONT_set_Basic_Font
-                			 _EMessage_VAR="$( eval echo  "[  ! ERROR ! ${MD_Msg_To_Display}]" )"
-                			 spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-							 eval print -n ${MSG_SPLITER}                                     		  ${Info_Redirector}
-                			 FONT_set_Warn_Font           
-                			 eval print -n -e "${_EMessage_VAR}"                   					  ${Info_Redirector}
-                			 eval echo  ""                                                         ${Info_Redirector}
-                             FONT_set_Basic_Font
-                             eval printf "\\\033\\[K"   ${Info_Redirector}
-                             ;;
-                      Debug) Sub_MSGDebug "${MD_Type_Msg}"
-                             ;;
-                     Debug*) Sub_MSGDebug "${MD_Type_Msg}"
-                             ;;
-                    LoggerN) Log_Logger_use "${MD_Level_Code}"
-                             ;;
-                     Config) eval echo  "Configuration : [ ${MD_Msg_To_Display} ]"         ${Info_Redirector}
-                             FONT_set_Basic_Font
-                             eval printf "\\\033\\[K"    ${Info_Redirector}
-                             ;;
-                     ErrorN) if [  "${MD_Level_Code}" = "0" ]
-                                         then
-                                         	    FONT_set_Warn_Font                                         	    
-												_SMessage_VAR="$( echo  "Warning ON ${Function_Name} :")"
-												_EMessage_VAR="$( echo  "[ ${MD_Msg_To_Display} ]")"
-												spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-												eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"     ${Info_Redirector}
-												FONT_set_Basic_Font
-                                          else
-                                                FONT_set_Error_Font
-                                                Function_Name="$( echo  ${Function_PATH} | awk -F'[/]' '{ print $NF }' )"
-                                                _SMessage_VAR="$( echo  "ERROR ON ${Function_Name} :")"
-												_EMessage_VAR="$( echo  "[ CODE=${MD_Level_Code} [ ${MD_Msg_To_Display} ]")"
-												spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
-												eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"     ${Info_Redirector}
-												FONT_set_Basic_Font
-                                                exit ${MD_Level_Code}
-                                      fi
 
-                                      ;;
-                            *) FONT_set_Error_Font
-                               eval echo  " FATAL ERROR ON MGS FUNCTION USE "
-                               eval echo  " FUNCTION     = [ ${Function_PATH} ] "
-                               eval echo  " SUB FUNCTION = [ ${SUB_Function_Name} ]"
-                               eval echo  " Debug type   = [ ${MD_Type_Msg}  ]"
-                               eval echo  " have a nice day .... :-p "
-                               FONT_set_Basic_Font
-                               eval printf "\\\033\\[K"
-                               exit 2
-                               ;;
+__Noendline=""
+case ${MD_Type_Msg} in
+        starting_Global) __Noendline="-n"
+        ManageMessage
+        ;;
+        Starting)        __Noendline="-n"
+        ManageMessage
+        ;;
+        StMessage)       __Noendline="-n"
+        ManageMessage
+        ;;
+        End_Global)      __Noendline="-n"
+        ManageMessage
+        ;;
+        ErrorN) ManageError
+        ;;
+        *) FONT_set_Error_Font
+        eval echo  " FATAL ERROR ON MGS FUNCTION USE "
+        eval echo  " FUNCTION     = [ ${Function_PATH} ] "
+        eval echo  " SUB FUNCTION = [ ${SUB_Function_Name} ]"
+        eval echo  " Debug type   = [ ${MD_Type_Msg}  ]"
+        eval echo  " have a nice day .... :-p "
+        FONT_set_Basic_Font
+        eval printf "\\\033\\[K"
+        exit 2
+        ;;
 esac
+
+
 FONT_set_Basic_Font
 Emptying_MSGS_vars
 }
 
+functionn ManageMessage()
+{
+        if [ ${MD_Level_Code} -le "${Debug_state}" ]
+                then 
+                        _SMessage_VAR="Main : [ ${Function_Name} :" 
+                        _EMessage_VAR="[ ${MD_Type_Msg} ]"
+                        spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
+                        echo ${__Noendline} "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"
+        fi
+}
+
+
+fucntion ManageError()
+{
+        if [  "${MD_Level_Code}" = "0" ]
+                then
+                        FONT_set_Warn_Font                                         	    
+                        _SMessage_VAR="$( echo  "Warning ON ${Function_Name} :")"
+                        _EMessage_VAR="$( echo  "[ ${MD_Msg_To_Display} ]")"
+                        spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
+                        eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"     ${Info_Redirector}
+                        FONT_set_Basic_Font
+                else
+                        FONT_set_Error_Font
+                        Function_Name="$( echo  ${Function_PATH} | awk -F'[/]' '{ print $NF }' )"
+                        _SMessage_VAR="$( echo  "ERROR ON ${Function_Name} :")"
+                        _EMessage_VAR="$( echo  "[ CODE=${MD_Level_Code} [ ${MD_Msg_To_Display} ]")"
+                        spliter_line_MSG "${_SMessage_VAR}" "${_EMessage_VAR}"
+                        eval echo  "${_SMessage_VAR}${MSG_SPLITER}${_EMessage_VAR}"     ${Info_Redirector}
+                        FONT_set_Basic_Font
+                        exit ${MD_Level_Code}
+        fi
+}
 
 
 
@@ -239,9 +204,9 @@ case ${_Message_Type} in
       "error") FONT_set_error_Font
             ;;
             *) FONT_set_message_Font
-			   #echo message type is out of range [ ${_Message_Type} ]
-			   #exit 
-			;;
+               #echo message type is out of range [ ${_Message_Type} ]
+               #exit 
+             ;;
 esac
 }
 
