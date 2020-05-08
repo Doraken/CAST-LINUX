@@ -52,6 +52,8 @@ fi
 
 function Main() 
 {
+echo "Entering to Framework installation tasks"
+echo "Creating base root directory"
 Directory_CRT "${_RootDir}"
 
 }
