@@ -52,6 +52,8 @@ case ${MD_Type_Msg} in
         ;;
         ErrorN) ManageError
         ;;
+        Config) ManageMessage
+        ;;
         *) FONT_set_Error_Font
           echo  " FATAL ERROR ON MGS FUNCTION USE "
           echo  " FUNCTION     = [ ${Function_PATH} ] "
@@ -103,10 +105,7 @@ function ManageError()
         fi
 }
 
-
-
-f
-
+ 
 function Set_Message_Type_Display
 {
 #|# Var to set        :
