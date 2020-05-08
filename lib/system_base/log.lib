@@ -52,7 +52,7 @@ case ${MD_Type_Msg} in
         ;;
         ErrorN) ManageError
         ;;
-        Config) ManageMessage
+        Config|Info) ManageMessage
         ;;
         *) FONT_set_Error_Font
           echo  " FATAL ERROR ON MGS FUNCTION USE "
