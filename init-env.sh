@@ -35,7 +35,7 @@ Dir_null_or_slash ${Base_param_Dir_To_Create}
 echo -n "Checking  directory : [ ${Base_param_Dir_To_Create} ] "
 if [ -d "${Base_param_Dir_To_Create}" ]
    then 
-	   MSG_DISPLAY "EdSMessage" "Present"
+	   echo "Present"
    else 
         mkdir -p ${Base_param_Dir_To_Create}
         Return_code=$?
@@ -71,7 +71,7 @@ echo "Creating base root directory"
 Directory_CRT "${_RootDir}"
 echo "shearching for you package manager"
 __Redflag="1"
-for __Pacman in ${_LST_PacMan} 
+for __Pacman in $( echo ${_LST_PacMan} ) 
    do 
       echo "searching for ${__pacman}"
       __tmpPacMan=$(which ${__pacman})
