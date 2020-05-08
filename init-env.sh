@@ -105,6 +105,8 @@ RaiseFlag "no package manager found !!!! "
 installMinimalPackages "git"
 cd ${_RootDir}
 git clone https://github.com/Doraken/CAST-LINUX.git
+chmod +x /srv/admin/CAST-LINUX/*.sh
+chmod +x /srv/admin/CAST-LINUX/bin/*
 cd CAST-LINUX 
 cd bin
 ./init-all.sh
