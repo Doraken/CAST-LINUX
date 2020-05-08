@@ -65,6 +65,20 @@ function RaiseFlag()
 }
 
 
+function installMinimalPackages()
+{
+case ${__USED_PKGMAN} in 
+      yum) yum install ${__Mpackage} 
+         ; 
+  apt-get) apt-get install ${__Mpackage}
+         ;
+        *) echo "Fatal error package manager not set properly"
+           exit 1
+         ;
+esac 
+}
+
+
 function Main() 
 {
 echo "Entering to Framework installation tasks"
@@ -80,7 +94,7 @@ for __Pacman in $( echo ${_LST_PacMan} )
       if [ "${?}" = "0" ]
           then
               echo "Package manager : [ ${__Pacman} ] found at : [ ${__tmpPacMan} ]"
-              __USED_PKGMAN="${__tmpPacMan}"
+              __USED_PKGMAN="${__Pacman}"
               __Redflag="0"
           else 
               echo "Package manager : [ ${__Pacman} ] Not found"
