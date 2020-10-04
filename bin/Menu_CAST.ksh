@@ -23,7 +23,7 @@ Action_Type="${0}"
 ### Sourcing Specifics Configurations Files
 echo "" ; echo "" ; echo "" ; echo ""
 
-echo [ Info   :  script  INIT ]
+echo "[ Info   :  script  INIT ]"
 
 CNF_SRC="0"
 . ${Conf_Generics}
@@ -35,7 +35,6 @@ if [ "${CNF_SRC}" = "1" ]
        exit 1
 fi
 SRC_AUTO
-
 
 
 #######################################################
@@ -67,6 +66,10 @@ done
 
 
 
+
+
+
+
 ################# Main
 
 ### INIT conf
@@ -75,3 +78,4 @@ done
 #######################################################
 
 
+Menu_Get_items "# Main_Menu_ok" "2" "${Base_Dir_Scripts_Lib}/CAST.lib" "Main_Menu_:"

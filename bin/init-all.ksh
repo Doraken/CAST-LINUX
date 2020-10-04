@@ -1,10 +1,10 @@
-#!/bin/bash 
+#!/usr/bin/ksh
 ################################################################################
 # Info   : Arpcom sanity checker                       version : 0.1           #
 # author : Arnaud Crampet                              Date    : 06/09/2006    #
 #                                                                              #
 ################################################################################
-Conf_Generics="/srv/admin/CAST-LINUX/conf/generics.cnf"
+Conf_Generics="../conf/generics.cnf"
 Conf_Specifics=""
 Return_Path="$(pwd)" 
 Debug_state="9"

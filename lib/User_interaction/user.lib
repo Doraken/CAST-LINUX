@@ -1,8 +1,8 @@
 ###############################################################################
 # User.lib                                             Version : 1.1.2.1      #
 # Creation Date : 24/11/2006                                                  #
-# Team          : Only me after all                                           #
-# Support mail  : arnaud@crampet.net                                          #
+# Team          : Chaos Engineers Teams for fully automated systems           #
+# Support mail  : doraken@draken.net                                          #
 # Author        : Arnaud Crampet                                              #
 #                                                                             #
 # Subject : This lib is used to provide any function about user menu control  #
@@ -52,7 +52,7 @@ function USER_Continue_ON_ERR
 Function_Name="${0}"
 Function_PATH="${Function_PATH}/${Function_Name}"
 ######################################################
-MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+MsgStack
 
 if [ "${Redo_Last}" = "Dummy" ]
    then
@@ -115,7 +115,7 @@ function User_Hit_a_key
 Function_Name="$0"
 Function_PATH="${Function_PATH}/${Function_Name}"
 ######################################################
-MSG_DISPLAY "Debug4" "Current Stack : [ ${Function_PATH} ] "
+MsgStack
 
 FONT_set_Message_Font
 MSG_DISPLAY "Message" "Please  : press enter to continue "
